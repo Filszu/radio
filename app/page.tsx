@@ -4,6 +4,7 @@ import { VotingList } from '@/components'
 import { Button } from '@/components/ui/button'
 import { Music } from 'lucide-react'
 import MusicList from '@/components/MusicList'
+import NewSongDialog from '@/components/NewSongDialog'
 
 export default function Home() {
   return (
@@ -23,6 +24,8 @@ export default function Home() {
           
         
         <MusicList />
+
+        <NewSongDialog></NewSongDialog>
 
 
        
