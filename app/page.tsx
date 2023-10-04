@@ -25,11 +25,7 @@ export default function Home() {
         <MusicList />
 
 
-        <section>
-          <Button>+</Button>
-          <Button variant="destructive">-</Button>
-        </section>
-
+       
 
 
       
