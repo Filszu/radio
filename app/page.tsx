@@ -7,11 +7,21 @@ import MusicList from '@/components/MusicList'
 import NewSongDialog from '@/components/NewSongDialog'
 import { getSongs } from '@/lib/getSongs'
 import { USong } from '@/database.types'
+import { get } from 'http'
 
 
 export default function Home() {
   
-  const songs:Promise<USong[]> = getSongs();
+  // const songs:Promise<USong[]> = getSongs();
+
+  // console.log(songs)
+  // if(songs){
+  //   console.log(songs)
+  // }
+
+  const songs:USong = getSongs();
+
+  
 
  
 
@@ -32,7 +42,7 @@ export default function Home() {
       
           
         
-        <MusicList props={songs}/>
+        <MusicList songs={songs}/>
 
         <NewSongDialog></NewSongDialog>
 

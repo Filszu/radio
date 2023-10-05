@@ -17,7 +17,7 @@ export async function getSongs() {
     // obiekt 1
     // console.log("obiekt 1 ------------------------")
     //  console.log(data[0])
-    return data;
+    return data as USong[];
 
     
 
