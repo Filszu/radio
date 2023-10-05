@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button } from './ui/button'
 import { USong } from '@/database.types'
+import voteSong from '@/lib/voteSong'
 
 
 
@@ -15,8 +16,12 @@ const SongInfoBox =(song: USong) => {
           <p className="text-gray-600 md:flex md:justify-center">{song.duration}</p>
         </div>
         <div className='flex'>
-            <Button className='w-10 mx-1'>+</Button>
-            <Button className="w-10 mx-1" variant="destructive">-</Button>
+            <Button className='w-10 mx-1' onClick={()=>{
+                  voteSong(song.id, 'plus')
+            }}>+</Button>
+            <Button className="w-10 mx-1" variant="destructive" onClick={()=>{
+
+            }}>-</Button>
         </div>
       </div>
     </div>
