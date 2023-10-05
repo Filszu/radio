@@ -8,7 +8,7 @@ const MusicList = ({songs}:{songs:USong[]}) => {
 
 
   return (
-    <section className='w-full'>
+    <section className='w-full flex flex-col gap-2'>
       
       {songs.map((song) => (
         <SongInfoBox

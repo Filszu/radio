@@ -1,8 +1,10 @@
+'use client';
 import React from 'react'
-import { Button } from './ui/button'
 import { USong } from '@/database.types'
 import voteSong from '@/lib/voteSong'
-
+import { Button } from './ui/button';
+import { revalidatePath } from 'next/cache';
+import {BiSolidUpvote} from 'react-icons/bi'
 
 
 const SongInfoBox =(song: USong) => {
@@ -15,13 +17,34 @@ const SongInfoBox =(song: USong) => {
           <h2 className="text-lg font-semibold duration-300 group-hover:text-primary">{song.title}</h2>
           <p className="text-gray-600 md:flex md:justify-center">{song.duration}</p>
         </div>
-        <div className='flex'>
-            <Button className='w-10 mx-1' onClick={()=>{
-                  voteSong(song.id, 'plus')
-            }}>+</Button>
-            <Button className="w-10 mx-1" variant="destructive" onClick={()=>{
+        <div className='flex items-center'>
+            <div className='flex items-center' >
+              <BiSolidUpvote/> 
+              <span className='mx-1'></span>
+              {(song.dailyVotesPlus-song.dailyVotesMinus)}
+              <span className='mx-1'></span>
+              
+              </div>
+            <Button className='w-10 mx-1' 
+            // onClick={()=>{
+                  // voteSong(song.id, 'upvote')
+            // }}
+            onClick={()=>{
+              alert('plus')
+              voteSong(song.id, song, 'upvote' )
+              revalidatePath('/')
+            }
+            }
 
-            }}>-</Button>
+            >+</Button>
+            <Button className="w-10 mx-1" variant="destructive" 
+            onClick={()=>{
+                alert('minus')
+                voteSong(song.id,song, 'downvote')
+                revalidatePath('/')
+            }}
+            >
+              -</Button>
         </div>
       </div>
     </div>

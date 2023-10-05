@@ -7,7 +7,9 @@ import MusicList from '@/components/MusicList'
 import NewSongDialog from '@/components/NewSongDialog'
 import { getSongs } from '@/lib/getSongs'
 import { USong } from '@/database.types'
-import { get } from 'http'
+import { revalidatePath } from 'next/cache'
+
+
 
 
 export default async function Home() {
