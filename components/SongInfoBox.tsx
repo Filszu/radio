@@ -4,8 +4,8 @@ import { USong } from '@/database.types'
 
 
 
-const SongInfoBox = async(props: Promise<USong>) => {
-  const song = await props;
+const SongInfoBox =(song: USong) => {
+  
   return (
     <div className="border rounded-lg p-4 shadow-md w-full hover:border-primary group hover:ease-out duration-300">
       <div className="flex  items-center space-x-4 justify-between flex-wrap">
