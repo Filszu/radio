@@ -10,7 +10,7 @@ import { USong } from '@/database.types'
 import { get } from 'http'
 
 
-export default function Home() {
+export default async function Home() {
   
   // const songs:Promise<USong[]> = getSongs();
 
@@ -19,7 +19,11 @@ export default function Home() {
   //   console.log(songs)
   // }
 
-  const songs:USong = getSongs();
+  const songs:USong[] = await getSongs();
+
+  if(songs){
+    console.log(songs)
+  }else return Error('songs is not defined')
 
   
 

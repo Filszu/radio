@@ -4,7 +4,7 @@ import { USong } from '@/database.types';
 
 
 
-const MusicList: React.FC<Promise<USong[]>> = ({ songs }) => {
+const MusicList = ({songs}:{songs:USong[]}) => {
 
 
   return (
