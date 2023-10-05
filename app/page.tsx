@@ -10,6 +10,8 @@ import { USong } from '@/database.types'
 import { revalidatePath } from 'next/cache'
 
 
+export const dynamic = "force-dynamic"
+
 
 
 export default async function Home() {

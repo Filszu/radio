@@ -5,7 +5,8 @@ import { USong } from "@/database.types";
 
 
 export async function getSongs() {
-    const {data, error} = await supabase.from("uSongs").select('*').limit(15).order('dailyVotesPlus', { ascending: false });
+    const {data, error} = await supabase.from("uSongs").select('*').limit(15).order('created_at', { ascending: false });
+    // .order('dailyVotesPlus', { ascending: false })
 
     if (error) throw error;
 

@@ -11,19 +11,24 @@ import {
 
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import postSong from "@/lib/postSong"
 
 import {AiOutlineYoutube} from 'react-icons/ai'
 import {BsSpotify} from 'react-icons/bs'
 
 type Props = {}
 
-const NewSongDialog = (props: Props) => {
+const NewSongDialog = async(props: Props) => {
+
+ 
   return (
+    
     <Dialog>
     <DialogTrigger asChild>
       <Button>Dodaj nowy utwór</Button>
     </DialogTrigger>
     <DialogContent className="sm:max-w-[425px]">
+    <form action={postSong}>
       <DialogHeader>
         <DialogTitle>Dodaj nowy utwór</DialogTitle>
         <DialogDescription>
@@ -40,11 +45,14 @@ const NewSongDialog = (props: Props) => {
       </DialogHeader>
       <div className="grid gap-4 py-4">
         <div className="grid grid-cols-4 items-center gap-4">
+          
           <Label htmlFor="songURL" className="text-right">
             song url
           </Label>
+          
           <Input
             id="songURL"
+            name="songURL"
             defaultValue="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             className="col-span-3"
           />
@@ -63,8 +71,10 @@ const NewSongDialog = (props: Props) => {
       <DialogFooter>
         <Button type="submit">dodaj piosenkę</Button>
       </DialogFooter>
+    </form>
     </DialogContent>
   </Dialog>
+  
   )
 }
 
