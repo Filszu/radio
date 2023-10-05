@@ -21,7 +21,7 @@ const NewSongDialog = (props: Props) => {
   return (
     <Dialog>
     <DialogTrigger asChild>
-      <Button variant="outline">Edit Profile</Button>
+      <Button>Dodaj nowy utwór</Button>
     </DialogTrigger>
     <DialogContent className="sm:max-w-[425px]">
       <DialogHeader>

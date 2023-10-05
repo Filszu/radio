@@ -5,8 +5,10 @@ import { Button } from '@/components/ui/button'
 import { Music } from 'lucide-react'
 import MusicList from '@/components/MusicList'
 import NewSongDialog from '@/components/NewSongDialog'
+import supabase from '@/config/supaBaseClient'
 
 export default function Home() {
+  console.log(supabase)
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-14">
       <header className="z-10 max-w-5xl w-full items-center justify-center font-mono text-sm md:flex md:justify-between">
