@@ -1,9 +1,11 @@
 import React from 'react'
 import SongInfoBox from './SongInfoBox'
+import { Database, USong } from '@/database.types'
 
-type Props = {}
 
-const MusicList = (props: Props) => {
+
+
+const MusicList = (props: USong[]) => {
   return (
     <section className='w-full'>
         <SongInfoBox
