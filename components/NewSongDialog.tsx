@@ -1,4 +1,3 @@
-// 'use client'
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
@@ -26,7 +25,8 @@ const NewSongDialog = async(props: Props) => {
  
   async function handleSubmit(formData: FormData){
     'use server'
-    await postSong(formData)
+    const res = await postSong(formData)
+
     // setOpen(false)
   }
   return (

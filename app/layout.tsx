@@ -1,3 +1,4 @@
+import { Toaster } from '@/components/ui/toaster'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
@@ -23,6 +24,7 @@ export default function RootLayout({
       <body className={inter.className}>
         {newSongModal}
         {children}
+        <Toaster />
         
       </body>
     </html>

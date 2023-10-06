@@ -50,7 +50,7 @@ export default async function Home() {
       </header>
       
         <div className='h-10'></div>  
-        <Link href="/add-new-song">xxxxxxxxx</Link>
+        {/* <Link href="/add-new-song">xxxxxxxxx</Link> */}
         
         
         <NewSongDialog></NewSongDialog>

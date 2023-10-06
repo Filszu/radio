@@ -6,6 +6,7 @@ import { Button } from './ui/button';
 import { revalidatePath } from 'next/cache';
 import {BiSolidUpvote} from 'react-icons/bi'
 import VoteBtn from './VoteBtn';
+import SongVoteBtns from './SongVoteBtns';
 
 
 const SongInfoBox =(song: USong) => {
@@ -29,15 +30,22 @@ const SongInfoBox =(song: USong) => {
               <span className='mx-1'></span>
               
               </div>
-            <Button className='w-10 mx-1' 
+              <SongVoteBtns songId={song.id}/>
+            {/* <Button className='w-10 mx-1' 
             // onClick={()=>{
                   // voteSong(song.id, 'upvote')
             // }}
-            onClick={async()=>{
+            // onClick={async()=>{
+            //   'use server'
+            //   // alert('plus')
+            //   voteSong(song.id, song, 'upvote' )
+            //   // revalidatePath('/')
+            // }
+            // }
+
+            formAction={async()=>{
               'use server'
-              alert('plus')
               voteSong(song.id, song, 'upvote' )
-              revalidatePath('/')
             }
             }
 
@@ -48,14 +56,14 @@ const SongInfoBox =(song: USong) => {
                 alert('minus')
                 
                 voteSong(song.id,song, 'downvote')
-                revalidatePath('/')
+                // revalidatePath('/')
             }}
             >
               -</Button>
 
             {/* <VoteBtn clickEvent={()=>alert("x")}>
                 xx
-            </VoteBtn> */}
+            </VoteBtn> */} 
         </div>
       </div>
     </div>
