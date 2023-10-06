@@ -1,4 +1,4 @@
-'use client'
+// 'use client'
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
@@ -22,15 +22,18 @@ type Props = {}
 
 const NewSongDialog = async(props: Props) => {
 
-  const [open, setOpen] = useState(false);
+  // const [open, setOpen] = useState(false);
  
   async function handleSubmit(formData: FormData){
+    'use server'
     await postSong(formData)
-    setOpen(false)
+    // setOpen(false)
   }
   return (
     
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog 
+    // open={open} onOpenChange={setOpen}
+    >
     <DialogTrigger asChild>
       <Button>Dodaj nowy utwór</Button>
     </DialogTrigger>

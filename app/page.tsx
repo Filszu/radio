@@ -2,13 +2,14 @@ import Image from 'next/image'
 import Logo from '../public/imgs/logo-elektron.jpg'
 import { VotingList } from '@/components'
 import { Button } from '@/components/ui/button'
-import { Music } from 'lucide-react'
+import {  Music } from 'lucide-react'
 import MusicList from '@/components/MusicList'
 import NewSongDialog from '@/components/NewSongDialog'
 import { getSongs } from '@/lib/getSongs'
 import { USong } from '@/database.types'
 import { revalidatePath } from 'next/cache'
 
+import Link from 'next/link'
 
 // export const dynamic = "force-dynamic"
 
@@ -49,6 +50,9 @@ export default async function Home() {
       </header>
       
         <div className='h-10'></div>  
+        <Link href="/add-new-song">xxxxxxxxx</Link>
+        
+        
         <NewSongDialog></NewSongDialog>
 
         
