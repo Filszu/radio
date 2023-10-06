@@ -1,3 +1,4 @@
+'use client'
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
@@ -12,6 +13,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import postSong from "@/lib/postSong"
+import { useState } from "react"
 
 import {AiOutlineYoutube} from 'react-icons/ai'
 import {BsSpotify} from 'react-icons/bs'
@@ -20,15 +22,20 @@ type Props = {}
 
 const NewSongDialog = async(props: Props) => {
 
+  const [open, setOpen] = useState(false);
  
+  async function handleSubmit(formData: FormData){
+    await postSong(formData)
+    setOpen(false)
+  }
   return (
     
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
     <DialogTrigger asChild>
       <Button>Dodaj nowy utwór</Button>
     </DialogTrigger>
     <DialogContent className="sm:max-w-[425px]">
-    <form action={postSong}>
+    <form action={handleSubmit}>
       <DialogHeader>
         <DialogTitle>Dodaj nowy utwór</DialogTitle>
         <DialogDescription>
@@ -70,6 +77,7 @@ const NewSongDialog = async(props: Props) => {
       </div>
       <DialogFooter>
         <Button type="submit">dodaj piosenkę</Button>
+        
       </DialogFooter>
     </form>
     </DialogContent>

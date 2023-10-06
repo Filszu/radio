@@ -10,7 +10,7 @@ import { USong } from '@/database.types'
 import { revalidatePath } from 'next/cache'
 
 
-export const dynamic = "force-dynamic"
+// export const dynamic = "force-dynamic"
 
 
 
@@ -48,11 +48,16 @@ export default async function Home() {
       
       </header>
       
-          
+        <div className='h-10'></div>  
+        <NewSongDialog></NewSongDialog>
+
         
+        {/* spacer */}
+        <div className='h-10'></div>
+
         <MusicList songs={songs}/>
 
-        <NewSongDialog></NewSongDialog>
+        
 
 
        
