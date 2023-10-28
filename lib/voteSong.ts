@@ -37,7 +37,9 @@ async function voteSong(songID:string,voteType: 'upvote' | 'downvote') {
 
 
     const isSongCookie = await createVotedSongCookie({songID});
-    console.log("isSongCookie",isSongCookie);
+    // console.log("isSongCookie",isSongCookie);
+
+    if(isSongCookie) return "error"
 
     
 

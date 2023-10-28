@@ -16,12 +16,23 @@ const SongVoteBtns = ({songId}: {songId:USong["id"]}) => {
                 
                 ()=>
                 startTransition(async ()=>{
-                await voteSong(songId, 'upvote' );
-                toast({
+                const res = await voteSong(songId, 'upvote' );
+
+                if(res==="error"){
+                    toast({
+                        title: "Nie możesz głosować na ten utwór!",
+                        description: "Zaglosowałeś już na ten utwór!",
+                        variant: "destructive",
+                      })
+                }else{
+                  toast({
                     title: "Twój głos został oddany!",
                     description: "+1",
                     variant: "success",
                   })
+                }
+                
+                
                 })
                 
 
@@ -34,13 +45,23 @@ const SongVoteBtns = ({songId}: {songId:USong["id"]}) => {
         <Button className="w-10 mx-1" variant="destructive" 
             onClick={
             ()=>startTransition(async ()=>{
-            await voteSong(songId, 'downvote' );
+            const res = await voteSong(songId, 'downvote' );
 
-            toast({
+            if(res==="error"){
+              toast({
+                  title: "Nie możesz głosować na ten utwór!",
+                  description: "Zaglosowałeś już na ten utwór!",
+                  variant: "destructive",
+                })
+              }
+            else{
+              toast({
                 title: "Twój głos został oddany!",
                 description: "-1",
-                variant: "destructive",
+                variant: "success",
               })
+            }
+            
                        
             })
         }
