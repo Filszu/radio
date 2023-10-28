@@ -36,14 +36,19 @@ const NewSongDialog = async(props: Props) => {
   async function handleSubmit(formData: FormData){
     'use server'
     const rowID = await postSong(formData)
+
+    console.log("$$$$$$$$$$$$$$$$$$$", rowID)
     
 
 
     if(rowID){
       const accessToken = await getSpotifyToken()
-      putSongInfo({songID: rowID, accessToken:accessToken, songURL: formData.get("songURL")?.toString()??""})
+      const res = await putSongInfo({songID: rowID, accessToken:accessToken})
+
+      revalidatePath("/")
+
     }
-    revalidatePath("/")
+   
 
 
     // setOpen(false)

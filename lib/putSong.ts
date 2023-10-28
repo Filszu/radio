@@ -6,11 +6,25 @@ import { genSpotifyUrl } from "@/utils/genSpotifyUrl";
 
 
 
-export default async function putSongInfo({songID, songURL, accessToken}:{songID:string, songURL: string, accessToken:string}) {
+export default async function putSongInfo({songID, accessToken}:{songID:string, accessToken:string}) {
 
     
 
-    const trackID = genSpotifyUrl(songURL)
+    // get song row basing on id
+    const { data, error } = await supabase
+    .from('uSongs')
+    .select('url')
+    .eq('id', songID)
+    .limit(1)
+
+    if (error) {
+        console.error(error);
+        return null;
+    }
+
+    
+
+    const trackID = genSpotifyUrl(data[0].url)
 
     if(trackID){
     

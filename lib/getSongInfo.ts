@@ -1,4 +1,5 @@
 // const axios = require('axios');
+import { secondsToMinutesAndSeconds } from '@/utils/convertTime';
 import axios from 'axios';
 
 
@@ -27,7 +28,8 @@ export default async function getSongInfoFromSpotify({trackId, accessToken}:{tra
         const albumName = response.data.album.name;
         const imageUrl = response.data.album.images[0].url;
   
-        const duration_in_s = response.data.duration_ms/1000
+        const duration_in_s = secondsToMinutesAndSeconds(response.data.duration_ms/1000)
+        
 
         // Do something with the track information
         console.log(`Track: ${trackName}`);

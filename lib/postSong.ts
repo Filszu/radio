@@ -3,8 +3,7 @@
 import supabase from "@/config/supaBaseClient"
 import { USong } from "@/database.types";
 import { revalidatePath } from "next/cache";
-import getSongInfoFromSpotify from "./getSongInfo";
-import getSpotifyToken from "@/config/spotifyClient";
+
 
 export default async function postSong(formData: FormData) {
 
