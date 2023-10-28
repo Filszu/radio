@@ -14,11 +14,14 @@ import Link from 'next/link';
 const SongInfoBox =(song: USong) => {
 
   
+  function substrWord(str: string, maxLen: number){
+    return str.length > maxLen ? str.substring(0, maxLen-3) + '...' : str
+  }
   
   return (
     <div className="border rounded-lg p-4 shadow-md w-full hover:border-primary group hover:ease-out duration-300">
       <div className="flex  items-center space-x-4 justify-between flex-wrap">
-        {/* <img src={props.thumbnail??""} alt="Song Thumbnail" className="w-16 h-16 rounded-lg" /> */}
+        <img src={song.thumbnail??""} alt="Song Thumbnail" className="w-16 h-16 rounded-lg" />
         <div className=''>
           <h2 className="text-lg font-semibold duration-300 group-hover:text-primary">{song.title}</h2>
           <p className="text-gray-600 md:flex md:justify-center">{song.duration}</p>
@@ -26,7 +29,9 @@ const SongInfoBox =(song: USong) => {
         <div>
           <h2>
             <Link href={song.url} target='blank' className='text-white no-underline'>
+              {/* {song.title?song.title:song.url.substring(13, 50) + '...'} */}
               {song.url.substring(13, 50) + '...'}
+
             </Link>
             {
           //  substring

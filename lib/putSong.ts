@@ -23,6 +23,7 @@ export default async function putSongInfo({songID, songURL, accessToken}:{songID
         thumbnail: songInfo.thumbnail??null,
         artist: songInfo.artist??null,
         explicit: songInfo.explicit??null,
+        duration: songInfo.duration??null,
 
 
 

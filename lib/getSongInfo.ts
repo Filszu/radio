@@ -26,6 +26,8 @@ export default async function getSongInfoFromSpotify({trackId, accessToken}:{tra
         const artistName = response.data.artists[0].name;
         const albumName = response.data.album.name;
         const imageUrl = response.data.album.images[0].url;
+  
+        const duration_in_s = response.data.duration_ms/1000
 
         // Do something with the track information
         console.log(`Track: ${trackName}`);
@@ -38,7 +40,8 @@ export default async function getSongInfoFromSpotify({trackId, accessToken}:{tra
             thumbnail: imageUrl,
             artist: artistName,
             album: albumName,
-            explicit: response.data.explicit
+            explicit: response.data.explicit,
+            duration: duration_in_s,
 
         }
         return songInfo;
