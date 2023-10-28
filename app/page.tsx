@@ -28,7 +28,7 @@ export default async function Home() {
   const songs:USong[] = await getSongs();
 
   if(songs){
-    console.log(songs)
+    // console.log(songs)
   }else return Error('songs is not defined')
 
 

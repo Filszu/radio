@@ -3,6 +3,7 @@
 import supabase from "@/config/supaBaseClient"
 import { USong } from "@/database.types";
 import { revalidatePath } from "next/cache";
+import { createVotedSongCookie } from "./votingCookies";
 
 
 async function getVotes(songID:string) {
@@ -34,6 +35,11 @@ async function voteSong(songID:string,voteType: 'upvote' | 'downvote') {
 
     // select current values of votesPlus and votesMinus dailyVotesPlus and dailyVotesMinus
 
+
+    const isSongCookie = await createVotedSongCookie({songID});
+    console.log("isSongCookie",isSongCookie);
+
+    
 
 
     const votes = await getVotes(songID)
