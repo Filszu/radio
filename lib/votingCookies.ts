@@ -24,7 +24,7 @@ export async function createVotedSongCookie({songID}:{songID:string}){
 
 
   const hasCookie = cookiesList.has(songCookieName)
-  console.log("hasCookie",hasCookie)
+//   console.log("hasCookie",hasCookie)
         
   const oneDay = 24 * 60 * 60 * 1000;
   const hrs12 = 12 * 60 * 60 * 1000;
@@ -39,7 +39,7 @@ export async function createVotedSongCookie({songID}:{songID:string}){
     }
  
     if(!hasCookie) {
-            cookies().set(`${songCookieName}`, `voted`, { expires: Date.now() + oneDay })
+            cookies().set(`${songCookieName}`, `voted`, { expires: Date.now() + hrs12 })
             return false;
     }
 }

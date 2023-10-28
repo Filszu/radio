@@ -3,6 +3,8 @@
 import supabase from "@/config/supaBaseClient"
 import { USong } from "@/database.types";
 import { revalidatePath } from "next/cache";
+import getSongInfoFromSpotify from "./getSongInfo";
+import getSpotifyToken from "@/config/spotifyClient";
 
 export default async function postSong(formData: FormData) {
 
@@ -29,6 +31,16 @@ export default async function postSong(formData: FormData) {
         console.error(error);
         return null;
     }
+
+   
+
+    if(spotifyRegex.test(songUrl)) {
+        console.log("Spotify URL detected, fetching song info...")
+        // const trackId  = songUrl.split("/")[4].split("?")[0]
+        const access_token = await getSpotifyToken()
+        await getSongInfoFromSpotify({trackId:'19SEn5eUuuixwxFPNtrq7D', accessToken: access_token})
+    }
+
 
     revalidatePath("/")
 }

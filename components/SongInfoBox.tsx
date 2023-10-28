@@ -7,9 +7,13 @@ import { revalidatePath } from 'next/cache';
 import {BiSolidUpvote} from 'react-icons/bi'
 import VoteBtn from './VoteBtn';
 import SongVoteBtns from './SongVoteBtns';
+import Link from 'next/link';
+
 
 
 const SongInfoBox =(song: USong) => {
+
+  
   
   return (
     <div className="border rounded-lg p-4 shadow-md w-full hover:border-primary group hover:ease-out duration-300">
@@ -20,7 +24,15 @@ const SongInfoBox =(song: USong) => {
           <p className="text-gray-600 md:flex md:justify-center">{song.duration}</p>
         </div>
         <div>
-          <h2>{song.url}</h2>
+          <h2>
+            <Link href={song.url} target='blank' className='text-white no-underline'>
+              {song.url.substring(13, 50) + '...'}
+            </Link>
+            {
+          //  substring
+           
+          
+          }</h2>
         </div>
         <div className='flex items-center'>
             <div className='flex items-center' >

@@ -72,7 +72,8 @@ const NewSongDialog = async(props: Props) => {
           <Input
             id="songURL"
             name="songURL"
-            defaultValue="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+            // defaultValue="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+            defaultValue={"https://open.spotify.com/track/7wMq5n8mYSKlQIGECKUgTX?si=d589b6c346b343bf"}
             className="col-span-3"
           />
         </div>
