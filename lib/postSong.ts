@@ -23,23 +23,25 @@ export default async function postSong(formData: FormData) {
 
     console.log("Song URL is valid", songUrl)
 
-    const { error } = await supabase
+    const {data, error } = await supabase
     .from('uSongs')
     .insert({ url:`${songUrl}`, })
+    .select('id').limit(1)
 
     if (error) {
         console.error(error);
         return null;
     }
 
+    console.log(data)
+    // data [ { id: 'ea2301b7-1fe8-4492-9d30-1a6f4cf571fe' } ]
+
+    const inseredRowId = data[0].id
+    console.log("inseredRowId", inseredRowId)
    
 
-    if(spotifyRegex.test(songUrl)) {
-        console.log("Spotify URL detected, fetching song info...")
-        // const trackId  = songUrl.split("/")[4].split("?")[0]
-        const access_token = await getSpotifyToken()
-        await getSongInfoFromSpotify({trackId:'19SEn5eUuuixwxFPNtrq7D', accessToken: access_token})
-    }
+
+    
 
 
     revalidatePath("/")

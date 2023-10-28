@@ -1,28 +1,16 @@
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
-
-export function middleware(request: NextRequest) {
-
-    // const { pathname } = request.nextUrl
- 
-    // // GET /_next/data/build-id/hello.json
-   
-    // console.log(pathname)
 
 
-//   // Clone the request headers so that we don't modify the original headers object
-//   const requestHeaders = new Headers(request.headers);
+// import { NextRequest, NextResponse } from "next/server";
+// import  getSpotifyToken from "@/config/spotifyClient"
 
-//   // Check if the hosting platform provides the client's IP address and store it in a variable
-//   const ip = request.ip || "";
+// export async function middleware(request: NextRequest) {
+//   // Retrieve the Spotify access token
+//   const accessToken = await getSpotifyToken();
 
-//   // Add the client's IP address to the request headers using the 'x-forwarded-for' field
-//   requestHeaders.set("x-forwarded-for", ip);
+//   // Store the access token in a cookie
+//   const expires = new Date(Date.now() + 3600000); // 1 hour
+//   const cookieValue = `access_token=${accessToken}; HttpOnly; Secure; SameSite=Strict; Expires=${expires.toUTCString()}`;
+//   request.cookies.set("spotify_token", cookieValue);
 
-  // Return a new request object with the updated headers using NextResponse.next()
-//   return NextResponse.next({
-//     request: {
-//       headers: requestHeaders,
-//     },
-//   });
-}
+//   return NextResponse.next();
+// }
