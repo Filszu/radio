@@ -12,8 +12,8 @@ export default async function putSongInfo({songID, songURL, accessToken}:{songID
 
     if(spotifyRegex.test(songURL)) {
       // const trackId  = songUrl.split("/")[4].split("?")[0]
-    const access_token = await getSpotifyToken()
-    const songInfo:any = await getSongInfoFromSpotify({trackId:'19SEn5eUuuixwxFPNtrq7D', accessToken: access_token})
+    // const access_token = await getSpotifyToken()
+    const songInfo:any = await getSongInfoFromSpotify({trackId:'19SEn5eUuuixwxFPNtrq7D', accessToken: accessToken})
 
     
     const { data, error } = await supabase
