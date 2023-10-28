@@ -21,30 +21,18 @@ const SongInfoBox =(song: USong) => {
   
   return (
     <div className="border rounded-lg p-4 shadow-md w-full hover:border-primary group hover:ease-out duration-300">
-      <div className="flex  items-center space-x-4 justify-between flex-wrap">
+      <div className="flex  items-center space-x-4 justify-center flex-wrap md:justify-between">
         <img src={song.thumbnail??""} alt="Song Thumbnail" className="w-16 h-16 rounded-lg" />
         <div className=''>
           <Link href={song.url} target='blank'>
             <h2 className="text-lg font-semibold duration-300 group-hover:text-primary flex content-center items-center">{substrWord(song.title??song.url,80)} 
             
-            <BsExplicitFill className={song.explicit?"text-red-500 ml-2":""}/>
+            {song.explicit&&<BsExplicitFill className={"text-red-500 ml-2"}/>}
             </h2>
           </Link>
           <p className="text-gray-600 md:flex md:justify-center">{song.duration}</p>
         </div>
-        <div>
-          <h2>
-            <Link href={song.url} target='blank' className='text-white no-underline'>
-              {/* {song.title?song.title:song.url.substring(13, 50) + '...'} */}
-              {/* {song.title?"":substrWord(song.url, 50)} */}
-
-            </Link>
-            {
-          //  substring
-           
-          
-          }</h2>
-        </div>
+       
         <div className='flex items-center'>
             <div className='flex items-center' >
               <BiSolidUpvote/> 
