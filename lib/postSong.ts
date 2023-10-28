@@ -33,12 +33,10 @@ export default async function postSong(formData: FormData) {
         return null;
     }
 
-    console.log(data)
-    // data [ { id: 'ea2301b7-1fe8-4492-9d30-1a6f4cf571fe' } ]
-
+    
     const inseredRowId = data[0].id
-    console.log("inseredRowId", inseredRowId)
-   
+ 
+   return inseredRowId
 
 
     

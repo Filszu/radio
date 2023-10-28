@@ -1,12 +1,43 @@
+'use server'
 import getSpotifyToken from "@/config/spotifyClient"
 import getSongInfoFromSpotify from "./getSongInfo"
+import supabase from "@/config/supaBaseClient";
 
-export default async function putSongInfo({trackId, accessToken}:{trackId:string, accessToken:string}) {
+const youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\//;
+const spotifyRegex = /^(https?:\/\/)?(www\.)?(open\.spotify\.com|spotify\.com\/track)\//;
 
-   
-    console.log("Spotify URL detected, fetching song info...")
-    // const trackId  = songUrl.split("/")[4].split("?")[0]
+export default async function putSongInfo({songID, songURL, accessToken}:{songID:string, songURL: string, accessToken:string}) {
+
+    
+
+    if(spotifyRegex.test(songURL)) {
+      // const trackId  = songUrl.split("/")[4].split("?")[0]
     const access_token = await getSpotifyToken()
-    await getSongInfoFromSpotify({trackId:'19SEn5eUuuixwxFPNtrq7D', accessToken: access_token})
+    const songInfo:any = await getSongInfoFromSpotify({trackId:'19SEn5eUuuixwxFPNtrq7D', accessToken: access_token})
+
+    
+    const { data, error } = await supabase
+    .from('uSongs')
+    .update({ 
+        title: songInfo.title??null,
+        thumbnail: songInfo.thumbnail??null,
+        artist: songInfo.artist??null,
+        explicit: songInfo.explicit??null,
+
+
+
+    })
+    .eq('id', songID)
+    .select()
+    
+    }else{
+        return Error("Invalid song URL")
+    }
+
+    
+
+
+    
+    
     
 }

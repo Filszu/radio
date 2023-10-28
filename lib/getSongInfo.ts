@@ -12,28 +12,45 @@ export default async function getSongInfoFromSpotify({trackId, accessToken}:{tra
 
 
     
+ try{
 
-    // Make a GET request to the Spotify API endpoint for the track
-    axios.get(`https://api.spotify.com/v1/tracks/${trackId}`, {
-    headers: {
-        'Authorization': `Bearer ${accessToken}`
-    }
-    })
-    .then(response => {
-    // Extract the relevant information about the track from the response
-    const trackName = response.data.name;
-    const artistName = response.data.artists[0].name;
-    const albumName = response.data.album.name;
-    const imageUrl = response.data.album.images[0].url;
+        // Make a GET request to the Spotify API endpoint for the track
+        const response = await axios.get(`https://api.spotify.com/v1/tracks/${trackId}`, {
+        headers: {
+            'Authorization': `Bearer ${accessToken}`
+        }
+        })
+    
+        // Extract the relevant information about the track from the response
+        const trackName = response.data.name;
+        const artistName = response.data.artists[0].name;
+        const albumName = response.data.album.name;
+        const imageUrl = response.data.album.images[0].url;
 
-    // Do something with the track information
-    console.log(`Track: ${trackName}`);
-    console.log(`Artist: ${artistName}`);
-    console.log(`Album: ${albumName}`);
-    console.log(`Image URL: ${imageUrl}`);
-    })
-    .catch(error => {
-    console.error(error);
-    });
+        // Do something with the track information
+        console.log(`Track: ${trackName}`);
+        console.log(`Artist: ${artistName}`);
+        console.log(`Album: ${albumName}`);
+        console.log(`Image URL: ${imageUrl}`);
+
+        const songInfo = {
+            title: trackName,
+            thumbnail: imageUrl,
+            artist: artistName,
+            album: albumName,
+            explicit: response.data.explicit
+
+        }
+        return songInfo;
+ }catch(err){
+     console.log(err)
+     return null
+ }
+
+    
+   
+
+   
+    
 
 }

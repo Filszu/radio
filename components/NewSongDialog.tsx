@@ -17,6 +17,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import postSong from "@/lib/postSong"
+import putSongInfo from "@/lib/putSong"
 
 
 import {AiOutlineYoutube} from 'react-icons/ai'
@@ -30,7 +31,12 @@ const NewSongDialog = async(props: Props) => {
 
   async function handleSubmit(formData: FormData){
     'use server'
-    const res = await postSong(formData)
+    const rowID = await postSong(formData)
+
+    if(rowID){
+      putSongInfo({songID: rowID, accessToken:"", songURL: formData.get("songURL")?.toString()??""})
+    }
+    
 
     // setOpen(false)
   }
