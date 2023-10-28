@@ -5,6 +5,7 @@ import voteSong from '@/lib/voteSong'
 import { Button } from './ui/button';
 import { revalidatePath } from 'next/cache';
 import {BiSolidUpvote} from 'react-icons/bi'
+import { BsExplicitFill } from 'react-icons/bs';
 import VoteBtn from './VoteBtn';
 import SongVoteBtns from './SongVoteBtns';
 import Link from 'next/link';
@@ -14,8 +15,8 @@ import Link from 'next/link';
 const SongInfoBox =(song: USong) => {
 
   
-  function substrWord(str: string, maxLen: number){
-    return str.length > maxLen ? str.substring(0, maxLen-3) + '...' : str
+  function substrWord(str: string, maxLen: number, startingPos: number = 0){
+    return str.length > maxLen ? str.substring(startingPos, maxLen-3) + '...' : str
   }
   
   return (
@@ -23,14 +24,19 @@ const SongInfoBox =(song: USong) => {
       <div className="flex  items-center space-x-4 justify-between flex-wrap">
         <img src={song.thumbnail??""} alt="Song Thumbnail" className="w-16 h-16 rounded-lg" />
         <div className=''>
-          <h2 className="text-lg font-semibold duration-300 group-hover:text-primary">{song.title}</h2>
+          <Link href={song.url} target='blank'>
+            <h2 className="text-lg font-semibold duration-300 group-hover:text-primary flex content-center items-center">{substrWord(song.title??song.url,80)} 
+            
+            <BsExplicitFill className={song.explicit?"text-red-500 ml-2":""}/>
+            </h2>
+          </Link>
           <p className="text-gray-600 md:flex md:justify-center">{song.duration}</p>
         </div>
         <div>
           <h2>
             <Link href={song.url} target='blank' className='text-white no-underline'>
               {/* {song.title?song.title:song.url.substring(13, 50) + '...'} */}
-              {song.url.substring(13, 50) + '...'}
+              {/* {song.title?"":substrWord(song.url, 50)} */}
 
             </Link>
             {
@@ -42,6 +48,7 @@ const SongInfoBox =(song: USong) => {
         <div className='flex items-center'>
             <div className='flex items-center' >
               <BiSolidUpvote/> 
+              
               <span className='mx-1'></span>
               {(song.dailyVotesPlus-song.dailyVotesMinus)}
               <span className='mx-1'></span>
