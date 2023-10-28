@@ -10,6 +10,7 @@ import { USong } from '@/database.types'
 import { revalidatePath } from 'next/cache'
 
 import Link from 'next/link'
+import { headers } from 'next/headers'
 
 // export const dynamic = "force-dynamic"
 
@@ -29,6 +30,16 @@ export default async function Home() {
   if(songs){
     console.log(songs)
   }else return Error('songs is not defined')
+
+
+  //maybe i can use this to get ip address
+  // https://api.ipify.org?format=json
+
+  const ip = headers().get("x-forwarded-for");
+
+  console.log("-------------------------------------------------------------------------")
+  console.log(ip)
+  
 
   
 

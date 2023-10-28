@@ -23,7 +23,7 @@ export default async function postSong(formData: FormData) {
 
     const { error } = await supabase
     .from('uSongs')
-    .insert({ url:`${songUrl}` })
+    .insert({ url:`${songUrl}`, })
 
     if (error) {
         console.error(error);

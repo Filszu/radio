@@ -19,6 +19,7 @@ async function getVotes(songID:string) {
     
 
 }
+
 async function voteSong(songID:string,voteType: 'upvote' | 'downvote') {
 
     console.log("voteSong",songID, voteType)
