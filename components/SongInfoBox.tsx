@@ -26,7 +26,10 @@ const SongInfoBox =(song: USong) => {
       {song.thumbnail&&<Image src={song.thumbnail} alt="Song Thumbnail" className="w-16 h-16 rounded-lg" width={150} height={150}/>}
         <div className=''>
           <Link href={song.url} target='blank'>
-            <h2 className="text-lg font-semibold duration-300 group-hover:text-primary flex content-center items-center">{substrWord(song.title??song.url,80)} 
+            <h2 className="text-lg font-semibold duration-300 group-hover:text-primary flex content-center items-center">{
+            // substrWord(song.title??song.url,80)
+            song.title?substrWord(song.title,80):substrWord(song.url,40,8)
+            } 
             
             {song.explicit&&<BsExplicitFill className={"text-red-500 ml-2"}/>}
             </h2>
