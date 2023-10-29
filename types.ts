@@ -9,5 +9,10 @@ interface ISong{
     thumbnail?:string,
 
 }
-
+interface IActionMSG{
+    title:string,
+    message:string,
+    type:"info"|"error"|"success",
+    status:number
+}
 // *** *** **

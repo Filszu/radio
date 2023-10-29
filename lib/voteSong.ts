@@ -3,7 +3,7 @@
 import supabase from "@/config/supaBaseClient"
 import { USong } from "@/database.types";
 import { revalidatePath } from "next/cache";
-import { createVotedSongCookie } from "./votingCookies";
+import { createVotedSongCookie } from "./cookies/votingCookies";
 
 
 async function getVotes(songID:string) {

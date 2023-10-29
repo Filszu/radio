@@ -1,8 +1,8 @@
-'use server'
-import { cookies } from 'next/headers'
+// 'use server'
+// import { cookies } from 'next/headers'
 
-const COOKIE_NAME = 'user_actions';
-const COOKIE_MAX_AGE = 12 * 60 * 60; 
+// const COOKIE_NAME = 'user_actions';
+// const COOKIE_MAX_AGE = 12 * 60 * 60; 
 
 // async function checkUserAndSaveCookie() {
 //     const userIp = getUserIp(); // implement getUserIp() function to get user's IP 
@@ -15,4 +15,4 @@ const COOKIE_MAX_AGE = 12 * 60 * 60;
 
 
 
-export default uniqueUser;
+// export default uniqueUser;
