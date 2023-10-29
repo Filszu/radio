@@ -45,6 +45,8 @@ export default async function putSongInfo({songID, accessToken}:{songID:string, 
     })
     .eq('id', songID)
     .select()
+
+    return "success"
     
     }else{
         return Error("Invalid song URL")

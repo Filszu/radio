@@ -38,9 +38,19 @@ export async function submitNewSongForm(formData: FormData){
     if(rowID){
       if(genSpotifyUrl(formData.get('songURL') as string))
       {
+
          const accessToken = await getSpotifyToken()
         const res = await putSongInfo({songID: rowID, accessToken:accessToken})
-        
+
+        if(!res){
+            returnMSG.message = "Cannot get song data from spotify"
+            returnMSG.title = "Error"
+            returnMSG.status = 400
+            returnMSG.type = "error"
+            return returnMSG
+        }
+
+
 
       }else{
         
