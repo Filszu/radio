@@ -4,10 +4,22 @@ import { Button } from './ui/button'
 import voteSong from '@/lib/voteSong'
 import { USong } from '@/database.types'
 import { useToast } from './ui/use-toast'
+
+import { experimental_useOptimistic as useOptimistic } from 'react';
+
 type Props = {}
 
 const SongVoteBtns = ({songId}: {songId:USong["id"]}) => {
     let [isPending, startTransition] = useTransition();
+
+    // const [optimisticVotes, addOptimisticVotes] = useOptimistic(
+    //   {votesCount, sending: false},
+    //   (state, newVotesCount) => ({
+    //     ...state,
+    //     votesCount: newVotesCount,
+    //     sending: true
+    //   })
+    // )
     const { toast } = useToast();
   return (
     <>
