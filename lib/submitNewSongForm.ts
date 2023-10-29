@@ -19,9 +19,14 @@ export async function submitNewSongForm(formData: FormData){
 
     const canUserAddSong = await AddedSongCookie()
     console.log(canUserAddSong)
-    if(canUserAddSong>130){
+    if(canUserAddSong>300){
       console.log('You can add only 3 songs per day')
-      return 
+
+      returnMSG.message = "Możesz dodać tylko 3 utwory dziennie"
+    returnMSG.title = "Error"
+    returnMSG.status = 400
+    returnMSG.type = "error"
+      return returnMSG
     }
 
     const rowID = await postSong(formData)
@@ -35,15 +40,19 @@ export async function submitNewSongForm(formData: FormData){
       {
          const accessToken = await getSpotifyToken()
         const res = await putSongInfo({songID: rowID, accessToken:accessToken})
+        
 
+      }else{
+        
       }
 
-      
-      
-     
-      
-      
-
+    }else{
+        
+      returnMSG.message = "Sth went wrong"
+      returnMSG.title = "Error"
+      returnMSG.status = 400
+      returnMSG.type = "error"
+    return returnMSG
     }
 
     console.log(returnMSG)

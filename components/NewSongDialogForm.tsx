@@ -1,4 +1,4 @@
-// 'use client'
+'use client'
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
@@ -32,12 +32,22 @@ type Props = {}
 
 const NewSongDialogForm = async(props: Props) => {
 
+     const { toast } = useToast();
      async function handleSubmit(formData: FormData){
-    'use server'
+    // 'use server'
     console.log('============submitting form')
-    const submitingFormStatus:IActionMSG = await submitNewSongForm(formData)
+    const submitingFormStatus:IActionMSG | undefined= await submitNewSongForm(formData)
    
     console.log(submitingFormStatus)
+
+    if(submitingFormStatus){
+      toast({
+        title: `${submitingFormStatus.title}`,
+        description: `${submitingFormStatus.message}`,
+        variant: `${submitingFormStatus.status===200 ? "success" : "destructive"}`,
+      })   
+    }
+   
 
 
     // alert(submitingFormStatus.message)
@@ -45,7 +55,7 @@ const NewSongDialogForm = async(props: Props) => {
     
   }
 
-    // const { toast } = useToast();
+   
   return (
     <form 
     action={handleSubmit}
