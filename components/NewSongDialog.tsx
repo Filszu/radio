@@ -1,5 +1,5 @@
 // TODO: later check if song is already in db, and then just update the updated field
-'use client'
+// 'use client'
 
 import { Button } from "@/components/ui/button"
 import {
@@ -28,8 +28,9 @@ import { revalidatePath } from "next/cache"
 import {AiOutlineYoutube} from 'react-icons/ai'
 import {BsSpotify} from 'react-icons/bs'
 import { submitNewSongForm } from "@/lib/submitNewSongForm"
-import { useToast } from "./ui/use-toast"
+
 import AddSongBtn from "./NewSongDialogBtn"
+import NewSongDialogForm from "./NewSongDialogForm"
 // import AddSongBtn from "./NewSongDialogBtn"
 
 
@@ -45,18 +46,18 @@ const NewSongDialog = async(props: Props) => {
   
  
 
-  async function handleSubmit(formData: FormData){
-    // 'use server'
-    console.log('============submitting form')
-    const submitingFormStatus:IActionMSG = await submitNewSongForm(formData)
+  // async function handleSubmit(formData: FormData){
+  //   // 'use server'
+  //   console.log('============submitting form')
+  //   const submitingFormStatus:IActionMSG = await submitNewSongForm(formData)
    
-    console.log(submitingFormStatus)
+  //   console.log(submitingFormStatus)
 
 
-    // alert(submitingFormStatus.message)
+  //   // alert(submitingFormStatus.message)
    
     
-  }
+  // }
 
   
   return (
@@ -72,65 +73,7 @@ const NewSongDialog = async(props: Props) => {
       <Button>Dodaj nowy utwór</Button>
     </DialogTrigger>
     <DialogContent className="sm:max-w-[425px]">
-    <form 
-    action={handleSubmit}
-    >
-      <DialogHeader>
-        <DialogTitle>Dodaj nowy utwór</DialogTitle>
-        <DialogDescription>
-        W tym miejscu możesz dodać nową propozycję piosenki do listy
-        <br />
-        <div className="flex justify-center items-baseline">
-            <AiOutlineYoutube size={40}/>
-            <span className="mx-5"></span>
-            <BsSpotify size={40}/>
-        </div>
-        
-        
-        </DialogDescription>
-      </DialogHeader>
-      <div className="grid gap-4 py-4">
-        <div className="grid grid-cols-4 items-center gap-4">
-          
-          <Label htmlFor="songURL" className="text-right">
-            song url
-          </Label>
-          
-          <Input
-            id="songURL"
-            name="songURL"
-            // defaultValue="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-            defaultValue={"https://open.spotify.com/track/7wMq5n8mYSKlQIGECKUgTX?si=d589b6c346b343bf"}
-            className="col-span-3"
-          />
-        </div>
-        {/* <div className="grid grid-cols-4 items-center gap-4">
-          <Label htmlFor="username" className="text-right">
-            Username
-          </Label>
-          <Input
-            id="username"
-            defaultValue="@peduarte"
-            className="col-span-3"
-          />
-        </div> */}
-      </div>
-      <DialogFooter>
-        
-        <DialogTrigger asChild>
-          <Button type="submit">dodaj piosenkę</Button>
-          
-        </DialogTrigger>
-
-        <DialogTrigger asChild>
-        <AddSongBtn 
-          // action={()=>submitNewSongForm(formData)}
-          />
-        </DialogTrigger>
-        
-        
-      </DialogFooter>
-    </form>
+      <NewSongDialogForm/>
     </DialogContent>
   </Dialog>
   
