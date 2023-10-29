@@ -24,6 +24,7 @@ const SongVoteBtns = ({songId}: {songId:USong["id"]}) => {
                         description: "Zaglosowałeś już na ten utwór!",
                         variant: "destructive",
                       })
+                      
                 }else{
                   toast({
                     title: "Twój głos został oddany!",

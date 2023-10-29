@@ -19,7 +19,7 @@ export async function submitNewSongForm(formData: FormData){
 
     const canUserAddSong = await AddedSongCookie()
     console.log(canUserAddSong)
-    if(canUserAddSong>13){
+    if(canUserAddSong>130){
       console.log('You can add only 3 songs per day')
       return 
     }
@@ -37,11 +37,17 @@ export async function submitNewSongForm(formData: FormData){
         const res = await putSongInfo({songID: rowID, accessToken:accessToken})
 
       }
+
+      
+      
      
       
       
 
     }
+
+    console.log(returnMSG)
+    return returnMSG;
     
     // revalidatePath("/")
 

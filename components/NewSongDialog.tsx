@@ -28,9 +28,12 @@ import { revalidatePath } from "next/cache"
 import {AiOutlineYoutube} from 'react-icons/ai'
 import {BsSpotify} from 'react-icons/bs'
 import { submitNewSongForm } from "@/lib/submitNewSongForm"
+import { useToast } from "./ui/use-toast"
+import AddSongBtn from "./NewSongDialogBtn"
 
 
 type Props = {}
+
 
 const NewSongDialog = async(props: Props) => {
   
@@ -38,14 +41,23 @@ const NewSongDialog = async(props: Props) => {
 
   
   
-  // const { toast } = useToast();
+  
+  const { toast } = useToast();
 
   async function handleSubmit(formData: FormData){
     // 'use server'
-    submitNewSongForm(formData)
+    console.log('============submitting form')
+    const submitingFormStatus:IActionMSG = await submitNewSongForm(formData)
+   
+    console.log(submitingFormStatus)
+
+
+    // alert(submitingFormStatus.message)
+   
+    
   }
 
-
+  
   return (
     
     <Dialog 
@@ -59,7 +71,9 @@ const NewSongDialog = async(props: Props) => {
       <Button>Dodaj nowy utwór</Button>
     </DialogTrigger>
     <DialogContent className="sm:max-w-[425px]">
-    <form action={submitNewSongForm}>
+    <form 
+    action={handleSubmit}
+    >
       <DialogHeader>
         <DialogTitle>Dodaj nowy utwór</DialogTitle>
         <DialogDescription>
@@ -103,7 +117,8 @@ const NewSongDialog = async(props: Props) => {
       <DialogFooter>
         
         <DialogTrigger asChild>
-          <Button type="submit">dodaj piosenkę</Button>
+          {/* <Button type="submit">dodaj piosenkę</Button> */}
+          <AddSongBtn action={()=>submitNewSongForm(formData)}/>
         </DialogTrigger>
         
         
@@ -114,6 +129,8 @@ const NewSongDialog = async(props: Props) => {
   
   )
 }
+
+
 
 
 
