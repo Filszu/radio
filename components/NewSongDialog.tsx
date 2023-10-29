@@ -30,6 +30,7 @@ import {BsSpotify} from 'react-icons/bs'
 import { submitNewSongForm } from "@/lib/submitNewSongForm"
 import { useToast } from "./ui/use-toast"
 import AddSongBtn from "./NewSongDialogBtn"
+// import AddSongBtn from "./NewSongDialogBtn"
 
 
 type Props = {}
@@ -42,7 +43,7 @@ const NewSongDialog = async(props: Props) => {
   
   
   
-  const { toast } = useToast();
+ 
 
   async function handleSubmit(formData: FormData){
     // 'use server'
@@ -121,9 +122,11 @@ const NewSongDialog = async(props: Props) => {
           
         </DialogTrigger>
 
+        <DialogTrigger asChild>
         <AddSongBtn 
           // action={()=>submitNewSongForm(formData)}
           />
+        </DialogTrigger>
         
         
       </DialogFooter>
