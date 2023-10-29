@@ -117,9 +117,13 @@ const NewSongDialog = async(props: Props) => {
       <DialogFooter>
         
         <DialogTrigger asChild>
-          {/* <Button type="submit">dodaj piosenkę</Button> */}
-          <AddSongBtn action={()=>submitNewSongForm(formData)}/>
+          <Button type="submit">dodaj piosenkę</Button>
+          
         </DialogTrigger>
+
+        <AddSongBtn 
+          // action={()=>submitNewSongForm(formData)}
+          />
         
         
       </DialogFooter>

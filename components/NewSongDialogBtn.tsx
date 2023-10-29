@@ -6,11 +6,22 @@ import { Button } from "./ui/button"
 
 
 
-const AddSongBtn = (action:void) => {
+const AddSongBtn = () => {
     const { toast } = useToast()
 
     return (
-        <Button formAction={action} type="submit">xxxxxxx</Button>
+        <>
+        <Button  
+        onClick={()=>
+            toast({
+                title: "xxx",
+                description: "xxxx",
+                variant: "destructive",
+              })
+        } 
+        type="submit">xxxxxxx
+        </Button>
+        </>
     )
 }
 
