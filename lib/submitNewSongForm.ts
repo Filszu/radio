@@ -19,7 +19,7 @@ export async function submitNewSongForm(formData: FormData){
 
     const canUserAddSong = await AddedSongCookie()
     console.log(canUserAddSong)
-    if(canUserAddSong>300){
+    if(canUserAddSong>3){
       console.log('You can add only 3 songs per day')
 
       returnMSG.message = "Możesz dodać tylko 3 utwory dziennie"
