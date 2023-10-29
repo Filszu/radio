@@ -19,6 +19,7 @@ import { Label } from "@/components/ui/label"
 import getSpotifyToken from "@/config/spotifyClient"
 import postSong from "@/lib/postSong"
 import putSongInfo from "@/lib/putSong"
+import { genSpotifyUrl } from "@/utils/genSpotifyUrl"
 import { revalidatePath } from "next/cache"
 
 
@@ -42,9 +43,13 @@ const NewSongDialog = async(props: Props) => {
 
 
     if(rowID){
-      const accessToken = await getSpotifyToken()
-      const res = await putSongInfo({songID: rowID, accessToken:accessToken})
+      if(genSpotifyUrl(formData.get('songURL') as string))
+      {
+         const accessToken = await getSpotifyToken()
+        const res = await putSongInfo({songID: rowID, accessToken:accessToken})
 
+      }
+     
       revalidatePath("/")
 
     }

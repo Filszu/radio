@@ -9,6 +9,7 @@ import { BsExplicitFill } from 'react-icons/bs';
 import VoteBtn from './VoteBtn';
 import SongVoteBtns from './SongVoteBtns';
 import Link from 'next/link';
+import Image from 'next/image';
 
 
 
@@ -22,7 +23,7 @@ const SongInfoBox =(song: USong) => {
   return (
     <div className="border rounded-lg p-4 shadow-md w-full hover:border-primary group hover:ease-out duration-300">
       <div className="flex  items-center space-x-4 justify-center flex-wrap md:justify-between">
-        <img src={song.thumbnail??""} alt="Song Thumbnail" className="w-16 h-16 rounded-lg" />
+      {song.thumbnail&&<Image src={song.thumbnail} alt="Song Thumbnail" className="w-16 h-16 rounded-lg" width={150} height={150}/>}
         <div className=''>
           <Link href={song.url} target='blank'>
             <h2 className="text-lg font-semibold duration-300 group-hover:text-primary flex content-center items-center">{substrWord(song.title??song.url,80)} 
