@@ -5,6 +5,7 @@ import { Inter } from 'next/font/google'
 import React from 'react'
 import Image from 'next/image'
 import Logo from '../public/imgs/logo-elektron.jpg'
+import Link from 'next/link'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -31,7 +32,9 @@ export default function RootLayout({
       </div> */}
         <div className='flex items-center justify-center w-full md:flex md:w-auto'>
           <Image src={Logo} width={50} height={50} alt="logo elktrona" className='m-5'/>
-          <h1>Radio Elektron</h1>
+          <Link href="/">
+            <h1>Radio Elektron</h1>
+          </Link>
            </div>
           <div className='flex items-center justify-center'><h2 className=''>Głosuj na ulubione utwory</h2></div>
         
