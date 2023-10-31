@@ -14,7 +14,7 @@ const MusicList = ({songs}:{songs:USong[]}) => {
       {songs.map((song) => (
         <SongInfoBox
           key={song.id}
-          songId={song.id}  
+          songId={song.id}
           title={song.title}
           thumbnail={song.thumbnail}
           duration={song.duration}
@@ -22,12 +22,12 @@ const MusicList = ({songs}:{songs:USong[]}) => {
           votesPlus={song.votesPlus}
           votesMinus={song.votesMinus}
           id={song.id}
-          url={song.url} 
-          created_at={song.created_at} 
-          dailyVotesMinus={song.dailyVotesMinus} 
+          url={song.url}
+          created_at={song.created_at}
+          dailyVotesMinus={song.dailyVotesMinus}
           dailyVotesPlus={song.dailyVotesPlus}
           explicit={song.explicit}
-          hostId={song.hostId}
+          hostId={song.hostId} addedTimes={null} status={null} updatedAt={null}          
                 
           />
 

@@ -22,16 +22,12 @@ const Page = async(props: Props) => {
     const isLogged = await getAdminCookie()
     console.log(isLogged)
   return (
-    <main className='flex center h-screen items-center justify-center'>
-       
-
-       
+     
         <form action={handleSubmit} className=''>
             hello Admin 🙂 {isLogged&&"Logged IN 🎯"}
             <Input name="pswd" type="password" className='mt-2 mb-2'></Input>
             <Button>Log in</Button>
         </form>
-    </main>
   )
 }
 

@@ -12,6 +12,7 @@ import { revalidatePath } from 'next/cache'
 import Link from 'next/link'
 import { headers } from 'next/headers'
 import getSongInfoFromSpotify from '@/lib/getSongInfo'
+import { fakeSetTimeOut } from '@/utils/fakeSetTimeOut'
 
 // export const dynamic = "force-dynamic"
 
@@ -26,6 +27,7 @@ export default async function Home() {
   //   console.log(songs)
   // }
 
+  await fakeSetTimeOut(5000)
   const songs:USong[] = await getSongs();
 
   if(songs){
