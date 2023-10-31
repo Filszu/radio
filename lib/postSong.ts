@@ -15,7 +15,9 @@ export default async function postSong(formData: FormData) {
     // Check if the song URL is a valid YouTube or Spotify URL
     const youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\//;
     const spotifyRegex = /^(https?:\/\/)?(www\.)?(open\.spotify\.com|spotify\.com\/track)\//;
-    if (!songUrl || (!youtubeRegex.test(songUrl) && !spotifyRegex.test(songUrl))) {
+
+    // if (!songUrl || (!youtubeRegex.test(songUrl) && !spotifyRegex.test(songUrl))) {
+    if (!songUrl || !spotifyRegex.test(songUrl)) {
         console.error("Invalid song URL");
         return null;
     }

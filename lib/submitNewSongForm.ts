@@ -5,6 +5,7 @@ import postSong from "./postSong"
 import { genSpotifyUrl } from "@/utils/genSpotifyUrl"
 import putSongInfo from "./putSong"
 import { revalidatePath } from "next/cache"
+import { genYoutubeUrl } from "@/utils/genYTUrl"
 
 export async function submitNewSongForm(formData: FormData){
     
@@ -18,14 +19,23 @@ export async function submitNewSongForm(formData: FormData){
     }
 
     const canUserAddSong = await AddedSongCookie()
-    console.log(canUserAddSong)
+    // console.log(canUserAddSong)
+
     if(canUserAddSong>3){
       console.log('You can add only 3 songs per day')
 
       returnMSG.message = "Możesz dodać tylko 3 utwory dziennie"
-    returnMSG.title = "Error"
-    returnMSG.status = 400
-    returnMSG.type = "error"
+      returnMSG.title = "Error"
+      returnMSG.status = 400
+      returnMSG.type = "error"
+      return returnMSG
+    }
+
+    if(genYoutubeUrl(formData.get('songURL') as string)){
+      returnMSG.message = "Obenie korzystamy tylko z Spotify. Przepraszamy za utrudnienia."
+      returnMSG.title = "Co nie masz spotify, biedaku?"
+      returnMSG.status = 400
+      returnMSG.type = "error"
       return returnMSG
     }
 
@@ -53,12 +63,13 @@ export async function submitNewSongForm(formData: FormData){
 
 
       }else{
+
         
       }
 
     }else{
         
-      returnMSG.message = "Sth went wrong"
+      returnMSG.message = "Sth went wrong. Please input correct SPOTIFY URL"
       returnMSG.title = "Error"
       returnMSG.status = 400
       returnMSG.type = "error"

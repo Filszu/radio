@@ -3,6 +3,8 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import React from 'react'
+import Image from 'next/image'
+import Logo from '../public/imgs/logo-elektron.jpg'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -23,7 +25,24 @@ export default function RootLayout({
     <html lang="en" className='dark'>
       <body className={inter.className}>
         {/* {newSongModal} */}
+        <main className="flex min-h-screen flex-col items-center justify-between p-14">
+      <header className="z-10 max-w-5xl w-full items-center justify-center font-mono text-sm md:flex md:justify-between">
+      {/* <div className="z-10 max-w-5xl w-full items-center justify-center font-mono text-sm lg:flex md:justify-between">
+      </div> */}
+        <div className='flex items-center justify-center w-full md:flex md:w-auto'>
+          <Image src={Logo} width={50} height={50} alt="logo elktrona" className='m-5'/>
+          <h1>Radio Elektron</h1>
+           </div>
+          <div className='flex items-center justify-center'><h2 className=''>Głosuj na ulubione utwory</h2></div>
+        
+      
+          </header>
+      
+        <div className='h-10'></div>  
+
         {children}
+        </main>
+
         <Toaster />
         
       </body>
