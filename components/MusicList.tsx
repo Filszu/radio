@@ -4,7 +4,7 @@ import { USong } from '@/database.types';
 
 
 
-const MusicList = ({songs}:{songs:USong[]}) => {
+const MusicList = ({songs, isAdmin}:{songs:USong[], isAdmin:boolean}) => {
 
   
 
@@ -14,20 +14,9 @@ const MusicList = ({songs}:{songs:USong[]}) => {
       {songs.map((song) => (
         <SongInfoBox
           key={song.id}
-          songId={song.id}
-          title={song.title}
-          thumbnail={song.thumbnail}
-          duration={song.duration}
-          artist={song.artist}
-          votesPlus={song.votesPlus}
-          votesMinus={song.votesMinus}
-          id={song.id}
-          url={song.url}
-          created_at={song.created_at}
-          dailyVotesMinus={song.dailyVotesMinus}
-          dailyVotesPlus={song.dailyVotesPlus}
-          explicit={song.explicit}
-          hostId={song.hostId} addedTimes={null} status={null} updatedAt={null}          
+          // songId={song.id}
+          song={song} 
+          isAdmin={isAdmin}         
                 
           />
 

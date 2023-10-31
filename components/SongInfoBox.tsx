@@ -10,10 +10,11 @@ import VoteBtn from './VoteBtn';
 import SongVoteBtns from './SongVoteBtns';
 import Link from 'next/link';
 import Image from 'next/image';
+import SongAdminOptions from './SongAdminOptions';
 
 
 
-const SongInfoBox =(song: USong) => {
+const SongInfoBox =({song,isAdmin}: {song:USong, isAdmin:boolean}) => {
 
   
   function substrWord(str: string, maxLen: number, startingPos: number = 0){
@@ -47,44 +48,16 @@ const SongInfoBox =(song: USong) => {
               
               </div>
               <SongVoteBtns songId={song.id}/>
-            {/* <Button className='w-10 mx-1' 
-            // onClick={()=>{
-                  // voteSong(song.id, 'upvote')
-            // }}
-            // onClick={async()=>{
-            //   'use server'
-            //   // alert('plus')
-            //   voteSong(song.id, song, 'upvote' )
-            //   // revalidatePath('/')
-            // }
-            // }
-
-            formAction={async()=>{
-              'use server'
-              voteSong(song.id, song, 'upvote' )
-            }
-            }
-
-            >+</Button>
-            <Button className="w-10 mx-1" variant="destructive" 
-            onClick={async()=>{
-                'use server'
-                alert('minus')
-                
-                voteSong(song.id,song, 'downvote')
-                // revalidatePath('/')
-            }}
-            >
-              -</Button>
-
-            {/* <VoteBtn clickEvent={()=>alert("x")}>
-                xx
-            </VoteBtn> */} 
+              
+           
         </div>
       </div>
+      {isAdmin&&<SongAdminOptions songId={song.id}/>}
     </div>
   )
 }
+
+
 
 
 
