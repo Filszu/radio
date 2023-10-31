@@ -29,8 +29,7 @@ async function getTokenFromDB(){
     let { data:tokens, error } = await supabase
     .from('tokens')
     .select('token, valid_time_in_seconds, created_at')
-    .eq('app_name', 'spotify')
-    .limit(1)
+    .eq('app_name', 'spotify').order('created_at', { ascending: false }).limit(1)
 
     console.log("tokens>>>>", tokens)
 

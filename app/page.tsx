@@ -27,7 +27,7 @@ export default async function Home() {
   //   console.log(songs)
   // }
 
-  await fakeSetTimeOut(5000)
+  
   const songs:USong[] = await getSongs();
 
   if(songs){
