@@ -30,9 +30,11 @@ const SongInfoBox =({song,isAdmin}: {song:USong, isAdmin:boolean}) => {
             <h2 className="text-lg font-semibold duration-300 group-hover:text-primary flex content-center items-center">{
             // substrWord(song.title??song.url,80)
             song.title?substrWord(song.title,80):substrWord(song.url,40,8)
+            
             } 
             
             {song.explicit&&<BsExplicitFill className={"text-red-500 ml-2"}/>}
+            {song.status&&song.status=="banned"&&<span className='text-red-500 ml-2'>Banned</span>}
             </h2>
           </Link>
           <p className="text-gray-600 md:flex md:justify-center">{song.duration}</p>
@@ -52,7 +54,7 @@ const SongInfoBox =({song,isAdmin}: {song:USong, isAdmin:boolean}) => {
            
         </div>
       </div>
-      {isAdmin&&<SongAdminOptions songId={song.id}/>}
+      {isAdmin&&<SongAdminOptions songId={song.id} song={song}/>}
     </div>
   )
 }
