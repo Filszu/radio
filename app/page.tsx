@@ -59,7 +59,7 @@ export default async function Home() {
         {/* spacer */}
         <div className='h-10'></div>
 
-        <MusicList songs={songs}/>
+        <MusicList songs={songs} isAdmin={false}/>
 
         
       </>
