@@ -12,6 +12,23 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'Radio Elektron',
   description: 'Radio Elektron by Filszu',
+  keywords:"radio, elektron, zielona góra, gora, elektronik, filszu, radio",
+  openGraph: {
+    title: 'Radio Elektron',
+    description: 'Radio Elektron by Filszu',
+    url: 'https://ciac.me',
+    siteName: 'Radio Elektron',
+    images: [
+      {
+        url: '/imgs/logo.png',
+        width: 500,
+        height: 500,
+      },
+      
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
 
   // Open Graph
   // 'og:type': 'website',

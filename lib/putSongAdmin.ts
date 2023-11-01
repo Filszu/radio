@@ -24,18 +24,18 @@ export default async function putSongAdmin({formData, id}: songToUpdate) {
         }
 
         if(formData.get("votesPlus")){
-            votesPlus = formData.get("votesPlus")?.toString()
+            votesPlus = Number(formData.get("votesPlus"))
         }
         if(formData.get("votesMinus")){
-            votesMinus = formData.get("votesMinus")?.toString()
+            votesMinus = Number(formData.get("votesMinus"))
         }
         if(formData.get("dailyVotesPlus")){
-            dailyVotesPlus = formData.get("dailyVotesPlus")?.toString()
+            dailyVotesPlus = Number(formData.get("dailyVotesPlus"))
         }
         if(formData.get("dailyVotesMinus")){
-            dailyVotesMinus = formData.get("dailyVotesMinus")?.toString()
+            dailyVotesMinus = Number(formData.get("dailyVotesMinus"))
         }
-        
+
         
         try{
 
