@@ -33,11 +33,14 @@ const SongInfoBox =({song,isAdmin}: {song:USong, isAdmin:boolean}) => {
             
             } 
             
+            
             {song.explicit&&<BsExplicitFill className={"text-red-500 ml-2"}/>}
             {song.status&&song.status=="banned"&&<span className='text-red-500 ml-2'>Banned</span>}
             </h2>
+            
           </Link>
-          <p className="text-gray-600 md:flex md:justify-center">{song.duration}</p>
+          {song.artist&&<h3 className="text-gray-600 md:flex md:justify-center ">{song.artist}</h3>}
+          <p className="text-gray-600 md:flex md:justify-center text-sm">{song.duration}</p>
         </div>
        
         <div className='flex items-center'>

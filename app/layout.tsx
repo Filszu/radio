@@ -6,13 +6,14 @@ import React from 'react'
 import Image from 'next/image'
 import Logo from '../public/imgs/logo-elektron.jpg'
 import Link from 'next/link'
+// import { FiGithub } from 'react-icons/fi'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Radio Elektron',
   description: 'Radio Elektron by Filszu',
-  keywords:"radio, elektron, zielona góra, gora, elektronik, filszu, radio",
+  keywords:"radio, elektron, zielona góra, gora, elektronik, filszu, radio,zseis,ckziu, nr2, Filip Szumowski, filshu",
   openGraph: {
     title: 'Radio Elektron',
     description: 'Radio Elektron by Filszu',
@@ -73,6 +74,19 @@ export default function RootLayout({
         </main>
 
         <Toaster />
+
+        <footer
+        className='text-center w-full my-10  '
+        >
+          <h3>Created with ❣️ by <Link href={"https://lessons.ciac.me/"} className='link-underline text-primary'>Filszu</Link> 2023</h3>
+          <h3 className=''>Give a ⭐ on <Link href={"https://github.com/Filszu/radio"} className='link-underline text-primary'>
+          {/* <FiGithub size={10} />  */}
+          Github repo 
+          
+          </Link >
+          
+            </h3>
+        </footer>
         
       </body>
     </html>
