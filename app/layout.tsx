@@ -6,6 +6,7 @@ import React from 'react'
 import Image from 'next/image'
 import Logo from '../public/imgs/logo-elektron.jpg'
 import Link from 'next/link'
+import Script from 'next/script'
 // import { FiGithub } from 'react-icons/fi'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -87,6 +88,24 @@ export default function RootLayout({
           
             </h3>
         </footer>
+
+        <Script 
+        // strategy='lazyOnload'
+        strategy='afterInteractive'
+        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_ANALYTICS_ID}`}
+        />
+        <Script
+        id="google-analytics"
+        strategy='afterInteractive'>
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+          
+            gtag('config', '${process.env.GOOGLE_ANALYTICS_ID}');
+          `}
+        </Script>
+        
         
       </body>
     </html>
