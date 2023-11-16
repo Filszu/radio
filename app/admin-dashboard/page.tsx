@@ -30,7 +30,7 @@ const Page = async (props: Props) => {
 
   console.log(realIp);
 
-  const ip2 = await getUserIP();
+
 
   
 
@@ -42,6 +42,8 @@ const Page = async (props: Props) => {
 
       <p className="text-center mt-2 mb-2">
         You are logged in as Admin 🎯 from ip {ip}
+        <br />
+        {realIp}
       </p>
 
       {/* <Music size={64} /> */}
