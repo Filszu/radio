@@ -54,12 +54,14 @@ export async function markSongAsVoted(songID: string) {
   const userIP = await getUserIP();
   const user = await getUserActions(userIP);
 
-  if (user && user.userActions) {
+  if (user && user.userActions && typeof user.userActions === 'string') {
     
     const userActions: IUserActions = JSON.parse(user.userActions);
 
     if (userActions.votedSongs.includes(songID)) {
-      return false;
+
+        // console.log("userActions.votedSongs.includes(songID)",userActions.votedSongs.includes(songID))
+      return true;
     } else {
       const newUserActions: IUserActions = {
         ...userActions,
@@ -74,7 +76,7 @@ export async function markSongAsVoted(songID: string) {
         .eq('id', user.id)
         .select();
 
-        return true;
+        return false;
     }
   }
 }
