@@ -16,3 +16,9 @@ interface IActionMSG{
     status:number
 }
 // *** *** **
+
+interface IUserActions{
+    postedSongs:number,
+    votedSongs:Array<string>,
+
+}
