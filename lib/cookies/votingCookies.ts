@@ -17,10 +17,10 @@ export async function createVotedSongCookie({songID}:{songID:string}){
 
 
 
-    console.log("cookiesList",cookiesList)
+    // console.log("cookiesList",cookiesList)
 
     const songCookieName = `votedSong${songID}`
-    console.log("songCookieName",songCookieName)
+    // console.log("songCookieName",songCookieName)
 
 
   const hasCookie = cookiesList.has(songCookieName)

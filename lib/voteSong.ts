@@ -4,8 +4,8 @@ import supabase from "@/config/supaBaseClient"
 import { USong } from "@/database.types";
 import { revalidatePath } from "next/cache";
 import { createVotedSongCookie } from "./cookies/votingCookies";
-import { createUserActions } from "./userActions";
-import { getUserIP } from "./getUserIP";
+import { createUserActions, markSongAsVoted } from "./userActions";
+
 
 
 async function getVotes(songID:string) {
@@ -40,11 +40,11 @@ async function voteSong(songID:string,voteType: 'upvote' | 'downvote') {
 
     const isSongCookie = await createVotedSongCookie({songID});
     // const isVotingAction
-    const userIP = await getUserIP();
-    createUserActions(userIP)
+    const isSongInUserActionsDB = await markSongAsVoted(songID);
     // console.log("isSongCookie",isSongCookie);
 
-    if(isSongCookie) return "error"
+    //temp dissable
+    // if(isSongCookie) return "error"
 
     
 
