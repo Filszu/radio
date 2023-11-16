@@ -1,25 +1,24 @@
-import Image from 'next/image'
-import Logo from '../public/imgs/logo-elektron.jpg'
-import { VotingList } from '@/components'
-import { Button } from '@/components/ui/button'
-import {  Music } from 'lucide-react'
-import MusicList from '@/components/MusicList'
-import NewSongDialog from '@/components/NewSongDialog'
-import { getSongs } from '@/lib/getSongs'
-import { USong } from '@/database.types'
-import { revalidatePath } from 'next/cache'
+import Image from 'next/image';
+import Logo from '../public/imgs/logo-elektron.jpg';
+import { VotingList } from '@/components';
+import { Button } from '@/components/ui/button';
+import { Music } from 'lucide-react';
+import MusicList from '@/components/MusicList';
+import NewSongDialog from '@/components/NewSongDialog';
+import { getSongs } from '@/lib/getSongs';
+import { USong } from '@/database.types';
+import { revalidatePath } from 'next/cache';
 
-import Link from 'next/link'
-import { headers } from 'next/headers'
-import getSongInfoFromSpotify from '@/lib/getSongInfo'
-import { fakeSetTimeOut } from '@/utils/fakeSetTimeOut'
+import Link from 'next/link';
+import { headers } from 'next/headers';
+import getSongInfoFromSpotify from '@/lib/getSongInfo';
+import { fakeSetTimeOut } from '@/utils/fakeSetTimeOut';
 
 // export const dynamic = "force-dynamic"
 
-export const revalidate = 30
+export const revalidate = 30;
 
 export default async function Home() {
-  
   // const songs:Promise<USong[]> = getSongs();
 
   // console.log(songs)
@@ -27,47 +26,25 @@ export default async function Home() {
   //   console.log(songs)
   // }
 
-  
-  const songs:USong[] = await getSongs();
+  const songs: USong[] = await getSongs();
 
-  if(songs){
+  if (songs) {
     // console.log(songs)
-  }else return Error('songs is not defined')
-
-
-  
+  } else return Error('songs is not defined');
 
   //maybe i can use this to get ip address
   // https://api.ipify.org?format=json
 
-  
-
-  
-
- 
-
-
   return (
-    
     <>
-        {/* <Link href="/add-new-song">xxxxxxxxx</Link> */}
-        
-        
-        <NewSongDialog></NewSongDialog>
+      {/* <Link href="/add-new-song">xxxxxxxxx</Link> */}
 
-        
-        {/* spacer */}
-        <div className='h-10'></div>
+      <NewSongDialog></NewSongDialog>
 
-        <MusicList songs={songs} isAdmin={false}/>
+      {/* spacer */}
+      <div className="h-10"></div>
 
-        
-      </>
-
-       
-
-
-      
-    
-  )
+      <MusicList songs={songs} isAdmin={false} />
+    </>
+  );
 }
