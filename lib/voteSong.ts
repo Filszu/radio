@@ -44,7 +44,7 @@ async function voteSong(songID:string,voteType: 'upvote' | 'downvote') {
     // console.log("isSongCookie",isSongCookie);
 
     //temp dissable
-    // if(isSongCookie) return "error"
+    if(isSongCookie) return "error"
 
     if(isSongInUserActionsDB) return "error"
 
