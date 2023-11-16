@@ -4,6 +4,7 @@ type Props = {}
 import { Input } from "@/components/ui/input"
 import { Button } from '@/components/ui/button'
 import { getAdminCookie, setAdminCookie } from '@/lib/cookies/adminCookies'
+import { redirect } from 'next/navigation'
 const Page = async(props: Props) => {
 
 
@@ -21,6 +22,8 @@ const Page = async(props: Props) => {
 
     const isLogged = await getAdminCookie()
     console.log(isLogged)
+
+    isLogged&&redirect('/admin-dashboard')
   return (
      
         <form action={handleSubmit} className=''>
