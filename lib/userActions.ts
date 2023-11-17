@@ -3,6 +3,7 @@
 import supabase from '@/config/supaBaseClient';
 import { get } from 'http';
 import { getUserIP } from './getUserIP';
+import { getUserIP_api } from './getUserIP3party';
 
 
 
@@ -75,7 +76,7 @@ export async function createUserActions(userIP: string) {
 export async function markSongAsVoted(songID: string) {
   // userActions.votedSongs.push(songID)
 
-  const userIP = await getUserIP();
+  const userIP = await getUserIP_api();
   const user = await getUserActions(userIP);
 
   if (user && user.userActions && typeof user.userActions === 'string') {
