@@ -11,6 +11,7 @@ import { getSongs, getSongsCustom } from '@/lib/getSongs';
 import { redirect } from 'next/navigation';
 import { headers } from 'next/headers';
 import { getUserIP } from '@/lib/getUserIP';
+import { getUserIP_api } from '@/lib/getUserIP3party';
 const Page = async (props: Props) => {
   const isLogged = await getAdminCookie();
   if (!isLogged) redirect('/admin-login');
@@ -30,9 +31,12 @@ const Page = async (props: Props) => {
 
   console.log(realIp);
 
+  const ip3 = (header.get('cf-connecting-ip ') ?? '127.0.0.1').split(',')[0];
+  console.log(ip3);
 
+  const ipApi = await getUserIP_api();
 
-  
+  console.log(ipApi);
 
   // ...
 
@@ -44,6 +48,11 @@ const Page = async (props: Props) => {
         You are logged in as Admin 🎯 from ip {ip}
         <br />
         {realIp}
+        ip3:
+        {ip3}
+        <br />
+        Api IP:
+        {ipApi}
       </p>
 
       {/* <Music size={64} /> */}
