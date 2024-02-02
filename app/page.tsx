@@ -5,48 +5,55 @@ import { Button } from '@/components/ui/button';
 import { Music } from 'lucide-react';
 import MusicList from '@/components/MusicList';
 import NewSongDialog from '@/components/NewSongDialog';
-import { getPartySongs, getSongs } from '@/lib/getSongs';
+import { getPartySongs, getSongs, getSongsCustom } from '@/lib/getSongs';
 import { USong } from '@/database.types';
-import { revalidatePath } from 'next/cache';
 
 import Link from 'next/link';
-import { headers } from 'next/headers';
-import getSongInfoFromSpotify from '@/lib/getSongInfo';
-import { fakeSetTimeOut } from '@/utils/fakeSetTimeOut';
 
 // export const dynamic = "force-dynamic"
 
 export const revalidate = 30;
+type Props = {
+    searchParams: { [key: string]: string | string[] | undefined };
+};
 
-export default async function Home() {
-  // const songs:Promise<USong[]> = getSongs();
+export default async function Home({ searchParams }: Props) {
 
-  // console.log(songs)
-  // if(songs){
-  //   console.log(songs)
-  // }
+  const songIndex = Number(searchParams?.songIndex) ?? 0;
+    // const songs:Promise<USong[]> = getSongs();
 
-  const songs: USong[] = await getSongs();
-
-  
-
-  if (songs) {
     // console.log(songs)
-  } else return Error('songs is not defined');
+    // if(songs){
+    //   console.log(songs)
+    // }
 
-  //maybe i can use this to get ip address
-  // https://api.ipify.org?format=json
+    // const songs: USong[] = await getSongs();
+    const songs: USong[] = await getSongsCustom({
+        staringIndex: songIndex,
+        limit: (songIndex+10),
+        order: 'created_at',
+    });
 
-  return (
-    <>
-      {/* <Link href="/add-new-song">xxxxxxxxx</Link> */}
+    if (songs) {
+        // console.log(songs)
+    } else return Error('songs is not defined');
 
-      <NewSongDialog></NewSongDialog>
+    //maybe i can use this to get ip address
+    // https://api.ipify.org?format=json
 
-      {/* spacer */}
-      <div className="h-10"></div>
+    return (
+        <>
+            {/* <Link href="/add-new-song">xxxxxxxxx</Link> */}
 
-      <MusicList songs={songs} isAdmin={false} />
-    </>
-  );
+            <NewSongDialog></NewSongDialog>
+
+            {/* spacer */}
+            <div className="h-10"></div>
+
+            <MusicList songs={songs} isAdmin={false} />
+            <Link href={`?songIndex=${songIndex+10}`}>
+                <Button className="mt-4">Następna strona</Button>
+            </Link>
+        </>
+    );
 }

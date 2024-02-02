@@ -39,3 +39,11 @@ export interface IPartySong extends UPartySong {
     url: string;
   
 }
+
+export interface GetSongsParams {
+    limit?: number;
+    asc?: boolean;
+    order?: string;
+    status?: string;
+    staringIndex?: number;
+}

@@ -2,7 +2,7 @@
 
 import supabase from '@/config/supaBaseClient';
 import { USong } from '@/database.types';
-import { IPartySong } from '@/types';
+import { GetSongsParams, IPartySong } from '@/types';
 
 export async function getSongs() {
     const { data, error } = await supabase
@@ -20,24 +20,20 @@ export async function getSongs() {
     return data as USong[];
 }
 
-interface GetSongsParams {
-    limit?: number;
-    asc?: boolean;
-    order: string;
-    status?: string;
-}
-
 export async function getSongsCustom({
     limit,
     asc,
     order,
     status,
+    staringIndex,
 }: GetSongsParams) {
     const { data: uSongs, error } = await supabase
         .from('uSongs')
         .select('*')
-        .limit(limit ?? -1)
-        .order(order, { ascending: asc ?? false });
+        // .range(0,8)
+        .range(staringIndex ?? 0, limit ?? 10)
+        // .limit(limit ?? 15)
+        .order(order ?? 'created_at', { ascending: asc ?? false });
     // .order('dailyVotesPlus', { ascending: false })
 
     if (error) throw error;
@@ -46,7 +42,7 @@ export async function getSongsCustom({
 }
 
 export async function getPartySongs() {
-// {limit, asc, order, status}: GetSongsParams
+    // {limit, asc, order, status}: GetSongsParams
     let { data: uPartySongs, error } = await supabase
         .from('uPartySongs')
         .select(
