@@ -21,6 +21,12 @@ export default async function putSongAdmin({formData, id}: songToUpdate) {
       
         if(formData.get("status")){
             status = formData.get("status")?.toString()
+            if(status === "a"){
+                status = "active"
+            }
+            if(status === "b"){
+                status = "banned"
+            }
         }
 
         if(formData.get("votesPlus")){
@@ -39,15 +45,16 @@ export default async function putSongAdmin({formData, id}: songToUpdate) {
         
         try{
 
+            
             console.log(votesPlus,votesMinus,dailyVotesPlus,dailyVotesMinus,status)
-            const { data:uSongs, error } = await supabase
-            .from('uSongs')
+            const { data:uPartySongs, error } = await supabase
+            .from('uPartySongs')
             .update(
              {
                 votesPlus: votesPlus??0,
                 votesMinus: votesMinus??0,
-                dailyVotesPlus: dailyVotesPlus??0,
-                dailyVotesMinus: dailyVotesMinus??0,
+                // dailyVotesPlus: dailyVotesPlus??0,
+                // dailyVotesMinus: dailyVotesMinus??0,
 
                 status: status??"active"
      
@@ -61,8 +68,8 @@ export default async function putSongAdmin({formData, id}: songToUpdate) {
                     return new Error(`${error}`)
                 
             }
-            if(uSongs){
-                console.log(uSongs)
+            if(uPartySongs){
+                console.log(uPartySongs)
                 return "success"
          
             }

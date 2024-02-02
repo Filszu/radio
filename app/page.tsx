@@ -27,18 +27,18 @@ export default async function Home({ searchParams }: Props) {
     }
     // const songs: USong[] = await getSongs();
     // getSongsCustom
-    const songs: USong[] = await getSongsCustom({
-        staringIndex: songIndex,
-        limit: songIndex + 10,
-        order: 'created_at',
-        status: 'active',
-    });
-    // const songs: IPartySong[] = await getPartySongs({
+    // const songs: USong[] = await getSongsCustom({
     //     staringIndex: songIndex,
     //     limit: songIndex + 10,
     //     order: 'created_at',
     //     status: 'active',
     // });
+    const songs: IPartySong[] = await getPartySongs({
+        staringIndex: songIndex,
+        limit: songIndex + 10,
+        order: 'created_at',
+        status: 'active',
+    });
 
 
     

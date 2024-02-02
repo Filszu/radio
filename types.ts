@@ -37,6 +37,7 @@ export interface IPartySong extends UPartySong {
     thumbnail: string | null;
     title: string | null;
     url: string;
+    
   
 }
 
@@ -44,6 +45,6 @@ export interface GetSongsParams {
     limit?: number;
     asc?: boolean;
     order?: string;
-    status?: string;
+    status?: string | Array<string>;
     staringIndex?: number;
 }

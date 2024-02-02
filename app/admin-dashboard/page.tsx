@@ -7,19 +7,31 @@ import { getAdminCookie } from '@/lib/cookies/adminCookies';
 import MusicList from '@/components/MusicList';
 import { Music } from 'lucide-react';
 import { USong } from '@/database.types';
-import { getSongs, getSongsCustom } from '@/lib/getSongs';
+import { getPartySongs, getSongs, getSongsCustom } from '@/lib/getSongs';
 import { redirect } from 'next/navigation';
 import { headers } from 'next/headers';
 import { getUserIP } from '@/lib/getUserIP';
 import { getUserIP_api } from '@/lib/getUserIP3party';
+import { IPartySong } from '@/types';
 const Page = async (props: Props) => {
   const isLogged = await getAdminCookie();
   if (!isLogged) redirect('/admin-login');
 
-  const songs: USong[] = await getSongsCustom({
+  // const songs: USong[] = await getSongsCustom({
+  //   limit: 100,
+  //   order: 'created_at',
+  // });
+
+  
+  
+  const songs: IPartySong[] = await getPartySongs({
+    staringIndex: 0,
     limit: 100,
     order: 'created_at',
-  });
+    status: ["active","banned"],
+   
+});
+
 
   // page.tsx
 

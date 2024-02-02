@@ -59,9 +59,11 @@ export async function getPartySongs({
           )
         `,
         )
-        .eq('status', status ? status : 'active')
-        // .range(staringIndex ?? 0, limit ?? 10)
-        .limit(limit ?? 15)
+        
+        // .eq('status', status ? status : 'active')
+            .in('status', [status])
+        .range(staringIndex ?? 0, limit ?? 10)
+        // .limit(limit ?? 15)
         .order(order ?? 'created_at', { ascending: asc ?? false })
         .order('votesPlus', { ascending: false });
 

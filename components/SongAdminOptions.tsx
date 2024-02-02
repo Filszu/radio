@@ -56,8 +56,10 @@ const SongAdminOptions = ({songId, song}:{songId:string, song:USong | IPartySong
 
             <Label htmlFor="status">Status</Label>
             <Input name="status" id="status" type="text" placeholder="status" defaultValue={song.status??"active"}/>
+            
 
             <Button type="submit" className="mt-4">Submit</Button>
+            
 
             
 
