@@ -77,7 +77,7 @@ export async function createUserActions(userIP: string) {
 export async function markSongAsVoted(songID: string) {
   // userActions.votedSongs.push(songID)
 
-  const userIP = await getUserIP_api();
+  const userIP = await getUserIP();
   const user = await getUserActions(userIP);
 
   if (user && user.userActions && typeof user.userActions === 'string') {
