@@ -18,8 +18,7 @@ type Props = {
 };
 
 export default async function Home({ searchParams }: Props) {
-
-  const songIndex = Number(searchParams?.songIndex) ?? 0;
+    const songIndex = Number(searchParams?.songIndex) ?? 0;
     // const songs:Promise<USong[]> = getSongs();
 
     // console.log(songs)
@@ -30,8 +29,9 @@ export default async function Home({ searchParams }: Props) {
     // const songs: USong[] = await getSongs();
     const songs: USong[] = await getSongsCustom({
         staringIndex: songIndex,
-        limit: (songIndex+10),
+        limit: songIndex + 10,
         order: 'created_at',
+        status: 'active',
     });
 
     if (songs) {
@@ -51,9 +51,17 @@ export default async function Home({ searchParams }: Props) {
             <div className="h-10"></div>
 
             <MusicList songs={songs} isAdmin={false} />
-            <Link href={`?songIndex=${songIndex+10}`}>
-                <Button className="mt-4">Następna strona</Button>
-            </Link>
+            <div className="flex gap-1">
+                {songIndex > 10 && (
+                    <Link href={`?songIndex=${songIndex - 10}`}>
+                        <Button className="mt-4">Poprzednia strona</Button>
+                    </Link>
+                )}
+
+                <Link href={`?songIndex=${songIndex + 10}`}>
+                    <Button className="mt-4">Następna strona</Button>
+                </Link>
+            </div>
         </>
     );
 }

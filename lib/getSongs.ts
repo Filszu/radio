@@ -30,11 +30,11 @@ export async function getSongsCustom({
     const { data: uSongs, error } = await supabase
         .from('uSongs')
         .select('*')
-        // .range(0,8)
+        .eq('status', 'active')
         .range(staringIndex ?? 0, limit ?? 10)
         // .limit(limit ?? 15)
-        .order(order ?? 'created_at', { ascending: asc ?? false });
-    // .order('dailyVotesPlus', { ascending: false })
+        .order(order ?? 'created_at', { ascending: asc ?? false })
+        .order('votesPlus', { ascending: false });
 
     if (error) throw error;
 
