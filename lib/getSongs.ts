@@ -60,14 +60,14 @@ export async function getPartySongs(
         // }
         if(!uPartySongs) return null;
 
-        // const flattenedPartySongs = uPartySongs.map(song => {
-        //     const { uSongs, ...rest } = song;
-        //     return { ...uSongs, ...rest };
-        // });
+        const flattenedPartySongs = uPartySongs.map(song => {
+            const { uSongs, ...rest } = song;
+            return { ...uSongs, ...rest };
+        });
 
         
 
-        return uPartySongs as IPartySong[];
+        return flattenedPartySongs as IPartySong[];
       
    
         

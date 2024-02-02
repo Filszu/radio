@@ -7,8 +7,9 @@ import { Label } from "@radix-ui/react-label";
 import { Input } from "./ui/input";
 import putSongAdmin from "@/lib/putSongAdmin";
 import { USong } from "@/database.types";
+import { IPartySong } from "@/types";
 
-const SongAdminOptions = ({songId, song}:{songId:string, song:USong}) => {
+const SongAdminOptions = ({songId, song}:{songId:string, song:USong | IPartySong}) => {
 
     async function handleSubmit(formData: FormData) {
         console.log('submitting admin form');

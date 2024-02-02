@@ -49,7 +49,7 @@ const SongInfoBox =({song,isAdmin}: {song:USong | IPartySong, isAdmin:boolean}) 
               <BiSolidUpvote/> 
               
               <span className='mx-1'></span>
-              {(song.dailyVotesPlus-song.dailyVotesMinus)}
+              {(song.votesPlus-song.votesMinus)}
               <span className='mx-1'></span>
               
               </div>
