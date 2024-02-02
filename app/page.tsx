@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Music } from 'lucide-react';
 import MusicList from '@/components/MusicList';
 import NewSongDialog from '@/components/NewSongDialog';
-import { getSongs } from '@/lib/getSongs';
+import { getPartySongs, getSongs } from '@/lib/getSongs';
 import { USong } from '@/database.types';
 import { revalidatePath } from 'next/cache';
 
@@ -27,6 +27,8 @@ export default async function Home() {
   // }
 
   const songs: USong[] = await getSongs();
+
+  
 
   if (songs) {
     // console.log(songs)

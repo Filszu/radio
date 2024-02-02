@@ -36,3 +36,27 @@ export async function getSongsCustom(
 
     return uSongs as USong[];
 }
+
+export async function getPartySongs(
+    // {limit, asc, order, status}: GetSongsParams
+    ) {
+    
+
+        let { data: uPartySongs, error } = await supabase
+        .from('uPartySongs')
+        .select(`
+          *,
+          uSongs (
+            id
+          )
+        `)
+
+        return uPartySongs;
+      
+   
+        
+    if (error) throw error;
+
+    // return uPartySongs as USong[];
+    }
+

@@ -6,6 +6,7 @@ import { genSpotifyUrl } from "@/utils/genSpotifyUrl"
 import putSongInfo from "./putSong"
 import { revalidatePath } from "next/cache"
 import { genYoutubeUrl } from "@/utils/genYTUrl"
+import postNewPartySong from "./submitNewPartySong"
 
 export async function submitNewSongForm(formData: FormData){
     
@@ -39,18 +40,29 @@ export async function submitNewSongForm(formData: FormData){
       return returnMSG
     }
 
-    const rowID = await postSong(formData)
+    const dbSong = await postSong(formData)
 
-    console.log("$$$$$$$$$$$$$$$$$$$", rowID)
+ 
+
+    console.log("$$$$$$$$$$$$$$$$$$$", dbSong)
     
 
+    if(dbSong && dbSong.songId && dbSong.songStatus === "exists"){
+      // update ADDED TIMES 
+      await postNewPartySong(dbSong.songId);
 
-    if(rowID){
+
+
+    }
+
+    else if(dbSong && dbSong.songId && dbSong.songStatus === "new"){
       if(genSpotifyUrl(formData.get('songURL') as string))
       {
 
          const accessToken = await getSpotifyToken()
-        const res = await putSongInfo({songID: rowID, accessToken:accessToken})
+        const res = await putSongInfo({songID: dbSong.songId, accessToken:accessToken})
+
+
 
         if(!res){
             returnMSG.message = "Cannot get song data from spotify"
