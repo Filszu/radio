@@ -11,7 +11,7 @@ import { createUserActions, markSongAsVoted } from "./userActions";
 async function getVotes(songID:string) {
 
     const { data, error } = await supabase
-    .from('uSongs').select('votesPlus,votesMinus,dailyVotesPlus,dailyVotesMinus').eq('id', songID).limit(1)
+    .from('uPartySongs').select('votesPlus,votesMinus').eq('id', songID).limit(1)
 
 
     if (error) {
@@ -59,19 +59,19 @@ async function voteSong(songID:string,voteType: 'upvote' | 'downvote') {
 
     if(voteType === 'upvote') {
         votes.votesPlus += 1
-        votes.dailyVotesPlus += 1
+        // votes.dailyVotesPlus += 1
     } else {
         votes.votesMinus += 1
-        votes.dailyVotesMinus += 1
+        // votes.dailyVotesMinus += 1
     }
     
     const { data, error } = await supabase
-        .from('uSongs')
+        .from('uPartySongs')
         .update({
             votesMinus: votes.votesMinus,
             votesPlus: votes.votesPlus,
-            dailyVotesMinus : votes.dailyVotesMinus,
-            dailyVotesPlus : votes.dailyVotesPlus,
+            // dailyVotesMinus : votes.dailyVotesMinus,
+            // dailyVotesPlus : votes.dailyVotesPlus,
         }).eq('id', songID)
 
 

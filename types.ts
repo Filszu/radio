@@ -1,6 +1,6 @@
 import { UPartySong, USong } from './database.types';
 
-interface ISong {
+export interface ISong {
     title: string;
     artist: string;
     duration: number;
@@ -10,7 +10,7 @@ interface ISong {
     url: string;
     thumbnail?: string;
 }
-interface IActionMSG {
+export interface IActionMSG {
     title: string;
     message: string;
     type: 'info' | 'error' | 'success';
@@ -18,7 +18,7 @@ interface IActionMSG {
 }
 // *** *** **
 
-interface IUserActions {
+export interface IUserActions {
     postedSongs: number;
     votedSongs: Array<string>;
 }

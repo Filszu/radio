@@ -7,6 +7,7 @@ import putSongInfo from "./putSong"
 import { revalidatePath } from "next/cache"
 import { genYoutubeUrl } from "@/utils/genYTUrl"
 import postNewPartySong from "./submitNewPartySong"
+import { IActionMSG } from "@/types"
 
 export async function submitNewSongForm(formData: FormData){
     
@@ -61,6 +62,7 @@ export async function submitNewSongForm(formData: FormData){
 
          const accessToken = await getSpotifyToken()
         const res = await putSongInfo({songID: dbSong.songId, accessToken:accessToken})
+        await postNewPartySong(dbSong.songId);
 
 
 

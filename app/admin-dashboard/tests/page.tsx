@@ -36,7 +36,7 @@ return (
 
       {/* <Music size={64} /> */}
 
-      <MusicList songs={partySongs} isAdmin={false} />
+      <MusicList songs={partySongs!} isAdmin={false} />
       
     </section>
   );
