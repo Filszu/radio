@@ -4,6 +4,7 @@ import supabase from '@/config/supaBaseClient';
 import { get } from 'http';
 import { getUserIP } from './getUserIP';
 import { getUserIP_api } from './getUserIP3party';
+import { IUserActions } from '@/types';
 
 
 

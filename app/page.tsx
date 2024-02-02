@@ -9,6 +9,7 @@ import { getPartySongs, getSongs, getSongsCustom } from '@/lib/getSongs';
 import { USong } from '@/database.types';
 
 import Link from 'next/link';
+import { IPartySong } from '@/types';
 
 // export const dynamic = "force-dynamic"
 
@@ -18,21 +19,30 @@ type Props = {
 };
 
 export default async function Home({ searchParams }: Props) {
-    const songIndex = Number(searchParams?.songIndex) ?? 0;
-    // const songs:Promise<USong[]> = getSongs();
+    const songIndexParam = searchParams?.songIndex ?? 0;
 
-    // console.log(songs)
-    // if(songs){
-    //   console.log(songs)
-    // }
-
+    let songIndex = 0;
+    if(Number(songIndexParam) ){
+        songIndex = Number(songIndexParam);
+    }
     // const songs: USong[] = await getSongs();
+    // getSongsCustom
     const songs: USong[] = await getSongsCustom({
         staringIndex: songIndex,
         limit: songIndex + 10,
         order: 'created_at',
         status: 'active',
     });
+    // const songs: IPartySong[] = await getPartySongs({
+    //     staringIndex: songIndex,
+    //     limit: songIndex + 10,
+    //     order: 'created_at',
+    //     status: 'active',
+    // });
+
+
+    
+
 
     if (songs) {
         // console.log(songs)
@@ -52,7 +62,7 @@ export default async function Home({ searchParams }: Props) {
 
             <MusicList songs={songs} isAdmin={false} />
             <div className="flex gap-1">
-                {songIndex > 10 && (
+                {songIndex >= 10 && (
                     <Link href={`?songIndex=${songIndex - 10}`}>
                         <Button className="mt-4">Poprzednia strona</Button>
                     </Link>

@@ -21,7 +21,7 @@ const Page = async (props: Props) => {
 //     order: 'created_at',
 //   });
 
-const partySongs = await getPartySongs();
+const partySongs = await getPartySongs({});
 
 console.log(partySongs)
 

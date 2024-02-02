@@ -41,8 +41,14 @@ export async function getSongsCustom({
     return uSongs as USong[];
 }
 
-export async function getPartySongs() {
-    // {limit, asc, order, status}: GetSongsParams
+export async function getPartySongs({
+    limit,
+    asc,
+    order,
+    status,
+    staringIndex,
+}: GetSongsParams) {
+    
     let { data: uPartySongs, error } = await supabase
         .from('uPartySongs')
         .select(
@@ -53,9 +59,12 @@ export async function getPartySongs() {
           )
         `,
         )
-        .limit(35)
-        .order('created_at', { ascending: false })
+        .eq('status', status ? status : 'active')
+        // .range(staringIndex ?? 0, limit ?? 10)
+        .limit(limit ?? 15)
+        .order(order ?? 'created_at', { ascending: asc ?? false })
         .order('votesPlus', { ascending: false });
+
     if (error) throw error;
     //
 
@@ -63,7 +72,7 @@ export async function getPartySongs() {
     //     uPartySongs,
     //     ...uSongs
     // }
-    if (!uPartySongs) return null;
+    if (!uPartySongs) throw error;
 
     const flattenedPartySongs = uPartySongs.map((song) => {
         const { uSongs, ...rest } = song;
