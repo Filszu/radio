@@ -11,10 +11,11 @@ import SongVoteBtns from './SongVoteBtns';
 import Link from 'next/link';
 import Image from 'next/image';
 import SongAdminOptions from './SongAdminOptions';
+import { IPartySong } from '@/types';
 
 
 
-const SongInfoBox =({song,isAdmin}: {song:USong, isAdmin:boolean}) => {
+const SongInfoBox =({song,isAdmin}: {song:USong | IPartySong, isAdmin:boolean}) => {
 
   
   function substrWord(str: string, maxLen: number, startingPos: number = 0){

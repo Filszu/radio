@@ -1,10 +1,11 @@
 import React from 'react';
 import SongInfoBox from './SongInfoBox';
 import { USong } from '@/database.types';
+import { IPartySong } from '@/types';
 
 
 
-const MusicList = ({songs, isAdmin}:{songs:USong[], isAdmin:boolean}) => {
+const MusicList = ({songs, isAdmin}:{songs:USong[] |IPartySong[] , isAdmin:boolean}) => {
 
 
   

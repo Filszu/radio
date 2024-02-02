@@ -35,6 +35,8 @@ return (
       </p>
 
       {/* <Music size={64} /> */}
+
+      {/* <MusicList songs={partySongs} isAdmin={false} /> */}
       
     </section>
   );

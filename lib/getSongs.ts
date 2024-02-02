@@ -2,6 +2,7 @@
 
 import supabase from "@/config/supaBaseClient"
 import { USong } from "@/database.types";
+import { IPartySong } from "@/types";
 
 
 
@@ -47,15 +48,30 @@ export async function getPartySongs(
         .select(`
           *,
           uSongs (
-            id
+            title, artist, duration, url, thumbnail, url, explicit, addedTimes
           )
         `)
+        if (error) throw error; 
+        // 
+        
+        // const songs = {
+        //     uPartySongs,
+        //     ...uSongs
+        // }
+        if(!uPartySongs) return null;
 
-        return uPartySongs;
+        // const flattenedPartySongs = uPartySongs.map(song => {
+        //     const { uSongs, ...rest } = song;
+        //     return { ...uSongs, ...rest };
+        // });
+
+        
+
+        return uPartySongs as IPartySong[];
       
    
         
-    if (error) throw error;
+    
 
     // return uPartySongs as USong[];
     }
