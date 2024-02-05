@@ -47,8 +47,8 @@ export async function getPartySongs({
     order,
     status,
     staringIndex,
+    dateOlderThan,
 }: GetSongsParams) {
-    
     console.log('GET REQUEST getPartySongs');
     let { data: uPartySongs, error } = await supabase
         .from('uPartySongs')
@@ -60,9 +60,11 @@ export async function getPartySongs({
           )
         `,
         )
-        
+
         // .eq('status', status ? status : 'active')
-            .in('status', [status])
+        .in('status', [status])
+        // .in('created_at', ['2024-05-02'])
+        .gte('created_at', dateOlderThan?? '2020-10-11')
         .range(staringIndex ?? 0, limit ?? 10)
         // .limit(limit ?? 15)
         .order(order ?? 'created_at', { ascending: asc ?? false })

@@ -47,4 +47,5 @@ export interface GetSongsParams {
     order?: string;
     status?: string | Array<string>;
     staringIndex?: number;
+    dateOlderThan?: string;
 }

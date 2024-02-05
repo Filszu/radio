@@ -12,10 +12,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import SongAdminOptions from './SongAdminOptions';
 import { IPartySong } from '@/types';
+import { cn } from '@/lib/utils';
 
 
 
-const SongInfoBox =({song,isAdmin}: {song:USong | IPartySong, isAdmin:boolean}) => {
+const SongInfoBox =({song,isAdmin, styles}: {song:USong | IPartySong, isAdmin:boolean, styles?: string}) => {
 
   
   function substrWord(str: string, maxLen: number, startingPos: number = 0){
@@ -23,7 +24,7 @@ const SongInfoBox =({song,isAdmin}: {song:USong | IPartySong, isAdmin:boolean}) 
   }
   
   return (
-    <div className="border rounded-lg p-4 shadow-md w-full hover:border-primary group hover:ease-out duration-300 border-yellow-400">
+    <div className={cn("border rounded-lg p-4 shadow-md w-full hover:border-primary group hover:ease-out duration-300 ",styles??"")}>
       <div className="flex  items-center space-x-4 justify-center flex-wrap md:justify-between">
       {song.thumbnail&&<Image src={song.thumbnail} alt="Song Thumbnail" className="w-16 h-16 rounded-lg" width={150} height={150}/>}
         <div className=''>
