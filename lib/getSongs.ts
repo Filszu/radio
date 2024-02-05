@@ -49,6 +49,7 @@ export async function getPartySongs({
     staringIndex,
 }: GetSongsParams) {
     
+    console.log('GET REQUEST getPartySongs');
     let { data: uPartySongs, error } = await supabase
         .from('uPartySongs')
         .select(
