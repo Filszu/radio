@@ -11,6 +11,7 @@ import { USong } from '@/database.types';
 import Link from 'next/link';
 import { IPartySong } from '@/types';
 import TopSongsList from '@/components/TopSongs';
+import { Suspense } from 'react';
 
 // export const dynamic = "force-dynamic"
 
@@ -23,7 +24,7 @@ export default async function Home({ searchParams }: Props) {
     const songIndexParam = searchParams?.songIndex ?? 0;
 
     let songIndex = 0;
-    if(Number(songIndexParam) ){
+    if (Number(songIndexParam)) {
         songIndex = Number(songIndexParam);
     }
     // const songs: USong[] = await getSongs();
@@ -41,10 +42,6 @@ export default async function Home({ searchParams }: Props) {
         status: 'active',
     });
 
-
-    
-
-
     if (songs) {
         // console.log(songs)
     } else return Error('songs is not defined');
@@ -56,13 +53,19 @@ export default async function Home({ searchParams }: Props) {
         <>
             {/* <Link href="/add-new-song">xxxxxxxxx</Link> */}
 
-            <NewSongDialog></NewSongDialog>
+            <Suspense fallback={<div>...</div>}>
+                <NewSongDialog />
+            </Suspense>
 
             {/* spacer */}
             <div className="h-10"></div>
-            <TopSongsList/>
 
-            <h2 className='uppercase text-2xl mt-8 mb-8'>głosuj na ulubione piosenki</h2>
+            {songIndex <= 1 && <TopSongsList />}
+
+            <h2 className="uppercase text-2xl mt-8 mb-8">
+                głosuj na ulubione piosenki
+            </h2>
+
             <MusicList songs={songs} isAdmin={false} />
             <div className="flex gap-1">
                 {songIndex >= 10 && (

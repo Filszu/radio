@@ -79,7 +79,7 @@ export default function RootLayout({
         <footer
         className='text-center w-full my-10  '
         >
-          <h3>Created with ❣️ by <Link href={'https://lessons.ciac.me/'} className='link-underline text-primary'>Filszu</Link> 2023</h3>
+          <h3>Created with ❣️ by <Link href={'https://lessons.ciac.me/'} className='link-underline text-primary'>Filszu</Link> 2023 - 2024</h3>
           <h3 className=''>Give a ⭐ on <Link href={'https://github.com/Filszu/radio'} className='link-underline text-primary'>
           {/* <FiGithub size={10} />  */}
           Github repo
