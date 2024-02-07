@@ -10,7 +10,7 @@ const AdUnit = (props: IAdUnit) => {
             href={props.url}
             target="_blank"
             // rel="noopener noreferrer"
-            className="rounded overflow-clip w-40 md:w-80 cursor-pointer ease-out duration-300 flex justify-center items-center md:p-10"
+            className="rounded overflow-clip w-40 md:w-80 cursor-pointer ease-out duration-300 flex justify-center items-center md:p-10 first:hidden last:hidden md:first:block md:last:block "
         >
             <div className="rounded overflow-clip w-40 md:w-80cursor-pointer ease-out duration-300 hover:scale-110">
                 <div className='text-xs text-center'>AD</div>

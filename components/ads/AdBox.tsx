@@ -18,15 +18,16 @@ const ads: IAdUnit[] = [
         url: 'https://bit.ly/radioTemu1',
         name: 'Temu1 ad',
     },
-    {
-        image: temu2,
-        url: 'https://bit.ly/radioTemu2',
-        name: 'Temu2 ad',
-    },
+
     {
         image: wot,
         url: 'https://bit.ly/radioWoT',
         name: 'Wot ad',
+    },
+    {
+        image: temu2,
+        url: 'https://bit.ly/radioTemu2',
+        name: 'Temu2 ad',
     },
 ];
 
@@ -35,7 +36,7 @@ const AdBox = () => {
     const showAds = ads.sort(() => Math.random() - 0.5);
     return (
         <section>
-            <div className="flex justify-center gap-10 items-center p-10 flex-wrap">
+            <div className="flex justify-center gap-10 items-center p-10 flex-wrap ">
                 {showAds.map((ad, index) => {
                     return <AdUnit key={index} {...ad} />;
                 })}
