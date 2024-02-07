@@ -1,3 +1,4 @@
+import { StaticImageData } from 'next/image';
 import { UPartySong, USong } from './database.types';
 
 export interface ISong {
@@ -48,4 +49,12 @@ export interface GetSongsParams {
     status?: string | Array<string>;
     staringIndex?: number;
     dateOlderThan?: string;
+}
+
+
+export interface IAdUnit{
+    image: string | StaticImageData;
+    url: string;
+    description?: string;
+    name: string;
 }

@@ -12,6 +12,7 @@ import Link from 'next/link';
 import { IPartySong } from '@/types';
 import TopSongsList from '@/components/TopSongs';
 import { Suspense } from 'react';
+import AdBox from '@/components/ads/AdBox';
 
 // export const dynamic = "force-dynamic"
 
@@ -62,6 +63,7 @@ export default async function Home({ searchParams }: Props) {
 
             {songIndex <= 1 && <TopSongsList />}
 
+            <AdBox />
             <h2 className="uppercase text-2xl mt-8 mb-8">
                 głosuj na ulubione piosenki
             </h2>
