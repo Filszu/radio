@@ -13,6 +13,7 @@ import { headers } from 'next/headers';
 import { getUserIP } from '@/lib/getUserIP';
 import { getUserIP_api } from '@/lib/getUserIP3party';
 import { IPartySong } from '@/types';
+import PartyMessageForm from './partyMessageForm';
 const Page = async (props: Props) => {
   const isLogged = await getAdminCookie();
   if (!isLogged) redirect('/admin-login');
@@ -67,7 +68,7 @@ const Page = async (props: Props) => {
         {ipApi}
       </p>
 
-      {/* <Music size={64} /> */}
+      <PartyMessageForm />
       <MusicList songs={songs} isAdmin={true} />
     </section>
   );

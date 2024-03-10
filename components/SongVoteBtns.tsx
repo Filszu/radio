@@ -5,7 +5,6 @@ import voteSong from '@/lib/voteSong'
 import { USong } from '@/database.types'
 import { useToast } from './ui/use-toast'
 
-import { experimental_useOptimistic as useOptimistic } from 'react';
 
 type Props = {}
 
