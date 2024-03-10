@@ -26,7 +26,7 @@ export default async function postMessage(formData: FormData) {
         return returnMSG;
     }
 
-    // check if msg contains only letters and numbers and spaces and hyphens
+    // check if msg contains only letters and numbers and spaces and hyphens and underscores and quotes and emojis
 
     if (!/^[a-zA-Z0-9\s-]*$/.test(msg)) {
         returnMSG.message =

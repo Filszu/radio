@@ -52,8 +52,6 @@ export default async function Home({ searchParams }: Props) {
     //maybe i can use this to get ip address
     // https://api.ipify.org?format=json
 
-    
-
     return (
         <>
             {/* <Link href="/add-new-song">xxxxxxxxx</Link> */}
@@ -66,13 +64,15 @@ export default async function Home({ searchParams }: Props) {
             <div className="h-10"></div>
 
             {songIndex <= 1 && <TopSongsList />}
+            <Suspense fallback={<div></div>}>
+                <PageMsg />
+            </Suspense>
 
             <AdBox />
-            <PageMsg />
+
             <h2 className="uppercase text-2xl mt-8 mb-8">
                 głosuj na ulubione piosenki
             </h2>
-
 
             <MusicList songs={songs} isAdmin={false} />
             <div className="flex gap-1">
