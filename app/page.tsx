@@ -13,6 +13,8 @@ import { IPartySong } from '@/types';
 import TopSongsList from '@/components/TopSongs';
 import { Suspense } from 'react';
 import AdBox from '@/components/ads/AdBox';
+import { getPartyMessage } from '@/lib/getMessage';
+import PageMsg from '@/components/PageMsg';
 
 // export const dynamic = "force-dynamic"
 
@@ -50,6 +52,8 @@ export default async function Home({ searchParams }: Props) {
     //maybe i can use this to get ip address
     // https://api.ipify.org?format=json
 
+    
+
     return (
         <>
             {/* <Link href="/add-new-song">xxxxxxxxx</Link> */}
@@ -64,9 +68,11 @@ export default async function Home({ searchParams }: Props) {
             {songIndex <= 1 && <TopSongsList />}
 
             <AdBox />
+            <PageMsg />
             <h2 className="uppercase text-2xl mt-8 mb-8">
                 głosuj na ulubione piosenki
             </h2>
+
 
             <MusicList songs={songs} isAdmin={false} />
             <div className="flex gap-1">

@@ -1,5 +1,5 @@
 import { StaticImageData } from 'next/image';
-import { UPartySong, USong } from './database.types';
+import { Database, UPartySong, USong } from './database.types';
 
 export interface ISong {
     title: string;
@@ -58,3 +58,15 @@ export interface IAdUnit{
     description?: string;
     name: string;
 }
+
+
+
+export interface IpartyMessageRequest {
+    partyId: number | string;
+    limit?: number;
+    startingIndex?: number;
+    asc?: boolean;
+    order?: 'created_at' | string;
+}
+
+export type PartyMessage = Database["public"]["Tables"]["messages"]["Row"]

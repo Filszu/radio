@@ -7,7 +7,10 @@ import postMessage from '@/lib/postNewMessage';
 import { IActionMSG } from '@/types';
 import { useToast } from '@/components/ui/use-toast';
 
-const PartyMessageForm = () => {
+interface IpartyMsgForm {
+    message: string | null;
+}
+const PartyMessageForm = (props: IpartyMsgForm) => {
     const { toast } = useToast();
 
     async function setMessageFormSubmit(formData: FormData) {
@@ -43,6 +46,8 @@ const PartyMessageForm = () => {
                     placeholder="My message"
                     name="message"
                     required
+                    
+                    defaultValue={props.message ?? ''}
                 />
 
                 <SubmitButton

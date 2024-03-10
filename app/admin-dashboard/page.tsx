@@ -14,6 +14,7 @@ import { getUserIP } from '@/lib/getUserIP';
 import { getUserIP_api } from '@/lib/getUserIP3party';
 import { IPartySong } from '@/types';
 import PartyMessageForm from './partyMessageForm';
+import { getPartyMessage } from '@/lib/getMessage';
 const Page = async (props: Props) => {
   const isLogged = await getAdminCookie();
   if (!isLogged) redirect('/admin-login');
@@ -53,6 +54,20 @@ const Page = async (props: Props) => {
 
   // ...
 
+  // paryt Message 
+
+  const partyMessages = await getPartyMessage({
+    partyId: 1,
+    limit: 0,
+    startingIndex: 0,
+    asc: false,
+    order: 'created_at',
+  });
+
+  console.log(partyMessages);
+
+  const partyLastMsg = partyMessages?partyMessages[0].message??'':"";
+
   return (
     <section className="w-full">
       <h1 className="text-center">Admin Dashboard</h1>
@@ -68,7 +83,7 @@ const Page = async (props: Props) => {
         {ipApi}
       </p>
 
-      <PartyMessageForm />
+      <PartyMessageForm message={partyLastMsg}/>
       <MusicList songs={songs} isAdmin={true} />
     </section>
   );
