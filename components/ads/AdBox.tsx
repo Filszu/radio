@@ -1,6 +1,7 @@
 import React from 'react';
 
 import leadloomAd from '../../public/ads/imgs/leadloom_ad.png';
+import leadloomAd1 from '../../public/ads/imgs/leadloom_ad1.png';
 import temu1 from '../../public/ads/imgs/temu1.png';
 import temu2 from '../../public/ads/imgs/temu2.png';
 import wot from '../../public/ads/imgs/wotS.png';
@@ -14,21 +15,26 @@ const ads: IAdUnit[] = [
         name: 'Leadloom ad',
     },
     {
-        image: temu1,
-        url: 'https://bit.ly/radioTemu1',
-        name: 'Temu1 ad',
+        image: leadloomAd1,
+        url: 'https://bit.ly/radioLeadLoom',
+        name: 'Leadloom ad 1',
     },
+    // {
+    //     image: temu1,
+    //     url: 'https://bit.ly/radioTemu1',
+    //     name: 'Temu1 ad',
+    // },
 
     {
         image: wot,
         url: 'https://bit.ly/radioWoT',
         name: 'Wot ad',
     },
-    {
-        image: temu2,
-        url: 'https://bit.ly/radioTemu2',
-        name: 'Temu2 ad',
-    },
+    // {
+    //     image: temu2,
+    //     url: 'https://bit.ly/radioTemu2',
+    //     name: 'Temu2 ad',
+    // },
 ];
 
 const AdBox = () => {
