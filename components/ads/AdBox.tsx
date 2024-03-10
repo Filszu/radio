@@ -5,6 +5,7 @@ import leadloomAd1 from '../../public/ads/imgs/leadloom_ad1.png';
 import temu1 from '../../public/ads/imgs/temu1.png';
 import temu2 from '../../public/ads/imgs/temu2.png';
 import wot from '../../public/ads/imgs/wotS.png';
+import wow from '../../public/ads/imgs/wow1.jpg';
 import AdUnit from './AdUnit';
 import { IAdUnit } from '@/types';
 
@@ -29,6 +30,11 @@ const ads: IAdUnit[] = [
         image: wot,
         url: 'https://bit.ly/radioWoT',
         name: 'Wot ad',
+    },
+    {
+        image: wow,
+        url: 'https://bit.ly/radioWoT',
+        name: 'Wow ad',
     },
     // {
     //     image: temu2,

@@ -12,7 +12,7 @@ async function PageMsg() {
         order: 'created_at',
     });
 
-    console.log(partyMessages);
+    // console.log(partyMessages);
 
     const partyLastMsg = partyMessages ? partyMessages[0].message ?? '' : '';
     return (

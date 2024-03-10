@@ -64,11 +64,11 @@ export default async function Home({ searchParams }: Props) {
             <div className="h-10"></div>
 
             {songIndex <= 1 && <TopSongsList />}
+
+            <AdBox />
             <Suspense fallback={<div></div>}>
                 <PageMsg />
             </Suspense>
-
-            <AdBox />
 
             <h2 className="uppercase text-2xl mt-8 mb-8">
                 głosuj na ulubione piosenki
