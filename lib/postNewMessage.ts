@@ -27,8 +27,8 @@ export default async function postMessage(formData: FormData) {
     }
 
     // check if msg contains only letters and numbers and spaces and hyphens and underscores and quotes and emojis
-
-    if (!/^[a-zA-Z0-9\s-]*$/.test(msg)) {
+    const pattern = /^[\p{L}\p{N}\p{P}\p{S}\p{M}\p{Zs}]*$/u;
+    if (!pattern.test(msg)) {
         returnMSG.message =
             'Message name must contain only letters and numbers';
         returnMSG.title = 'Invalid msg';
