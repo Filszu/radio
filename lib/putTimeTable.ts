@@ -10,7 +10,9 @@ export default async function putTimeTable(formData: FormData) {
     const isOn = Boolean(formData.get('isOn'))?? false;
     const currentPlaylistId = formData.get('currentPlaylistId')??0;
     const hostId = Number(formData.get('hostId'))??1;
-    const timeRules = formData.get('timeRules')??{};
+
+
+  const timeRules = JSON.parse(formData.get('timeRules')?.toString() ?? '{}')
 
     // await fakeSetTimeOut(2000);
 
