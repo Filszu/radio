@@ -3,16 +3,16 @@
 import supabase from '@/config/supaBaseClient';
 import { IActionMSG } from '@/types';
 import { fakeSetTimeOut } from '@/utils/fakeSetTimeOut';
+import { revalidatePath } from 'next/cache';
 
 export default async function putTimeTable(formData: FormData) {
     console.log('tt...');
 
-    const isOn = Boolean(formData.get('isOn'))?? false;
-    const currentPlaylistId = formData.get('currentPlaylistId')??0;
-    const hostId = Number(formData.get('hostId'))??1;
+    const isOn = Boolean(formData.get('isOn')) ?? false;
+    const currentPlaylistId = formData.get('currentPlaylistId') ?? 0;
+    const hostId = Number(formData.get('hostId')) ?? 1;
 
-
-  const timeRules = JSON.parse(formData.get('timeRules')?.toString() ?? '{}')
+    const timeRules = JSON.parse(formData.get('timeRules')?.toString() ?? '{}');
 
     // await fakeSetTimeOut(2000);
 
@@ -22,25 +22,27 @@ export default async function putTimeTable(formData: FormData) {
         status: 200,
         type: 'success',
     };
-    
+
     console.log('putTimeTable', formData);
-  
+
     const { data, error } = await supabase
         .from('timeTable')
-        .update({ isOn: isOn, currentPlaylistId: Number(currentPlaylistId), timeRules: timeRules})
+        .update({
+            isOn: isOn,
+            currentPlaylistId: Number(currentPlaylistId),
+            timeRules: timeRules,
+        })
         .eq('hostid', 1)
-        .select()
-        
+        .select();
 
-if (error) {
-    returnMSG.message =
-        'Error updating timeTable';
-    returnMSG.title = 'Invalid req';
-    returnMSG.status = 400;
-    returnMSG.type = 'error';
-}
-     
+    if (error) {
+        returnMSG.message = 'Error updating timeTable';
+        returnMSG.title = 'Invalid req';
+        returnMSG.status = 400;
+        returnMSG.type = 'error';
+    }
 
+    if(!error)revalidatePath(`/api/timeTables`);
     return returnMSG;
 }
 
@@ -96,4 +98,3 @@ if (error) {
 //                        "Wed": 1
 //                    }
 //                }
-           
