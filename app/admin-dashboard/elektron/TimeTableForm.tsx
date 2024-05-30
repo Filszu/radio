@@ -60,12 +60,12 @@ const TimeTableForm = ({ timeTable }: { timeTable: ITimeTableRow }) => {
                 required
                 defaultValue={timeTable.currentPlaylistId}
             />
-
+            {/* NOTE: in the future u can create nice UI for that types are already created */}
             <Textarea
-                name="timeTable"
+                name="timeRules"
                 placeholder="time table JSON"
                 required
-                defaultValue={JSON.stringify(timeTable)}
+                defaultValue={JSON.stringify(timeTable.timeRules)}
                 className="w-full"
             />
 
