@@ -70,3 +70,4 @@ export interface IpartyMessageRequest {
 }
 
 export type PartyMessage = Database["public"]["Tables"]["messages"]["Row"]
+export type TTimeTable = Database["public"]["Tables"]["timeTable"]["Row"]
