@@ -6,7 +6,7 @@ import { TTimeTable } from '@/types';
 export async function getTimeTable() {
     let { data, error } = await supabase
         .from('timeTable')
-        .select('*');
+        .select('*').limit(1);
 
     if (error) return null;
 

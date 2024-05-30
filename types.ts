@@ -71,3 +71,31 @@ export interface IpartyMessageRequest {
 
 export type PartyMessage = Database["public"]["Tables"]["messages"]["Row"]
 export type TTimeTable = Database["public"]["Tables"]["timeTable"]["Row"]
+
+// export type TTimeTable = ITimeTableRow[];
+export type TimeSlot = {
+    start: string;
+    end: string;
+  };
+  
+  export type Rules = {
+    [key: number]: TimeSlot[];
+  };
+  
+  export type ApplyRule = {
+    [day: string]: number;
+  };
+  
+  export type TimeRules = {
+    rules: Rules;
+    applyRule: ApplyRule;
+  };
+  
+  export interface ITimeTableRow {
+    created_at: string;
+    currentPlaylistId: number;
+    hostid: number;
+    id: string;
+    isOn: boolean;
+    timeRules: TimeRules | null;
+  }

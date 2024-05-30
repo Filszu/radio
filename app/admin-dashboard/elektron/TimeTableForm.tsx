@@ -4,17 +4,17 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import SubmitButton from '@/components/ui/custom/SubmitButton';
 import postParty from '@/lib/postNewParty';
-import { IActionMSG } from '@/types';
+import { IActionMSG, ITimeTableRow } from '@/types';
 import { useToast } from '@/components/ui/use-toast';
 import { Textarea } from '@/components/ui/textarea';
+import putTimeTable from '@/lib/putTimeTable';
 
-const TimeTableForm = () => {
+const TimeTableForm = ({ timeTable }: { timeTable: ITimeTableRow }) => {
     const { toast } = useToast();
 
     async function submitNewPartyForm(formData: FormData) {
-        return 1;
         const submitingFormStatus: IActionMSG | undefined =
-            await postParty(formData);
+            await putTimeTable(formData);
 
         console.log(submitingFormStatus);
 
@@ -33,38 +33,43 @@ const TimeTableForm = () => {
 
     return (
         <form action={submitNewPartyForm} className="flex flex-col gap-2">
-            <Label htmlFor="partyName">Name your party</Label>
+            <h1>Set TimeTable</h1>
+            <Label htmlFor="host id">hostId</Label>
 
             <Input
                 type="text"
                 placeholder="host id"
                 name="hostId"
                 required
-                defaultValue={1}
+                defaultValue={timeTable.hostid}
                 disabled
             />
 
-
-            <Input type="checkbox" name="isOn" value="true" />
             <label htmlFor="isOn">Is on</label>
+            <Input
+                type="checkbox"
+                name="isOn"
+                value="true"
+                defaultChecked={timeTable.isOn}
+            />
 
             <Input
                 type="number"
                 placeholder="current playlist id"
                 name="currentPlaylistId"
                 required
+                defaultValue={timeTable.currentPlaylistId}
             />
-           
+
             <Textarea
                 name="timeTable"
                 placeholder="time table JSON"
                 required
+                defaultValue={JSON.stringify(timeTable)}
+                className="w-full"
             />
 
-            <SubmitButton
-                btnText="Host my party"
-                submitingText="Creating party..."
-            />
+            <SubmitButton btnText="Update" submitingText="Creating party..." />
         </form>
     );
 };

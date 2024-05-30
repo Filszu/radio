@@ -13,9 +13,22 @@ import { headers } from 'next/headers';
 import { getUserIP } from '@/lib/getUserIP';
 import { getUserIP_api } from '@/lib/getUserIP3party';
 import TimeTableForm from './TimeTableForm';
+import { getTimeTable } from '@/lib/getTimeTable';
+import { ITimeTableRow, TTimeTable } from '@/types';
 const Page = async (props: Props) => {
     const isLogged = await getAdminCookie();
     if (!isLogged) redirect('/admin-login');
+
+    const timeTable:any[] = await getTimeTable() || [];
+
+    // const timeTable:TTimeTable[] = await getTimeTable() || [];
+
+    
+    const timeTableRow:ITimeTableRow  = timeTable[0];
+
+    console.log(timeTableRow);
+
+    
 
     return (
         <section className="w-full">
@@ -26,7 +39,7 @@ const Page = async (props: Props) => {
             </p>
             
 
-            <TimeTableForm/>
+            <TimeTableForm timeTable={timeTableRow}/>
         </section>
     );
 };
