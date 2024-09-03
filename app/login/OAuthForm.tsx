@@ -33,6 +33,7 @@ const OAuthForm = async (props: Props) =>
                 provider: 'google',
                 options: {
                     // redirectTo: "/auth/callback",
+                    redirectTo: `${location.origin}/profile/create`,
                     // redirectTo: `${location.origin}/auth/callback`,
                 },
             });

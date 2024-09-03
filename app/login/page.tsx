@@ -2,16 +2,14 @@ import Link from 'next/link';
 // export const dynamic = "force-dynamic"
 import Image from 'next/image';
 
-
 import { Button } from '@/components/ui/button';
-import OAuthForm from '../login/OAuthForm';
+import OAuthForm from './OAuthForm';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import createCookie, { getCookie } from '@/utils/appCookies';
 import { Cookie } from '@/types';
 import { cookies } from 'next/headers';
 import Ref from './ref';
-
 
 type Props = {
     searchParams: { [key: string]: string | string[] | undefined };
@@ -36,8 +34,6 @@ export default async function signUpPage({ searchParams }: Props) {
                 "
                     // md:w-8/12 lg:w-2/12
                 >
-                    
-
                     <div className="bold relative bottom-10 text-center text-4xl font-extrabold tracking-tighter drop-shadow-lg md:bottom-20 md:text-8xl ">
                         Radio Ciac
                         <p className="text-xl font-bold tracking-normal md:text-2xl">
@@ -74,11 +70,8 @@ export default async function signUpPage({ searchParams }: Props) {
                 </div>
             </section>
             <div className="h-36"></div>
-            <article className="flex w-full flex-col items-center justify-center text-center ">
-          
-            </article>
+            <article className="flex w-full flex-col items-center justify-center text-center "></article>
             <div className="h-80"></div>
-            
         </section>
     );
 }
