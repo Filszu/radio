@@ -47,6 +47,7 @@ export default async function putTimeTable(formData: FormData) {
 }
 
 // default rules
+
 // {
 //     "rules": {
 //                        "1": [
@@ -86,15 +87,23 @@ export default async function putTimeTable(formData: FormData) {
 //                                "end": "16:50",
 //                                "start": "16:00"
 //                            }
-//                        ]
+//                        ],
+//                        "0": [
+//                         {
+//                             "end": "00:00",
+//                             "start": "00:00"
+//                         }
+                        
+//                     ]
+
 //                    },
 //                    "applyRule": {
 //                        "Fri": 1,
 //                        "Mon": 1,
-//                        "Sat": 1,
-//                        "Sun": 1,
+//                        "Sat": 0,
+//                        "Sun": 0,
 //                        "Thu": 1,
 //                        "Tue": 1,
 //                        "Wed": 1
 //                    }
-//                }
+// }

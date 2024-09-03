@@ -99,3 +99,18 @@ export type TimeSlot = {
     isOn: boolean;
     timeRules: TimeRules | null;
   }
+
+
+  export interface Cookie {
+    name: string,
+    value?: string,
+    option?: {
+        maxAge: number,
+        path: string,
+        domain: string,
+        expires: Date,
+        httpOnly: boolean,
+        secure: boolean,
+        sameSite: string
+    }
+}
