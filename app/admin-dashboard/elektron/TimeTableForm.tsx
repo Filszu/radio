@@ -69,7 +69,9 @@ const TimeTableForm = ({ timeTable }: { timeTable: ITimeTableRow }) => {
                 className="w-full"
             />
 
-            <SubmitButton btnText="Update" submitingText="Creating party..." />
+            <SubmitButton btnText="Update" submitingText="Creating party..." >
+                Update
+                </SubmitButton>
         </form>
     );
 };
