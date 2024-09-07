@@ -1,3 +1,5 @@
+import { PartyInfoBox } from "@/components/PartyInfoBox";
+import { PartyInfoBoxContainer } from "@/components/PartyInfoBoxContainer";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -21,7 +23,7 @@ console.log('user', user);
 
 const userProfile = {
     name: user.user_metadata.full_name,
-    username: "@alice_j",
+    username: "@" + user.user_metadata.full_name,
     bio: "Music lover | Party enthusiast | Always up for a good time!",
     avatar: user.user_metadata.avatar_url,
     followers: 0,
@@ -57,6 +59,7 @@ const userProfile = {
         <CardContent>
           <h2 className="text-xl font-semibold mb-4">My Parties</h2>
           {/* <UserParties /> */}
+          <PartyInfoBoxContainer />
           <Link href="/new-party">
           <Button>Create Party</Button>
             </Link>
