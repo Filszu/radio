@@ -7,6 +7,7 @@ import { getUser } from "@/lib/auth/getUser";
 import Link from "next/link";
 // import { UserParties } from "./user-parties"
 import { redirect } from "next/navigation";
+import { Suspense } from "react";
 // Mock user data
 
 
@@ -19,7 +20,7 @@ if (!user) {
 }
 
 
-console.log('user', user);
+// console.log('user', user);
 
 const userProfile = {
     name: user.user_metadata.full_name,
@@ -59,7 +60,12 @@ const userProfile = {
         <CardContent>
           <h2 className="text-xl font-semibold mb-4">My Parties</h2>
           {/* <UserParties /> */}
-          <PartyInfoBoxContainer />
+
+          <Suspense fallback={<div>...</div>}>
+                <PartyInfoBoxContainer userId={user.id}/>
+            </Suspense>
+
+          
           <Link href="/new-party">
           <Button>Create Party</Button>
             </Link>

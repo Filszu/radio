@@ -71,7 +71,7 @@ export default async function postParty(props: IPostParty) {
             .insert([
                 {
                     hostName: partyName,
-                    hostUrl: `${partyName}-${userId}`,
+                    hostUrl: partyUrl,
                     hostDescription: partyDescription,
                     creatorId: userId,
                 },
