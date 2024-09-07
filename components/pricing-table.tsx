@@ -12,8 +12,8 @@ import {
 } from '@/components/ui/card';
 
 interface Iprops {
-    plan1ButtonFunction: () => void;
-    plan2ButtonFunction: () => void;
+    plan1ButtonFunction?: () => void;
+    plan2ButtonFunction?: () => void;
 }
 
 export function PricingTable(props: Iprops) {

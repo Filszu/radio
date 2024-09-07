@@ -5,7 +5,7 @@ import supabase from '@/config/supaBaseClient';
 interface Iprops {
     sessionUserId: string;
     created_at?: string;
-    premiumStatus?: boolean;
+    premiumStatus?: number;
     ref?: Text;
     username?: string;
     promoCode?: string;
@@ -16,6 +16,8 @@ export  async function getCreatorProfile(props: Iprops) {
         .select('*')
         .eq('id', props.sessionUserId)
         .single();
+
+        return profiles;
 
     if (error) {
         console.log(error);
