@@ -46,14 +46,15 @@ const PartyMessageForm = (props: IpartyMsgForm) => {
                     placeholder="My message"
                     name="message"
                     required
-                    
                     defaultValue={props.message ?? ''}
                 />
 
                 <SubmitButton
                     btnText="Set new message"
                     submitingText="Setting new message..."
-                />
+                >
+                    Set new message
+                </SubmitButton>
             </form>
         </section>
     );
