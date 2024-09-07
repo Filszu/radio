@@ -37,7 +37,11 @@ const userProfile = {
             <AvatarFallback>{userProfile.name.split(' ').map((n: any[]) => n[0]).join('')}</AvatarFallback>
           </Avatar>
           <div className="text-center sm:text-left">
-            <CardTitle className="text-2xl">{userProfile.name}</CardTitle>
+            <CardTitle className="text-2xl">
+                {userProfile.name}
+                {userProfile.name === 'Filip' ? <span className="text-green-500"> Premium</span>:<span className="text-orange-400"> Not Premium yet :c</span>}
+
+            </CardTitle>
             <CardDescription>{userProfile.username}</CardDescription>
             <p className="mt-2 text-muted-foreground">{userProfile.bio}</p>
             <div className="mt-4 flex justify-center sm:justify-start gap-4">

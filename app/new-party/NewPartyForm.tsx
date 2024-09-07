@@ -44,7 +44,9 @@ const NewPartyForm = () => {
             <SubmitButton
                 btnText="Host my party"
                 submitingText="Creating party..."
-            />
+            >
+                Host my party
+                </SubmitButton>
         </form>
     );
 };

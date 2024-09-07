@@ -10,6 +10,7 @@ import {
     CardHeader,
     CardTitle,
 } from '@/components/ui/card';
+import SubmitButton from './ui/custom/SubmitButton';
 
 interface Iprops {
     plan1ButtonFunction?: () => void;
@@ -50,12 +51,13 @@ export function PricingTable(props: Iprops) {
                         </ul>
                     </CardContent>
                     <CardFooter>
-                        <Button
+                        <SubmitButton 
                             className="w-full"
                             onClick={() => props.plan1ButtonFunction}
+                            btnText="Get Started"
                         >
                             Get Started
-                        </Button>
+                        </SubmitButton >
                     </CardFooter>
                 </Card>
 
