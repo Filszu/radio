@@ -28,8 +28,9 @@ import {BsSpotify} from 'react-icons/bs'
 import { submitNewSongForm } from "@/lib/submitNewSongForm"
 import { useToast } from "./ui/use-toast"
 import { IActionMSG } from "@/types"
-type Props = {}
-
+type Props = {
+  partyId: number
+}
 
 const NewSongDialogForm = async(props: Props) => {
 
@@ -37,7 +38,12 @@ const NewSongDialogForm = async(props: Props) => {
      async function handleSubmit(formData: FormData){
     // 'use server'
     console.log('============submitting form')
-    const submitingFormStatus:IActionMSG | undefined= await submitNewSongForm(formData)
+    const submitingFormStatus:IActionMSG | undefined= await submitNewSongForm(
+      {
+        formData: formData,
+        partyId: props.partyId
+      }
+    )
    
     console.log(submitingFormStatus)
 
@@ -62,9 +68,9 @@ const NewSongDialogForm = async(props: Props) => {
     action={handleSubmit}
     >
       <DialogHeader>
-        <DialogTitle>Dodaj nowy utwór</DialogTitle>
+        <DialogTitle>Add a new song</DialogTitle>
         <DialogDescription>
-        W tym miejscu możesz dodać nową propozycję piosenki do listy
+        Here you can add a new song suggestion to the list
         <br />
         <div className="flex justify-center items-baseline">
             <AiOutlineYoutube size={40}/>
@@ -104,7 +110,7 @@ const NewSongDialogForm = async(props: Props) => {
       <DialogFooter>
         
         <DialogTrigger asChild>
-          <Button type="submit">dodaj piosenkę</Button>
+          <Button type="submit">Add song🎵</Button>
           
         </DialogTrigger>
 

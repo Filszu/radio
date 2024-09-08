@@ -70,7 +70,7 @@ export default async function Home({ params, searchParams }: Props) {
             {/* <Link href="/add-new-song">xxxxxxxxx</Link> */}
 
             <Suspense fallback={<div>...</div>}>
-                <NewSongDialog />
+                <NewSongDialog partyId={hostId}/>
             </Suspense>
 
             {/* spacer */}

@@ -16,7 +16,9 @@ import NewSongDialogForm from "./NewSongDialogForm"
 // import AddSongBtn from "./NewSongDialogBtn"
 
 
-type Props = {}
+type Props = {
+  partyId: number
+}
 
 
 const NewSongDialog = async(props: Props) => {
@@ -55,7 +57,9 @@ const NewSongDialog = async(props: Props) => {
       <Button>Dodaj nowy utwór</Button>
     </DialogTrigger>
     <DialogContent className="sm:max-w-[425px]">
-      <NewSongDialogForm/>
+      <NewSongDialogForm
+      partyId={props.partyId}
+      />
     </DialogContent>
   </Dialog>
   
