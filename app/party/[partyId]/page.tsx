@@ -17,6 +17,9 @@ import { getPartyMessage } from '@/lib/getMessage';
 import PageMsg from '@/components/PageMsg';
 import { getHost } from '@/lib/getHostId';
 import { notFound } from 'next/navigation';
+import ASbox from '@/components/ads/ASBox';
+import AS_vBanner from '@/components/ads/AS_vBanner';
+
 
 // export const dynamic = "force-dynamic"
 
@@ -89,7 +92,8 @@ export default async function Home({ params, searchParams }: Props) {
 
             {songIndex <= 1 && <TopSongsList partyId={hostId} />}
 
-            <AdBox />
+            
+            <AS_vBanner />
             <Suspense fallback={<div></div>}>
                 <PageMsg partyId={hostId} />
             </Suspense>

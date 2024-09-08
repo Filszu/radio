@@ -13,15 +13,15 @@ import { Header } from '@/components/Header';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-    title: 'Radio Elektron',
-    description: 'Radio Elektron by Filszu',
+    title: 'PartyVote',
+    description: 'Party Vote Radio Elektron by Filszu Host Your Party, Let Guests Pick the BeatsCreate unforgettable parties where everyone has a say in the playlist. Host, vote, and dance to the music you all love.',
     keywords:
-        'radio, elektron, zielona góra, gora, elektronik, filszu, radio,zseis,ckziu, nr2, Filip Szumowski, filshu',
+        'party, vote, partyvote, ciac.me, radio, elektron, zielona góra, gora, elektronik, filszu, radio,zseis,ckziu, nr2, Filip Szumowski, filshu',
     openGraph: {
-        title: 'Radio Elektron',
-        description: 'Radio Elektron by Filszu',
-        url: 'https://ciac.me',
-        siteName: 'Radio Elektron',
+        title: 'PartyVote - Vote for your favorite songs',
+        description: 'Party Vote Radio Elektron by Filszu Host Your Party, Let Guests Pick the BeatsCreate unforgettable parties where everyone has a say in the playlist. Host, vote, and dance to the music you all love Radio Elektron by Filszu',
+        url: 'https://partyvote.ciac.me',
+        siteName: 'PartyVote',
         images: [
             {
                 url: '/imgs/logo.png',
@@ -33,6 +33,7 @@ export const metadata: Metadata = {
         type: 'website',
     },
 
+    // <AdSense pId="ca-pub-6202644433627847" />
     // Open Graph
     // 'og:type': 'website',
     // 'og:site_name': 'Radio Elektron',
@@ -53,7 +54,7 @@ export default function RootLayout({
         <html lang="en" className="dark">
             <body className={inter.className}>
                 {/* {newSongModal} */}
-                <main className="flex min-h-screen flex-col items-center pt-1 w-full">
+                <main className="flex min-h-screen flex-col items-center md:pt-1 w-full">
                     {/* <header className="z-10 max-w-5xl w-full items-center justify-center font-mono text-sm md:flex md:justify-between">
                         
                         <div className="flex items-center justify-center w-full md:flex md:w-auto">
