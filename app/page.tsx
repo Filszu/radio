@@ -18,6 +18,8 @@ import PageMsg from '@/components/PageMsg';
 import { PartyInfoBoxContainer } from '@/components/PartyInfoBoxContainer';
 import { HeroSection } from '@/components/hero-section';
 import { FeaturesSectionsAnimated } from '@/components/features-sections-animated';
+import { Vortex } from '@/components/ui/vortex';
+import { Header } from '@/components/Header';
 
 // export const dynamic = "force-dynamic"
 
@@ -29,8 +31,9 @@ type Props = {
 export default async function Home({ searchParams }: Props) {
     return (
         <>
+           
             <HeroSection />
-            <section className='mt-10'>
+            <section className="mt-10">
                 <h1 className="text-3xl font-bold text-center mb-12 flex items-center justify-center">
                     Recent and most popular PARTIES
                 </h1>
