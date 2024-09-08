@@ -48,6 +48,7 @@ export function PricingTable(props: Iprops) {
                             <ListItem included>Ad-supported page</ListItem>
                             <ListItem>Create playlists</ListItem>
                             <ListItem>Music API access</ListItem>
+                            <ListItem>Admin dashboard</ListItem>
                         </ul>
                     </CardContent>
                     <CardFooter>
@@ -82,6 +83,7 @@ export function PricingTable(props: Iprops) {
                                 Create and share playlists
                             </ListItem>
                             <ListItem included>Exclusive content</ListItem>
+                            <ListItem included>Admin dashboard</ListItem>
                         </ul>
                     </CardContent>
                     <CardFooter>

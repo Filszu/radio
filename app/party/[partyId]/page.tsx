@@ -76,11 +76,11 @@ export default async function Home({ params, searchParams }: Props) {
             {/* spacer */}
             <div className="h-10"></div>
 
-            {songIndex <= 1 && <TopSongsList />}
+            {songIndex <= 1 && <TopSongsList partyId={hostId}/>}
 
             <AdBox />
             <Suspense fallback={<div></div>}>
-                <PageMsg />
+                <PageMsg partyId={hostId} />
             </Suspense>
 
             <h2 className="uppercase text-2xl mt-8 mb-8">

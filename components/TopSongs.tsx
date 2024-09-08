@@ -4,7 +4,9 @@ import React from 'react';
 import MusicList from './MusicList';
 import SongInfoBox from './SongInfoBox';
 
-type Props = {};
+type Props = {
+    partyId: number
+  }
 export const revalidate = 30;
 const TopSongsList = async (props: Props) => {
 
@@ -16,6 +18,8 @@ const TopSongsList = async (props: Props) => {
         order: 'votesPlus',
         status: 'active',
         dateOlderThan: todayDate,
+        partyId: props.partyId,
+
     });
 
     if(!songs || songs.length<3) return <></>

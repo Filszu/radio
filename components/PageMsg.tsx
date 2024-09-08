@@ -3,9 +3,14 @@ import React from 'react';
 import { Alert, AlertDescription, AlertTitle } from './ui/alert';
 import { getPartyMessage } from '@/lib/getMessage';
 
-async function PageMsg() {
+type Props = {
+    partyId: number
+  }
+
+  
+async function PageMsg(props: Props) {
     const partyMessages = await getPartyMessage({
-        partyId: 1,
+        partyId: props.partyId,
         limit: 0,
         startingIndex: 0,
         asc: false,

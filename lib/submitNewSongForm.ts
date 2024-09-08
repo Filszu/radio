@@ -54,7 +54,7 @@ export async function submitNewSongForm(props: ISubmitNewSongForm) {
         // update ADDED TIMES
         await postNewPartySong({
             songID: dbSong.songId,
-            partyID: 1,
+            partyID: partyId,
         });
     } else if (dbSong && dbSong.songId && dbSong.songStatus === 'new') {
         if (genSpotifyUrl(formData.get('songURL') as string)) {
@@ -65,7 +65,7 @@ export async function submitNewSongForm(props: ISubmitNewSongForm) {
             });
             await postNewPartySong({
               songID: dbSong.songId,
-              partyID: 1,
+              partyID: partyId,
           });
 
             if (!res) {

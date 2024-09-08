@@ -18,6 +18,8 @@ export async function getPartyMessage(props:IpartyMessageRequest) {
 
     if (error) return null;
 
+    if(!data) return null;
+    if(!data[0]) return null;
     return data as PartyMessage[];
  
 }
