@@ -49,6 +49,7 @@ export function PricingTable(props: Iprops) {
                             <ListItem>Create playlists</ListItem>
                             <ListItem>Music API access</ListItem>
                             <ListItem>Admin dashboard</ListItem>
+                            <ListItem>Your Party Logo</ListItem>
                         </ul>
                     </CardContent>
                     <CardFooter>
@@ -84,6 +85,7 @@ export function PricingTable(props: Iprops) {
                             </ListItem>
                             <ListItem included>Exclusive content</ListItem>
                             <ListItem included>Admin dashboard</ListItem>
+                            <ListItem included>Your Party Logo</ListItem>
                         </ul>
                     </CardContent>
                     <CardFooter>

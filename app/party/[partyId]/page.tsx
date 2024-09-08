@@ -15,7 +15,7 @@ import { Suspense } from 'react';
 import AdBox from '@/components/ads/AdBox';
 import { getPartyMessage } from '@/lib/getMessage';
 import PageMsg from '@/components/PageMsg';
-import { getHostId } from '@/lib/getHostId';
+import { getHost } from '@/lib/getHostId';
 import { notFound } from 'next/navigation';
 
 // export const dynamic = "force-dynamic"
@@ -44,8 +44,11 @@ export default async function Home({ params, searchParams }: Props) {
     //     status: 'active',
     // });
 
-    const hostId = await getHostId(partyId);
-    if (!hostId) notFound();
+    const host = await getHost(partyId);
+    if (!host) notFound();
+    const hostId = host.id;
+    const { hostUrl, hostDescription, hostName } = host;
+    // const hostUrl = host;
 
     console.log('hostId', hostId);
 
@@ -69,14 +72,22 @@ export default async function Home({ params, searchParams }: Props) {
         <>
             {/* <Link href="/add-new-song">xxxxxxxxx</Link> */}
 
+            <section className="">
+                <h2 className="text-3xl text-center">
+                    <b>{hostName ?? ''}</b> party
+                </h2>
+
+                <h3>{hostDescription ?? ''}</h3>
+            </section>
+            <div className="h-10"></div>
             <Suspense fallback={<div>...</div>}>
-                <NewSongDialog partyId={hostId}/>
+                <NewSongDialog partyId={hostId} />
             </Suspense>
 
             {/* spacer */}
             <div className="h-10"></div>
 
-            {songIndex <= 1 && <TopSongsList partyId={hostId}/>}
+            {songIndex <= 1 && <TopSongsList partyId={hostId} />}
 
             <AdBox />
             <Suspense fallback={<div></div>}>
@@ -84,19 +95,19 @@ export default async function Home({ params, searchParams }: Props) {
             </Suspense>
 
             <h2 className="uppercase text-2xl mt-8 mb-8">
-                głosuj na ulubione piosenki
+                Vote for your FAV SONGS🎵
             </h2>
 
             <MusicList songs={songs} isAdmin={false} />
             <div className="flex gap-1">
                 {songIndex >= 10 && (
                     <Link href={`?songIndex=${songIndex - 10}`}>
-                        <Button className="mt-4">Poprzednia strona</Button>
+                        <Button className="mt-4">Prev page</Button>
                     </Link>
                 )}
 
                 <Link href={`?songIndex=${songIndex + 10}`}>
-                    <Button className="mt-4">Następna strona</Button>
+                    <Button className="mt-4">Next page</Button>
                 </Link>
             </div>
         </>

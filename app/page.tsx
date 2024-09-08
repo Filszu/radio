@@ -21,6 +21,7 @@ import { FeaturesSectionsAnimated } from '@/components/features-sections-animate
 import { Vortex } from '@/components/ui/vortex';
 import { Header } from '@/components/Header';
 
+
 // export const dynamic = "force-dynamic"
 
 export const revalidate = 30;

@@ -10,6 +10,13 @@ import {
   DialogTrigger,
   
 } from "@/components/ui/dialog"
+import {
+    
+  Headphones,
+  Music2,
+
+
+} from 'lucide-react'
 
 
 import NewSongDialogForm from "./NewSongDialogForm"
@@ -54,7 +61,9 @@ const NewSongDialog = async(props: Props) => {
 
 
     <DialogTrigger asChild>
-      <Button>Dodaj nowy utwór</Button>
+      <Button className="font-bold">Add new SONG
+        <Music2/>
+        </Button>
     </DialogTrigger>
     <DialogContent className="sm:max-w-[425px]">
       <NewSongDialogForm

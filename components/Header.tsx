@@ -7,6 +7,7 @@ export async function Header() {
         <header className="w-full mx-auto rounded-md  h-[30rem] overflow-hidden">
             <Vortex
                 // backgroundColor="black"
+                // baseHue={800}
                 className="flex items-center flex-col justify-center px-2 md:px-10 py-4 w-full h-full"
             >
                 <Link href="/" className='cursor-pointer'>
