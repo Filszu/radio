@@ -17,7 +17,7 @@ const createProfilePage = async () => {
 
     if (creatorProfile) {
         console.log('creator profile found');
-        // redirect('/profile');
+        redirect('/profile');
     }
     console.log('No creator profile found');
     const username = user.user_metadata?.full_name || user.email?.split('@')[0];

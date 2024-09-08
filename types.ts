@@ -49,6 +49,7 @@ export interface GetSongsParams {
     status?: string | Array<string>;
     staringIndex?: number;
     dateOlderThan?: string;
+    partyId?: number;
 }
 
 

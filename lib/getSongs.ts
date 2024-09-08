@@ -48,8 +48,11 @@ export async function getPartySongs({
     status,
     staringIndex,
     dateOlderThan,
+    partyId,
 }: GetSongsParams) {
     console.log('GET REQUEST getPartySongs');
+
+    console.log('partyId', partyId);
     let { data: uPartySongs, error } = await supabase
         .from('uPartySongs')
         .select(
@@ -62,9 +65,11 @@ export async function getPartySongs({
         )
 
         // .eq('status', status ? status : 'active')
+        .eq('partyId', partyId ?? 1)
         .in('status', [status])
+
         // .in('created_at', ['2024-05-02'])
-        .gte('created_at', dateOlderThan?? '2020-10-11')
+        .gte('created_at', dateOlderThan ?? '2020-10-11')
         .range(staringIndex ?? 0, limit ?? 10)
         // .limit(limit ?? 15)
         .order(order ?? 'created_at', { ascending: asc ?? false })

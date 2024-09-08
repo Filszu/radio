@@ -65,6 +65,8 @@ export default async function postParty(props: IPostParty) {
     //     }])
     //     .select();
 
+    if(returnMSG.status !== 200) return returnMSG;
+
     try {
         const { data, error } = await supabase
             .from('hosts')
