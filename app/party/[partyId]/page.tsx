@@ -20,6 +20,7 @@ import { notFound } from 'next/navigation';
 import ASbox from '@/components/ads/ASBox';
 import AS_vBanner from '@/components/ads/AS_vBanner';
 import GoogleAdUnit from '@/components/ads/GoogleAdUnit';
+import AdBanner from '@/components/ads/google/AdBanner';
 
 // export const dynamic = "force-dynamic"
 
@@ -89,16 +90,28 @@ export default async function Home({ params, searchParams }: Props) {
 
             {/* spacer */}
             <div className="h-10"></div>
+            <section className="w-full h-60">
+                <AdBanner
+                    dataAdFormat="auto"
+                    dataFullWidthResponsive={true}
+                    dataAdSlot="4643526086"
+                />
+            </section>
+            <AdBanner
+                dataAdFormat="auto"
+                dataFullWidthResponsive={true}
+                dataAdSlot="4284247248"
+            />
 
             {songIndex <= 1 && <TopSongsList partyId={hostId} />}
 
-            <AS_vBanner />
+            {/* <AS_vBanner /> */}
             <AdBox />
             <Suspense fallback={<div></div>}>
                 <PageMsg partyId={hostId} />
             </Suspense>
 
-            <div className="h-96 w-full ">
+            {/* <div className="h-96 w-full ">
                 <GoogleAdUnit>
                     <ins
                         className="adsbygoogle"
@@ -109,7 +122,7 @@ export default async function Home({ params, searchParams }: Props) {
                         data-full-width-responsive="true"
                     ></ins>
                 </GoogleAdUnit>
-            </div>
+            </div> */}
 
             <h2 className="uppercase text-2xl mt-8 mb-8">
                 Vote for your FAV SONGS🎵
