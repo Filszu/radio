@@ -90,24 +90,30 @@ export default async function Home({ params, searchParams }: Props) {
 
             {/* spacer */}
             <div className="h-10"></div>
-            <section className="w-full h-60 flex justify-center">
+            {/* <section className="w-full h-60 flex justify-center">
                 <AdBanner
                     dataAdFormat="auto"
                     dataFullWidthResponsive={true}
                     dataAdSlot="4643526086"
                 />
-            </section>
+            </section> */}
             <section className="w-full min-h-[300px] flex justify-center">
                 <AdBanner
                     dataAdFormat="auto"
                     dataFullWidthResponsive={true}
-                    dataAdSlot="4284247248"
+                    dataAdSlot="4062933975"
                 />
                 <AdBanner
                     dataAdFormat="auto"
                     dataFullWidthResponsive={true}
                     dataAdSlot="4062933975"
                 />
+                <AdBanner
+                    dataAdFormat="auto"
+                    dataFullWidthResponsive={true}
+                    dataAdSlot="4062933975"
+                />
+
             </section>
 
             {songIndex <= 1 && <TopSongsList partyId={hostId} />}
