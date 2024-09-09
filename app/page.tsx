@@ -20,7 +20,7 @@ import { HeroSection } from '@/components/hero-section';
 import { FeaturesSectionsAnimated } from '@/components/features-sections-animated';
 import { Vortex } from '@/components/ui/vortex';
 import { Header } from '@/components/Header';
-
+import AdBanner from '@/components/ads/google/AdBanner';
 
 // export const dynamic = "force-dynamic"
 
@@ -32,7 +32,6 @@ type Props = {
 export default async function Home({ searchParams }: Props) {
     return (
         <>
-           
             <HeroSection />
             <section className="mt-10">
                 <h1 className="text-3xl font-bold text-center mb-12 flex items-center justify-center">
@@ -45,8 +44,15 @@ export default async function Home({ searchParams }: Props) {
 
             <FeaturesSectionsAnimated />
 
-            <section className='md:w-8/12'><TopSongsList partyId={1} /></section>
-            
+            <section className="md:w-8/12">
+                <TopSongsList partyId={1} />
+            </section>
+
+            <AdBanner
+                dataAdFormat="auto"
+                dataFullWidthResponsive={true}
+                dataAdSlot="4284247248"
+            />
         </>
     );
 }
