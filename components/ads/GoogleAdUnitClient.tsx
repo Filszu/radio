@@ -15,6 +15,8 @@ declare global {
 const GoogleAdUnitClient: React.FC<GoogleAdUnitProps> = ({ children }) => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
+
+  console.log('pathname', pathname);
   React.useEffect(() => {
     try {
       (window.adsbygoogle = window.adsbygoogle || []).push({});

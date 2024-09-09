@@ -17,7 +17,7 @@ import AdBanner from './ASBox';
 }
 const AS_vBanner = () => {
     return (
-        <aside className="flex w-full min-h-[180px] justify-center">
+        <aside className="flex w-full min-h-[480px] justify-center">
             AS_vBanner
             <br />
             <AdBanner

@@ -98,16 +98,18 @@ export default async function Home({ params, searchParams }: Props) {
                 <PageMsg partyId={hostId} />
             </Suspense>
 
-            <GoogleAdUnit>
-                <ins
-                    className="adsbygoogle"
-                    style={{ display: 'block', width: '100%' }}
-                    data-ad-client="ca-pub-6202644433627847"
-                    data-ad-slot="9203339114"
-                    data-ad-format="auto"
-                    data-full-width-responsive="true"
-                ></ins>
-            </GoogleAdUnit>
+            <div className="h-96 w-full ">
+                <GoogleAdUnit>
+                    <ins
+                        className="adsbygoogle"
+                        style={{ display: 'block', width: '100%' }}
+                        data-ad-client="ca-pub-6202644433627847"
+                        data-ad-slot="9203339114"
+                        data-ad-format="auto"
+                        data-full-width-responsive="true"
+                    ></ins>
+                </GoogleAdUnit>
+            </div>
 
             <h2 className="uppercase text-2xl mt-8 mb-8">
                 Vote for your FAV SONGS🎵

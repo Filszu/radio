@@ -6,6 +6,7 @@ type AdsenseTypes = {
 }
 
 const AdSense = ({ pId }: AdsenseTypes) => {
+  // console.log('pId', pId)
   return (
     <Script
         async

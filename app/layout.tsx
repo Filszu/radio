@@ -54,8 +54,8 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en" className="dark">
-            <head></head>
             <body className={inter.className}>
+                <AdSense pId="ca-pub-6202644433627847" />
                 {/* {newSongModal} */}
                 <main className="flex min-h-screen flex-col items-center md:pt-1 w-full">
                     {/* <header className="z-10 max-w-5xl w-full items-center justify-center font-mono text-sm md:flex md:justify-between">
@@ -122,7 +122,6 @@ export default function RootLayout({
             gtag('config', '${process.env.GOOGLE_ANALYTICS_ID}');
           `}
                 </Script>
-                <AdSense pId="ca-pub-6202644433627847" />
             </body>
         </html>
     );
