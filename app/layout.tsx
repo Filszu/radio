@@ -15,12 +15,14 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
     title: 'PartyVote',
-    description: 'Party Vote Radio Elektron by Filszu Host Your Party, Let Guests Pick the BeatsCreate unforgettable parties where everyone has a say in the playlist. Host, vote, and dance to the music you all love.',
+    description:
+        'Party Vote Radio Elektron by Filszu Host Your Party, Let Guests Pick the BeatsCreate unforgettable parties where everyone has a say in the playlist. Host, vote, and dance to the music you all love.',
     keywords:
         'party, vote, partyvote, ciac.me, radio, elektron, zielona góra, gora, elektronik, filszu, radio,zseis,ckziu, nr2, Filip Szumowski, filshu',
     openGraph: {
         title: 'PartyVote - Vote for your favorite songs',
-        description: 'Party Vote Radio Elektron by Filszu Host Your Party, Let Guests Pick the BeatsCreate unforgettable parties where everyone has a say in the playlist. Host, vote, and dance to the music you all love Radio Elektron by Filszu',
+        description:
+            'Party Vote Radio Elektron by Filszu Host Your Party, Let Guests Pick the BeatsCreate unforgettable parties where everyone has a say in the playlist. Host, vote, and dance to the music you all love Radio Elektron by Filszu',
         url: 'https://partyvote.ciac.me',
         siteName: 'PartyVote',
         images: [
@@ -46,13 +48,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
     children,
-
 }: {
     children: React.ReactNode;
     newSongModal: React.ReactNode;
 }) {
     return (
         <html lang="en" className="dark">
+            <head>
+                
+            </head>
             <body className={inter.className}>
                 {/* {newSongModal} */}
                 <main className="flex min-h-screen flex-col items-center md:pt-1 w-full">

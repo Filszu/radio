@@ -94,6 +94,7 @@ export default async function Home({ params, searchParams }: Props) {
 
             
             <AS_vBanner />
+            <AdBox />
             <Suspense fallback={<div></div>}>
                 <PageMsg partyId={hostId} />
             </Suspense>

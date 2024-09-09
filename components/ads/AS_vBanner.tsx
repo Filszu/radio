@@ -17,7 +17,7 @@ import AdBanner from './ASBox';
 }
 const AS_vBanner = () => {
     return (
-        <div>
+        <aside className="flex w-full min-h-[180px] justify-center">
             AS_vBanner
             <br />
             <AdBanner
@@ -25,7 +25,8 @@ const AS_vBanner = () => {
                 dataAdFormat="auto"
                 dataFullWidthResponsive={true}
             />
-        </div>
+            s
+        </aside>
     );
 };
 
