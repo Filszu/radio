@@ -97,7 +97,7 @@ export default async function Home({ params, searchParams }: Props) {
                     dataAdSlot="4643526086"
                 />
             </section> */}
-            <section className="w-full min-h-[300px] flex justify-center">
+            {/* <section className="w-full min-h-[300px] flex justify-center">
                 <AdBanner
                     dataAdFormat="auto"
                     dataFullWidthResponsive={true}
@@ -114,6 +114,32 @@ export default async function Home({ params, searchParams }: Props) {
                     dataAdSlot="4062933975"
                 />
 
+
+                
+            </section> */}
+
+            <section className="w-full min-h-[300px] flex justify-center">
+                <AdBanner
+                    dataAdFormat="auto"
+                    dataFullWidthResponsive={true}
+                    dataAdSlot="4062933975"
+                />
+                <span className="hidden md:block">
+                    
+                    <AdBanner
+                        dataAdFormat="auto"
+                        dataFullWidthResponsive={true}
+                        dataAdSlot="4062933975"
+                    />
+                </span>
+                <span className="hidden lg:block">
+                    
+                    <AdBanner
+                        dataAdFormat="auto"
+                        dataFullWidthResponsive={true}
+                        dataAdSlot="4062933975"
+                    />
+                </span>
             </section>
 
             {songIndex <= 1 && <TopSongsList partyId={hostId} />}

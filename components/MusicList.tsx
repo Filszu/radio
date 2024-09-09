@@ -23,7 +23,7 @@ const MusicList = ({
                     />
                     {(index + 1) % 4 === 0 && (
                         <section className="w-full flex justify-center flex-col h-auto">
-                            <p className="text-sm text-center">❣️</p>
+                            {/* <p className="text-sm text-center"></p> */}
                             <AdBanner
                                 dataAdFormat="auto"
                                 dataFullWidthResponsive={true}
