@@ -8,6 +8,7 @@ import Logo from '../public/imgs/logo-elektron.jpg';
 import Link from 'next/link';
 import Script from 'next/script';
 import { Header } from '@/components/Header';
+import AdSense from '@/components/ads/AdSense';
 // import { FiGithub } from 'react-icons/fi'
 
 const inter = Inter({ subsets: ['latin'] });
@@ -119,6 +120,7 @@ export default function RootLayout({
             gtag('config', '${process.env.GOOGLE_ANALYTICS_ID}');
           `}
                 </Script>
+                <AdSense pId="ca-pub-6202644433627847" />
             </body>
         </html>
     );
