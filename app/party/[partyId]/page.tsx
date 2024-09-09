@@ -19,7 +19,7 @@ import { getHost } from '@/lib/getHostId';
 import { notFound } from 'next/navigation';
 import ASbox from '@/components/ads/ASBox';
 import AS_vBanner from '@/components/ads/AS_vBanner';
-
+import GoogleAdUnit from '@/components/ads/GoogleAdUnit';
 
 // export const dynamic = "force-dynamic"
 
@@ -92,12 +92,22 @@ export default async function Home({ params, searchParams }: Props) {
 
             {songIndex <= 1 && <TopSongsList partyId={hostId} />}
 
-            
             <AS_vBanner />
             <AdBox />
             <Suspense fallback={<div></div>}>
                 <PageMsg partyId={hostId} />
             </Suspense>
+
+            <GoogleAdUnit>
+                <ins
+                    className="adsbygoogle"
+                    style={{ display: 'block', width: '100%' }}
+                    data-ad-client="ca-pub-6202644433627847"
+                    data-ad-slot="9203339114"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"
+                ></ins>
+            </GoogleAdUnit>
 
             <h2 className="uppercase text-2xl mt-8 mb-8">
                 Vote for your FAV SONGS🎵

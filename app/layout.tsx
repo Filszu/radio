@@ -54,9 +54,7 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en" className="dark">
-            <head>
-                
-            </head>
+            <head></head>
             <body className={inter.className}>
                 {/* {newSongModal} */}
                 <main className="flex min-h-screen flex-col items-center md:pt-1 w-full">
