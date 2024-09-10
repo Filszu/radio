@@ -48,11 +48,7 @@ export default async function Home({ searchParams }: Props) {
                 <TopSongsList partyId={1} />
             </section>
 
-            <AdBanner
-                dataAdFormat="auto"
-                dataFullWidthResponsive={true}
-                dataAdSlot="4284247248"
-            />
+           
         </>
     );
 }
