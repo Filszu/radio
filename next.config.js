@@ -12,7 +12,20 @@ module.exports = {
         port: '',
         pathname: '/image/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'ceneo.pl',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'image.ceneostatic.pl/data/products/**',
+        port: '',
+        pathname: '/**',
+      }
     ],
+    domains: ["www.ceneo.pl","image.ceneostatic.pl"],
   },
     experimental: {
       serverActions: true,

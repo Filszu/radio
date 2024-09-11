@@ -17,6 +17,8 @@ const AdUnit = (props: IAdUnit) => {
                 <Image
                     src={props.image}
                     alt={props.name}
+                    width={320}
+                    height={320}
                     className="object-cover rounded w-full h-auto overflow-clip ease-out duration-300 delay-100 hover:scale-105"
                 />
             </div>

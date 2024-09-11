@@ -32,6 +32,11 @@ const ads: IAdUnit[] = [
         name: 'Wot ad',
     },
     {
+        image: "http://image.ceneostatic.pl/data/products/145205850/p-hama-mini-usb-c-pd-qc-3-0-18-65w-biala-201643.jpg",
+        url: 'https://www.ceneo.pl/145205850?pid=28571&crid=703709&cid=48366&fid=223',
+        name: 'Hama Mini USB-C PD/QC 3.0 18-65W biała (201643)',
+    },
+    {
         image: wow,
         url: 'https://bit.ly/radioWoT',
         name: 'Wow ad',
@@ -45,7 +50,7 @@ const ads: IAdUnit[] = [
 
 const AdBox = () => {
     //shufle ads
-    const showAds = ads.sort(() => Math.random() - 0.5);
+    const showAds = (ads.sort(() => Math.random() - 0.5)).slice(0, 4);
     return (
         <section>
             <div className="flex justify-center gap-10 items-center p-10 flex-wrap ">
