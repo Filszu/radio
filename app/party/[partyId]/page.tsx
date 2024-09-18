@@ -21,6 +21,7 @@ import ASbox from '@/components/ads/ASBox';
 import AS_vBanner from '@/components/ads/AS_vBanner';
 import GoogleAdUnit from '@/components/ads/GoogleAdUnit';
 import AdBanner from '@/components/ads/google/AdBanner';
+import CeneoAffContainer from '@/components/ads/ceneo/CeneoBox';
 
 // export const dynamic = "force-dynamic"
 
@@ -179,6 +180,9 @@ export default async function Home({ params, searchParams }: Props) {
                     <Button className="mt-4">Next page</Button>
                 </Link>
             </div>
+            <section>
+                <CeneoAffContainer />
+            </section>
         </>
     );
 }

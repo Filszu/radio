@@ -47,6 +47,7 @@ export default async function Home({ searchParams }: Props) {
             <section className="md:w-8/12">
                 <TopSongsList partyId={1} />
             </section>
+            
 
            
         </>

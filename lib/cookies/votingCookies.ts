@@ -1,5 +1,6 @@
 'use server'
 import { cookies } from 'next/headers'
+import { popAdCookie } from './popAdCookie'
 
 
 // async function votedSongCookie(){
@@ -19,9 +20,15 @@ export async function createVotedSongCookie({songID}:{songID:string}){
 
     // console.log("cookiesList",cookiesList)
 
+  
+
     const songCookieName = `votedSong${songID}`
     // console.log("songCookieName",songCookieName)
 
+    // const allCookies = cookiesList.getAll()
+
+  
+    // await popAdCookie(allCookies)
 
   const hasCookie = cookiesList.has(songCookieName)
 //   console.log("hasCookie",hasCookie)

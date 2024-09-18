@@ -56,6 +56,7 @@ const SongVoteBtns = ({songId}: {songId:USong["id"]}) => {
         </Button>
         <Button className="w-10 mx-1" variant="destructive" 
             onClick={
+              
             ()=>startTransition(async ()=>{
             const res = await voteSong(songId, 'downvote' );
 
