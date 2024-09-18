@@ -21,7 +21,8 @@ import ASbox from '@/components/ads/ASBox';
 import AS_vBanner from '@/components/ads/AS_vBanner';
 import GoogleAdUnit from '@/components/ads/GoogleAdUnit';
 import AdBanner from '@/components/ads/google/AdBanner';
-import CeneoAffContainer from '@/components/ads/ceneo/CeneoBox';
+import { CeneoBox } from '@/components/ads/ceneo/CeneoBox';
+import CeneoAdsSection from '@/components/ads/ceneo/CeneoAdSection';
 
 // export const dynamic = "force-dynamic"
 
@@ -126,7 +127,6 @@ export default async function Home({ params, searchParams }: Props) {
                     dataAdSlot="4062933975"
                 />
                 <span className="hidden md:block">
-                    
                     <AdBanner
                         dataAdFormat="auto"
                         dataFullWidthResponsive={true}
@@ -134,7 +134,6 @@ export default async function Home({ params, searchParams }: Props) {
                     />
                 </span>
                 <span className="hidden lg:block">
-                    
                     <AdBanner
                         dataAdFormat="auto"
                         dataFullWidthResponsive={true}
@@ -180,9 +179,8 @@ export default async function Home({ params, searchParams }: Props) {
                     <Button className="mt-4">Next page</Button>
                 </Link>
             </div>
-            <section>
-                <CeneoAffContainer />
-            </section>
+            
+            <CeneoAdsSection />
         </>
     );
 }
