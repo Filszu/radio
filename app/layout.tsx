@@ -11,6 +11,7 @@ import { Header } from '@/components/Header';
 import AdSense from '@/components/ads/AdSense';
 // import { FiGithub } from 'react-icons/fi'
 
+
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
