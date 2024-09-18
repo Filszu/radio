@@ -41,16 +41,16 @@ export interface CeneoBoxProps {
           strategy="afterInteractive"
           type="text/javascript"
           onLoad={() => {
-            console.log('Script loaded successfully');
+            // console.log('ceneo Script loaded successfully');
           }}
           onError={(e) => {
-            console.error('Script failed to load', e);
+            console.error(' ceneo Script failed to load', e);
           }}
         />
       </div>
     );
   }
-  
+
   
 // export function CeneoBox() {
 //     const stamp = parseInt((new Date().getTime() / 86400).toString(), 10);

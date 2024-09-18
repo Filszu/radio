@@ -120,7 +120,7 @@ export default async function Home({ params, searchParams }: Props) {
                 
             </section> */}
 
-            <section className="w-full min-h-[300px] flex justify-center overflow-hidden">
+            <section className="w-full min-h-[300px] flex justify-center overflow-clip">
                 <AdBanner
                     dataAdFormat="auto"
                     dataFullWidthResponsive={true}
