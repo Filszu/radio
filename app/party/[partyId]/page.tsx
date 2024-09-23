@@ -40,12 +40,6 @@ type Props = {
 //   }
   
 export default async function Home({ params, searchParams }: Props) {
-    const user = await getUser();
-
-    if (!user) {
-        redirect('/login');
-    }
-
 
     const partyId = params.partyId;
 
