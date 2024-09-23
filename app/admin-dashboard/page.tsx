@@ -83,7 +83,7 @@ const Page = async (props: Props) => {
         {ipApi}
       </p>
 
-      <PartyMessageForm message={partyLastMsg}/>
+      {/* <PartyMessageForm message={partyLastMsg} /> */}
       <MusicList songs={songs} isAdmin={true} />
     </section>
   );

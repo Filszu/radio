@@ -13,28 +13,28 @@ interface IpartyMsgForm {
 const PartyMessageForm = (props: IpartyMsgForm) => {
     const { toast } = useToast();
 
-    async function setMessageFormSubmit(formData: FormData) {
-        const submitingFormStatus: IActionMSG | undefined =
-            await postMessage(formData);
+    // async function setMessageFormSubmit(formData: FormData) {
+    //     const submitingFormStatus: IActionMSG | undefined =
+    //         await postMessage(formData);
 
-        console.log(submitingFormStatus);
+    //     console.log(submitingFormStatus);
 
-        if (submitingFormStatus) {
-            toast({
-                title: `${submitingFormStatus.title}`,
-                description: `${submitingFormStatus.message}`,
-                variant: `${
-                    submitingFormStatus.status === 200
-                        ? 'success'
-                        : 'destructive'
-                }`,
-            });
-        }
-    }
+    //     if (submitingFormStatus) {
+    //         toast({
+    //             title: `${submitingFormStatus.title}`,
+    //             description: `${submitingFormStatus.message}`,
+    //             variant: `${
+    //                 submitingFormStatus.status === 200
+    //                     ? 'success'
+    //                     : 'destructive'
+    //             }`,
+    //         });
+    //     }
+    // }
 
     return (
         <section className="border-primary border rounded-lg p-10">
-            <form action={setMessageFormSubmit} className="flex flex-col gap-2">
+            {/* <form action={setMessageFormSubmit} className="flex flex-col gap-2">
                 <h2>
                     Set message/party description that will be shown on the top
                     of the page
@@ -55,7 +55,7 @@ const PartyMessageForm = (props: IpartyMsgForm) => {
                 >
                     Set new message
                 </SubmitButton>
-            </form>
+            </form> */}
         </section>
     );
 };
