@@ -4,6 +4,7 @@ import { THost } from '@/types';
 
 interface IPartyInfoBoxContainer {
     userId?: string;
+    admin?: boolean;
 }
 export async function PartyInfoBoxContainer(props: IPartyInfoBoxContainer) {
 
@@ -29,7 +30,7 @@ export async function PartyInfoBoxContainer(props: IPartyInfoBoxContainer) {
     return (
         <div className="flex justify-center items-center cursor-pointer gap-5 flex-wrap">
             {hosts.map((host: THost) => (
-                <PartyInfoBox key={host.id} {...host} />
+                <PartyInfoBox key={host.id} host={host}{...host} admin={props.admin??false}/>
             ))}
         </div>
     );

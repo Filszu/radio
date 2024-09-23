@@ -62,7 +62,7 @@ const userProfile = {
           {/* <UserParties /> */}
 
           <Suspense fallback={<div>...</div>}>
-                <PartyInfoBoxContainer userId={user.id}/>
+                <PartyInfoBoxContainer userId={user.id} admin={true}/>
             </Suspense>
 
           

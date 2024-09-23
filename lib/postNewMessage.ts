@@ -4,12 +4,21 @@ import supabase from '@/config/supaBaseClient';
 import { IActionMSG } from '@/types';
 import { fakeSetTimeOut } from '@/utils/fakeSetTimeOut';
 
-export default async function postMessage(formData: FormData) {
-    console.log('Posting PARTY...');
+interface props{
+    newMsg: string;
+    partyId: number;
+}
+export default async function postMessage({newMsg, partyId}: props) {
+    console.log('Posting PARTY msg...', newMsg, partyId);
 
-    const msg = formData.get('message') as string;
+
+    // const msg = formData.get('message') as string;
+    
+    const msg = newMsg;
 
     // await fakeSetTimeOut(2000);
+
+   
 
     const returnMSG: IActionMSG = {
         message: `Updated party message to: ${msg}!`,
@@ -47,10 +56,10 @@ export default async function postMessage(formData: FormData) {
 
     const { data, error } = await supabase
         .from('messages')
-        .insert([{ partyId: 1, message: msg}])
+        .insert([{ partyId: partyId, message: msg }])
         .select();
 
-    if(error){
+    if (error) {
         returnMSG.message = error.message;
         returnMSG.title = 'Error';
         returnMSG.status = 500;

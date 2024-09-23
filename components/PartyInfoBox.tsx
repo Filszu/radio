@@ -2,10 +2,16 @@
 
 import { useState, useEffect } from 'react';
 import { Disc3 } from 'lucide-react';
+import { Settings2 } from 'lucide-react';
 import { THost } from '@/types';
 import Link from 'next/link';
 
-export function PartyInfoBox(props: THost) {
+interface IPartyInfoBox {
+    admin?: boolean;
+    host : THost;
+}
+
+export function PartyInfoBox({admin, host}: IPartyInfoBox) {
     const [imageUrl, setImageUrl] = useState('');
 
     useEffect(() => {
@@ -16,10 +22,10 @@ export function PartyInfoBox(props: THost) {
 
     return (
         // <div>
-        //   {JSON.stringify(props)}
+        //   {JSON.stringify(host)}
 
         // </div>
-        <Link href={`/party/${props.hostUrl}`}>
+        <Link href={`/party/${host.hostUrl}`}>
             <div
                 className="relative w-80 h-48 rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl group  cursor-pointer"
                 style={{
@@ -36,16 +42,23 @@ export function PartyInfoBox(props: THost) {
                         </div>
                         <div>
                             <h2 className="text-xl font-bold">
-                                {props.hostName}
+                                {host.hostName}
                             </h2>
                             <p className="text-sm opacity-75">
-                                {/* {props.creatorId} */}
+                                {/* {host.creatorId} */}
                                 @author
                             </p>
                         </div>
+                        {admin && (
+                                <Link href={`/party/${host.hostUrl}/admin`} className="flex items-center space-x-2 text-primary">
+                                    <Settings2 size={30} />
+                                    {/* <p>Settings</p> */}
+                                </Link>
+                            )}
+                        
                     </div>
                     <div className="text-sm opacity-75">
-                        <p>/{props.hostUrl}</p>
+                        <p>/{host.hostUrl}</p>
                     </div>
                 </div>
             </div>

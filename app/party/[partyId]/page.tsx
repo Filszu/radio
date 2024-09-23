@@ -16,13 +16,15 @@ import AdBox from '@/components/ads/AdBox';
 import { getPartyMessage } from '@/lib/getMessage';
 import PageMsg from '@/components/PageMsg';
 import { getHost } from '@/lib/getHostId';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import ASbox from '@/components/ads/ASBox';
 import AS_vBanner from '@/components/ads/AS_vBanner';
 import GoogleAdUnit from '@/components/ads/GoogleAdUnit';
 import AdBanner from '@/components/ads/google/AdBanner';
 import { CeneoBox } from '@/components/ads/ceneo/CeneoBox';
 import CeneoAdsSection from '@/components/ads/ceneo/CeneoAdSection';
+import { getUser } from '@/lib/auth/getUser';
+import { Metadata } from 'next';
 
 // export const dynamic = "force-dynamic"
 
@@ -32,7 +34,19 @@ type Props = {
     searchParams: { [key: string]: string | string[] | undefined };
 };
 
+// export const metadata: Metadata = {
+//     title: '',
+    
+//   }
+  
 export default async function Home({ params, searchParams }: Props) {
+    const user = await getUser();
+
+    if (!user) {
+        redirect('/login');
+    }
+
+
     const partyId = params.partyId;
 
     const songIndexParam = searchParams?.songIndex ?? 0;
@@ -53,7 +67,7 @@ export default async function Home({ params, searchParams }: Props) {
     const host = await getHost(partyId);
     if (!host) notFound();
     const hostId = host.id;
-    const { hostUrl, hostDescription, hostName } = host;
+    const { hostUrl, hostDescription, hostName,} = host;
     // const hostUrl = host;
 
     console.log('hostId', hostId);
@@ -179,7 +193,7 @@ export default async function Home({ params, searchParams }: Props) {
                     <Button className="mt-4">Next page</Button>
                 </Link>
             </div>
-            
+
             <CeneoAdsSection />
         </>
     );

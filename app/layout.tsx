@@ -11,7 +11,6 @@ import { Header } from '@/components/Header';
 import AdSense from '@/components/ads/AdSense';
 // import { FiGithub } from 'react-icons/fi'
 
-
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -26,13 +25,7 @@ export const metadata: Metadata = {
             'Party Vote Radio Elektron by Filszu Host Your Party, Let Guests Pick the BeatsCreate unforgettable parties where everyone has a say in the playlist. Host, vote, and dance to the music you all love Radio Elektron by Filszu',
         url: 'https://partyvote.ciac.me',
         siteName: 'PartyVote',
-        images: [
-            {
-                url: '/imgs/logo.png',
-                width: 500,
-                height: 500,
-            },
-        ],
+        images: ['/imgs/logo.png'],
         locale: 'en_US',
         type: 'website',
     },
