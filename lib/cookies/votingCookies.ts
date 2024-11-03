@@ -1,6 +1,5 @@
 'use server'
 import { cookies } from 'next/headers'
-import { popAdCookie } from './popAdCookie'
 
 
 // async function votedSongCookie(){

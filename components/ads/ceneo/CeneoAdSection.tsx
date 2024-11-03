@@ -3,27 +3,35 @@ import { CeneoBox } from './CeneoBox';
 
 const CeneoAdsSection = () => {
     const ceneoData = [
+        // {
+        //     id: '703701',
+        //     channelId: '48366',
+        //     partnerId: '28571',
+        //     graphicId: '6685',
+        //     newTab: true,
+        // },
+        // {
+        //     id: '703704',
+        //     channelId: '48366',
+        //     partnerId: '28571',
+        //     graphicId: '6751',
+        //     newTab: true,
+        // },
+        // {
+        //     id: '704466',
+        //     channelId: '48366',
+        //     partnerId: '28571',
+        //     graphicId: '6785',
+        //     newTab: true,
+        // },
         {
-            id: '703701',
+            id: '706207',
             channelId: '48366',
             partnerId: '28571',
-            graphicId: '6685',
+            graphicId: '6845',
             newTab: true,
         },
-        {
-            id: '703704',
-            channelId: '48366',
-            partnerId: '28571',
-            graphicId: '6751',
-            newTab: true,
-        },
-        {
-            id: '704466',
-            channelId: '48366',
-            partnerId: '28571',
-            graphicId: '6785',
-            newTab: true,
-        },
+        
     ];
 
     const displayCeneoAdsInOrder = ceneoData.sort(() => Math.random() - 0.5);

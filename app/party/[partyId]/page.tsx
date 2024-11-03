@@ -25,7 +25,7 @@ import { CeneoBox } from '@/components/ads/ceneo/CeneoBox';
 import CeneoAdsSection from '@/components/ads/ceneo/CeneoAdSection';
 import { getUser } from '@/lib/auth/getUser';
 import { Metadata } from 'next';
-
+import { getPlayList } from '@/lib/getPlayList';
 // export const dynamic = "force-dynamic"
 
 export const revalidate = 30;
@@ -41,7 +41,12 @@ type Props = {
   
 export default async function Home({ params, searchParams }: Props) {
 
+    const PlayList = await getPlayList({ hostId: 1, date: '2024-11-03' });
+    console.log(PlayList);
+
     const partyId = params.partyId;
+
+    // console.log("%%%%%params", params);
 
     const songIndexParam = searchParams?.songIndex ?? 0;
 
@@ -188,7 +193,7 @@ export default async function Home({ params, searchParams }: Props) {
                 </Link>
             </div>
 
-            <CeneoAdsSection />
+            {/* <CeneoAdsSection /> */}
         </>
     );
 }

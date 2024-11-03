@@ -31,11 +31,11 @@ const ads: IAdUnit[] = [
         url: 'https://bit.ly/radioWoT',
         name: 'Wot ad',
     },
-    {
-        image: "http://image.ceneostatic.pl/data/products/145205850/p-hama-mini-usb-c-pd-qc-3-0-18-65w-biala-201643.jpg",
-        url: 'https://www.ceneo.pl/145205850?pid=28571&crid=703709&cid=48366&fid=223',
-        name: 'Hama Mini USB-C PD/QC 3.0 18-65W biała (201643)',
-    },
+    // {
+    //     image: "http://image.ceneostatic.pl/data/products/145205850/p-hama-mini-usb-c-pd-qc-3-0-18-65w-biala-201643.jpg",
+    //     url: 'https://www.ceneo.pl/145205850?pid=28571&crid=703709&cid=48366&fid=223',
+    //     name: 'Hama Mini USB-C PD/QC 3.0 18-65W biała (201643)',
+    // },
     {
         image: wow,
         url: 'https://bit.ly/radioWoT',

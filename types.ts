@@ -73,6 +73,9 @@ export interface IpartyMessageRequest {
 export type PartyMessage = Database["public"]["Tables"]["messages"]["Row"]
 export type TTimeTable = Database["public"]["Tables"]["timeTable"]["Row"]
 export type THost = Database["public"]["Tables"]["hosts"]["Row"]
+export type Playlists = Database["public"]["Tables"]["playlists"]["Row"]
+
+
 
 // export type TTimeTable = ITimeTableRow[];
 export type TimeSlot = {

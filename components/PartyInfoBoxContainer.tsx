@@ -11,6 +11,7 @@ export async function PartyInfoBoxContainer(props: IPartyInfoBoxContainer) {
   let q = supabase
   .from('hosts')
   .select('*')
+  .order('featured', { ascending: false });
 
   if(props.userId) q = q.eq('creatorId', props.userId || '');
 
