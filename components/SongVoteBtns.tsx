@@ -72,10 +72,13 @@ const SongVoteBtns = async ({songId}: {songId:USong["id"]}) =>
 
         >
 
-        <Link href={`https://ciac.me`} target='blank'>
+        {/* <Link href={`https://ciac.me`} target='blank'>
 
             +
-        </Link>
+            
+        </Link> */}
+
+        +
           
         </Button>
         <Button className="w-10 mx-1" variant="destructive" 

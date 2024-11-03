@@ -15,7 +15,9 @@ export async function getPlayList(props: IPlaylist) {
     const date = props.date;
     let { data, error } = await supabase
         .from('playlists')
-        .select('*')
+        .select(`*,
+            uSongs: uSongs(*)
+            `)
         .eq("party_id", hostId)
         .eq("created_at", date)
 

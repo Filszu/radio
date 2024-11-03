@@ -48,9 +48,9 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en" className="dark">
-            <head>
+            {/* <head>
                 <AdSense pId="ca-pub-6202644433627847" />
-            </head>
+            </head> */}
             <body className={inter.className}>
                 {/* {newSongModal} */}
                 <main className="flex min-h-screen flex-col items-center md:pt-1 w-full">
@@ -118,6 +118,13 @@ export default function RootLayout({
             gtag('config', '${process.env.GOOGLE_ANALYTICS_ID}');
           `}
                 </Script>
+
+                <Script
+                    async
+                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6202644433627847"
+                    crossOrigin="anonymous"
+                    strategy="afterInteractive"
+                ></Script>
             </body>
         </html>
     );
