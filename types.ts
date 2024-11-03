@@ -38,6 +38,8 @@ export interface IPartySong extends UPartySong {
     thumbnail: string | null;
     title: string | null;
     url: string;
+
+    USongId: string;
     
   
 }

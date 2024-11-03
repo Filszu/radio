@@ -17,6 +17,7 @@ import { getPartyMessage } from '@/lib/getMessage';
 import { getHost } from '@/lib/getHostId';
 import { getUser } from '@/lib/auth/getUser';
 import CodeSnippet from '@/components/ui/custom/CodeSnippet';
+import { PiShootingStarBold } from 'react-icons/pi';
 
 type Props = {
     params: { partyId: string };
@@ -112,35 +113,39 @@ const Page = async ({ params, searchParams }: Props) => {
                 {hostId}
             </p>
 
-          
-
             <PartyMessageForm message={partyLastMsg} partyId={Number(hostId)} />
 
             <article className="text-center my-4">
-            <h2>For Developers</h2>
-            <h3>API</h3>
-            <span className="text-orange-400"> Free PREMIUM feature</span>
-            <p className="text-center mt-4 mb-2">
-                <strong>Get Party Playlist</strong>
-                <br />
-                <strong>Request:</strong> GET
-                <br />
-                <strong>Endpoint:</strong> /api/playlist
-                <br />
-                <CodeSnippet
-                    commandPrefix="$"
-                    commandText="/api/playlist?hostId=[your host id]&date=[date in format yyyy-mm-dd]"
-                    commandPackage=" REST API"
-                />
-                <br />
-                <strong>Example:</strong>
-                <br />
-                <CodeSnippet
-                    commandPrefix="$"
-                    commandText={`https://partyvote.ciac.me/api/playlist?hostId=${hostId}&date=2024-11-03`}
-                    commandPackage=" REST API"
-                />
-            </p>
+                <h2>Create the spotify playlist</h2>
+                <p className='flex text-center justify-center'>
+                    You can create the playlist for the party by clicking
+                    <PiShootingStarBold size={20} className="text-yellow-400" /> the button below. The
+                    playlist will be created for the current day.
+                </p>
+                <h2>For Developers</h2>
+                <h3>API</h3>
+                <span className="text-orange-400"> Free PREMIUM feature</span>
+                <p className="text-center mt-4 mb-2">
+                    <strong>Get Party Playlist</strong>
+                    <br />
+                    <strong>Request:</strong> GET
+                    <br />
+                    <strong>Endpoint:</strong> /api/playlist
+                    <br />
+                    <CodeSnippet
+                        commandPrefix="$"
+                        commandText="/api/playlist?hostId=[your host id]&date=[date in format yyyy-mm-dd]"
+                        commandPackage=" REST API"
+                    />
+                    <br />
+                    <strong>Example:</strong>
+                    <br />
+                    <CodeSnippet
+                        commandPrefix="$"
+                        commandText={`https://partyvote.ciac.me/api/playlist?hostId=${hostId}&date=2024-11-03`}
+                        commandPackage=" REST API"
+                    />
+                </p>
             </article>
 
             <MusicList songs={songs} isAdmin={true} />

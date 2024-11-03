@@ -59,7 +59,7 @@ export async function getPartySongs({
             `
           *,
           uSongs (
-            title, artist, duration, url, thumbnail, url, explicit, addedTimes
+            title, artist, duration, url, thumbnail, url, explicit, addedTimes, id
           )
         `,
         )
