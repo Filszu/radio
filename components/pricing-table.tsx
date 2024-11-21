@@ -50,6 +50,7 @@ export function PricingTable(props: Iprops) {
                             <ListItem>Music API access</ListItem>
                             <ListItem>Admin dashboard</ListItem>
                             <ListItem>Your Party Logo</ListItem>
+                            <ListItem included>TEST premium features - with Free Premium Trial for 30 days - included (with ads)</ListItem>
                         </ul>
                     </CardContent>
                     <CardFooter>
