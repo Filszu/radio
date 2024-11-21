@@ -1,36 +1,25 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { subscribeUser, unsubscribeUser, sendNotification } from './actions';
 
 export function urlBase64ToUint8Array(base64String: string) {
     const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
     const base64 = (base64String + padding)
-        .replace(/\\-/g, '+')
+        .replace(/-/g, '+')
         .replace(/_/g, '/');
 
-    const rawData = window.atob(base64);
-    const outputArray = new Uint8Array(rawData.length);
-
-    for (let i = 0; i < rawData.length; ++i) {
-        outputArray[i] = rawData.charCodeAt(i);
-    }
-    return outputArray;
-}
-
-function decodeBase64(encodedString: string): string | null {
-    const base64Regex = /^[A-Za-z0-9+/]+={0,2}$/;
-
-    if (!base64Regex.test(encodedString)) {
-        console.error('Invalid base64 encoded string');
-        return null;
-    }
-
     try {
-        return atob(encodedString);
-    } catch (error) {
-        console.error('Failed to decode base64 string:', error);
-        return null;
+        const rawData = window.atob(base64);
+        const outputArray = new Uint8Array(rawData.length);
+
+        for (let i = 0; i < rawData.length; ++i) {
+            outputArray[i] = rawData.charCodeAt(i);
+        }
+        return outputArray;
+    } catch (e) {
+        console.error('Invalid base64 string', e);
+        return new Uint8Array();
     }
 }
 
@@ -49,14 +38,12 @@ export default function PushNotificationManager() {
     }, []);
 
     async function registerServiceWorker() {
-        const registration =
-            await navigator.serviceWorker.register('/service-worker.js');
+        const registration = await navigator.serviceWorker.register('/sw.js', {
+            scope: '/',
+            updateViaCache: 'none',
+        });
         const sub = await registration.pushManager.getSubscription();
         setSubscription(sub);
-        const decodedMessage = decodeBase64('your-base64-encoded-string');
-        if (decodedMessage) {
-            setMessage(decodedMessage);
-        }
     }
 
     async function subscribeToPush() {
