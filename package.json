@@ -33,12 +33,14 @@
     "react-icons": "^4.11.0",
     "simplex-noise": "^4.0.3",
     "tailwind-merge": "^1.14.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "web-push": "^3.6.7"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18.2.63",
     "@types/react-dom": "^18.2.19",
+    "@types/web-push": "^3.6.4",
     "@typescript-eslint/eslint-plugin": "^6.11.0",
     "@typescript-eslint/parser": "^6.11.0",
     "autoprefixer": "^10",
