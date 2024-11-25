@@ -7,11 +7,11 @@ import AdBanner from './ads/google/AdBanner';
 const MusicList = ({
     songs,
     isAdmin,
-    partyId,
+   
 }: {
     songs: USong[] | IPartySong[];
     isAdmin: boolean;
-    partyId?: number;
+    
 }) => {
     return (
         <section className="w-full flex flex-col gap-2 ">
@@ -22,7 +22,7 @@ const MusicList = ({
                         // songId={song.id}
                         song={song}
                         isAdmin={isAdmin}
-                        partyId={partyId}
+                        
                     />
                     {(index + 1) % 4 === 0 && (
                         <section className="w-full flex justify-center items-center flex-col h-auto overflow-clip">

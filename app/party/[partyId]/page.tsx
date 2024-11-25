@@ -137,7 +137,7 @@ export default async function Home({ params, searchParams }: Props) {
                     Vote for your FAV SONGS🎵
                 </h2>
 
-                <MusicList songs={songs} isAdmin={false} partyId={Number(hostId)} />
+                <MusicList songs={songs} isAdmin={false}/>
                 <div className="flex gap-1">
                     {songIndex >= 10 && (
                         <Link href={`?songIndex=${songIndex - 10}`}>
