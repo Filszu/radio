@@ -3,14 +3,23 @@
 import webpush from 'web-push';
 
 webpush.setVapidDetails(
-    '<mailto:admin@ciac.me>',
+    'mailto:admin@ciac.me',
     process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY!,
     process.env.VAPID_PRIVATE_KEY!,
 );
 
-let subscription: PushSubscription | null = null;
+// Define a new type that extends PushSubscription
+interface ExtendedPushSubscription extends PushSubscription {
+    keys: {
+        p256dh: string;
+        auth: string;
+    };
+}
 
-export async function subscribeUser(sub: PushSubscription) {
+// Update the subscription variable to use the new type
+let subscription: ExtendedPushSubscription | PushSubscription | null = null;
+
+export async function subscribeUser(sub: ExtendedPushSubscription) {
     subscription = sub;
     // In a production environment, you would want to store the subscription in a database
     // For example: await db.subscriptions.create({ data: sub })
@@ -30,8 +39,9 @@ export async function sendNotification(message: string) {
     }
 
     try {
+        console.log('subscription', subscription);
         await webpush.sendNotification(
-            subscription as any,
+            subscription as ExtendedPushSubscription,
             JSON.stringify({
                 title: 'Test Notification',
                 body: message,

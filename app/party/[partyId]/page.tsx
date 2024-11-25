@@ -36,14 +36,10 @@ type Props = {
 
 // export const metadata: Metadata = {
 //     title: '',
-    
+
 //   }
-  
+
 export default async function Home({ params, searchParams }: Props) {
-
-    const PlayList = await getPlayList({ hostId: 1, date: '2024-11-03' });
-    console.log(PlayList);
-
     const partyId = params.partyId;
 
     // console.log("%%%%%params", params);
@@ -66,7 +62,7 @@ export default async function Home({ params, searchParams }: Props) {
     const host = await getHost(partyId);
     if (!host) notFound();
     const hostId = host.id;
-    const { hostUrl, hostDescription, hostName,} = host;
+    const { hostUrl, hostDescription, hostName } = host;
     // const hostUrl = host;
 
     console.log('hostId', hostId);
@@ -105,33 +101,6 @@ export default async function Home({ params, searchParams }: Props) {
 
             {/* spacer */}
             <div className="h-10"></div>
-            {/* <section className="w-full h-60 flex justify-center">
-                <AdBanner
-                    dataAdFormat="auto"
-                    dataFullWidthResponsive={true}
-                    dataAdSlot="4643526086"
-                />
-            </section> */}
-            {/* <section className="w-full min-h-[300px] flex justify-center">
-                <AdBanner
-                    dataAdFormat="auto"
-                    dataFullWidthResponsive={true}
-                    dataAdSlot="4062933975"
-                />
-                <AdBanner
-                    dataAdFormat="auto"
-                    dataFullWidthResponsive={true}
-                    dataAdSlot="4062933975"
-                />
-                <AdBanner
-                    dataAdFormat="auto"
-                    dataFullWidthResponsive={true}
-                    dataAdSlot="4062933975"
-                />
-
-
-                
-            </section> */}
 
             <section className="w-full min-h-[300px] flex justify-center overflow-clip">
                 <AdBanner
@@ -155,45 +124,34 @@ export default async function Home({ params, searchParams }: Props) {
                 </span>
             </section>
 
-            {songIndex <= 1 && <TopSongsList partyId={hostId} />}
+            <section className="lg:w-8/12 md:w-10/12 w-full text-center flex flex-col items-center">
+                {songIndex <= 1 && <TopSongsList partyId={hostId} />}
 
-            {/* <AS_vBanner /> */}
-            <AdBox />
-            <Suspense fallback={<div></div>}>
-                <PageMsg partyId={hostId} />
-            </Suspense>
+                {/* <AS_vBanner /> */}
+                <AdBox />
+                <Suspense fallback={<div></div>}>
+                    <PageMsg partyId={hostId} />
+                </Suspense>
 
-            {/* <div className="h-96 w-full ">
-                <GoogleAdUnit>
-                    <ins
-                        className="adsbygoogle"
-                        style={{ display: 'block', width: '100%' }}
-                        data-ad-client="ca-pub-6202644433627847"
-                        data-ad-slot="9203339114"
-                        data-ad-format="auto"
-                        data-full-width-responsive="true"
-                    ></ins>
-                </GoogleAdUnit>
-            </div> */}
+                <h2 className="uppercase text-2xl mt-8 mb-8">
+                    Vote for your FAV SONGS🎵
+                </h2>
 
-            <h2 className="uppercase text-2xl mt-8 mb-8">
-                Vote for your FAV SONGS🎵
-            </h2>
+                <MusicList songs={songs} isAdmin={false} partyId={Number(hostId)} />
+                <div className="flex gap-1">
+                    {songIndex >= 10 && (
+                        <Link href={`?songIndex=${songIndex - 10}`}>
+                            <Button className="mt-4">Prev page</Button>
+                        </Link>
+                    )}
 
-            <MusicList songs={songs} isAdmin={false} />
-            <div className="flex gap-1">
-                {songIndex >= 10 && (
-                    <Link href={`?songIndex=${songIndex - 10}`}>
-                        <Button className="mt-4">Prev page</Button>
+                    <Link href={`?songIndex=${songIndex + 10}`}>
+                        <Button className="mt-4">Next page</Button>
                     </Link>
-                )}
+                </div>
 
-                <Link href={`?songIndex=${songIndex + 10}`}>
-                    <Button className="mt-4">Next page</Button>
-                </Link>
-            </div>
-
-            {/* <CeneoAdsSection /> */}
+                {/* <CeneoAdsSection /> */}
+            </section>
         </>
     );
 }

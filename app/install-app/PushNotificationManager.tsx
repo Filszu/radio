@@ -9,25 +9,26 @@ export function urlBase64ToUint8Array(base64String: string) {
         .replace(/-/g, '+')
         .replace(/_/g, '/');
 
-    try {
-        const rawData = window.atob(base64);
-        const outputArray = new Uint8Array(rawData.length);
+    const rawData = window.atob(base64);
+    const outputArray = new Uint8Array(rawData.length);
 
-        for (let i = 0; i < rawData.length; ++i) {
-            outputArray[i] = rawData.charCodeAt(i);
-        }
-        return outputArray;
-    } catch (e) {
-        console.error('Invalid base64 string', e);
-        return new Uint8Array();
+    for (let i = 0; i < rawData.length; ++i) {
+        outputArray[i] = rawData.charCodeAt(i);
     }
+    return outputArray;
 }
 
-export default function PushNotificationManager() {
+interface ExtendedPushSubscription extends PushSubscription {
+    keys: {
+        p256dh: string;
+        auth: string;
+    };
+}
+
+export function PushNotificationManager() {
     const [isSupported, setIsSupported] = useState(false);
-    const [subscription, setSubscription] = useState<PushSubscription | null>(
-        null,
-    );
+    const [subscription, setSubscription] =
+        useState<ExtendedPushSubscription | null>(null);
     const [message, setMessage] = useState('');
 
     useEffect(() => {
@@ -43,7 +44,9 @@ export default function PushNotificationManager() {
             updateViaCache: 'none',
         });
         const sub = await registration.pushManager.getSubscription();
-        setSubscription(sub);
+        if (sub) {
+            setSubscription(sub as ExtendedPushSubscription);
+        }
     }
 
     async function subscribeToPush() {
@@ -54,8 +57,8 @@ export default function PushNotificationManager() {
                 process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY!,
             ),
         });
-        setSubscription(sub);
-        await subscribeUser(sub);
+        setSubscription(sub as ExtendedPushSubscription);
+        await subscribeUser(sub as ExtendedPushSubscription);
     }
 
     async function unsubscribeFromPush() {

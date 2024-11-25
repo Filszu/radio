@@ -17,9 +17,12 @@ import { cn } from '@/lib/utils';
 const SongInfoBox = ({
     song,
     isAdmin,
+    partyId,
     styles,
+    
 }: {
     song: USong | IPartySong;
+    partyId?: number;
     isAdmin: boolean;
     styles?: string;
 }) => {

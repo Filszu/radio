@@ -14,6 +14,7 @@ import { postPlayList } from '@/lib/postPlayList';
 const SongAdminOptions = ({
     songId,
     song,
+    
 }: {
     songId: string;
     song: USong | IPartySong;
@@ -33,7 +34,16 @@ const SongAdminOptions = ({
 
     async function addSongToPlaylist() {
         console.log('adding song to playlist');
-
+        let partyId;
+        if ('partyId' in song) 
+            {
+            partyId = (song as IPartySong).partyId;
+            console.log((song as IPartySong).partyId);
+        }
+        else{
+            alert("partyId not found");
+            return;
+        }
         
         let usongid;
         if ('USongId' in song) {
@@ -44,7 +54,7 @@ const SongAdminOptions = ({
         }
         
         const res = await postPlayList({
-            hostId: 1,
+            hostId: partyId,
             songId: usongid
         });
 
