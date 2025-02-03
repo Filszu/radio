@@ -69,7 +69,7 @@ export default async function Home({ params, searchParams }: Props) {
 
     const songs: IPartySong[] = await getPartySongs({
         staringIndex: songIndex,
-        limit: songIndex + 10,
+        limit: songIndex + 20,
         order: 'created_at',
         status: 'active',
         partyId: Number(hostId),
@@ -128,7 +128,7 @@ export default async function Home({ params, searchParams }: Props) {
                 {songIndex <= 1 && <TopSongsList partyId={hostId} />}
 
                 {/* <AS_vBanner /> */}
-                <AdBox />
+                {/* <AdBox /> */}
                 <Suspense fallback={<div></div>}>
                     <PageMsg partyId={hostId} />
                 </Suspense>
@@ -140,12 +140,12 @@ export default async function Home({ params, searchParams }: Props) {
                 <MusicList songs={songs} isAdmin={false}/>
                 <div className="flex gap-1">
                     {songIndex >= 10 && (
-                        <Link href={`?songIndex=${songIndex - 10}`}>
+                        <Link href={`?songIndex=${songIndex - 20}`}>
                             <Button className="mt-4">Prev page</Button>
                         </Link>
                     )}
 
-                    <Link href={`?songIndex=${songIndex + 10}`}>
+                    <Link href={`?songIndex=${songIndex + 20}`}>
                         <Button className="mt-4">Next page</Button>
                     </Link>
                 </div>
