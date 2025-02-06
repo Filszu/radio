@@ -11,7 +11,7 @@ import { ShareParty } from '@/components/ui/custom/ShareParty';
 const NewPartyForm = ({ userId }: { userId: string }) => {
     const { toast } = useToast();
 
-    const [createdParty, setCreatedParty] = useState(false);
+    const [createdParty, setCreatedParty]  = useState("");
 
     async function submitNewPartyForm(formData: FormData) {
         const partyName = formData.get('partyName') as string;
@@ -38,14 +38,14 @@ const NewPartyForm = ({ userId }: { userId: string }) => {
                 }`,
             });
             if (submitingFormStatus.status === 200) {
-                setCreatedParty(true);
+                setCreatedParty(partyUrl);
             }
         }
     }
 
     return (
         <>
-            {createdParty && <ShareParty partyUrl={'partyUrl'} />}
+            {createdParty && <ShareParty partyUrlShort={createdParty} />}
             {!createdParty && (
                 <form
                     action={submitNewPartyForm}
