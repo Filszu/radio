@@ -1,20 +1,22 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import SubmitButton from '@/components/ui/custom/SubmitButton';
 import postParty from '@/lib/postNewParty';
 import { IActionMSG } from '@/types';
 import { useToast } from '@/components/ui/use-toast';
+import { ShareParty } from '@/components/ui/custom/ShareParty';
 
 const NewPartyForm = ({ userId }: { userId: string }) => {
     const { toast } = useToast();
+
+    const [createdParty, setCreatedParty] = useState(false);
 
     async function submitNewPartyForm(formData: FormData) {
         const partyName = formData.get('partyName') as string;
         const partyUrl = formData.get('partyUrl') as string;
         const partyDescription = formData.get('partyDescription') as string;
-
 
         const submitingFormStatus: IActionMSG | undefined = await postParty({
             partyName,
@@ -35,44 +37,55 @@ const NewPartyForm = ({ userId }: { userId: string }) => {
                         : 'destructive'
                 }`,
             });
+            if (submitingFormStatus.status === 200) {
+                setCreatedParty(true);
+            }
         }
     }
 
     return (
-        <form action={submitNewPartyForm} className="flex flex-col gap-2">
-            <Label htmlFor="partyName">Name your party</Label>
+        <>
+            {createdParty && <ShareParty partyUrl={'partyUrl'} />}
+            {!createdParty && (
+                <form
+                    action={submitNewPartyForm}
+                    className="flex flex-col gap-2"
+                >
+                    <Label htmlFor="partyName">Name your party</Label>
 
-            <Input
-                type="text"
-                placeholder="my ultimate party"
-                name="partyName"
-                required
-            />
+                    <Input
+                        type="text"
+                        placeholder="my ultimate party"
+                        name="partyName"
+                        required
+                    />
 
-            <Label htmlFor="partyUrl">Create your party url </Label>
-            <Input
-                type="text"
-                placeholder="my-ultimate-party-url"
-                name="partyUrl"
-                required
-            />
-             <Label htmlFor="partyDescription">Your party description </Label>
-            <Input
-                type="text"
-                placeholder="The best party in the world"
-                name="partyDescription"
-                required
-            />
+                    <Label htmlFor="partyUrl">Create your party url </Label>
+                    <Input
+                        type="text"
+                        placeholder="my-ultimate-party-url"
+                        name="partyUrl"
+                        required
+                    />
+                    <Label htmlFor="partyDescription">
+                        Your party description{' '}
+                    </Label>
+                    <Input
+                        type="text"
+                        placeholder="The best party in the world"
+                        name="partyDescription"
+                        required
+                    />
 
-
-
-            <SubmitButton
-                btnText="Host my party"
-                submitingText="Creating party..."
-            >
-                Host my party
-            </SubmitButton>
-        </form>
+                    <SubmitButton
+                        btnText="Host my party"
+                        submitingText="Creating party..."
+                    >
+                        Host my party
+                    </SubmitButton>
+                </form>
+            )}
+        </>
     );
 };
 
