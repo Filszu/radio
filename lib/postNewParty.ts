@@ -32,8 +32,8 @@ export default async function postParty(props: IPostParty) {
         returnMSG.type = 'error';
     }
 
-    // check if party name contains only letters and numbers
-    if (!/^[a-zA-Z0-9]*$/.test(partyName)) {
+    // check if party name contains only letters and numbers and spaces
+    if (!/^[a-zA-Z0-9 ]*$/.test(partyName)) {
         returnMSG.message = 'Party name must contain only letters and numbers';
         returnMSG.title = 'Invalid Party Name';
         returnMSG.status = 400;
