@@ -34,7 +34,9 @@ const OAuthForm = async (props: Props) =>
                 options: {
                     // redirectTo: "/auth/callback",
                     redirectTo: `${location.origin}/profile/create`,
+                    // redirectTo: `/profile/create`,
                     // redirectTo: `${location.origin}/auth/callback`,
+                    
                 },
             });
 

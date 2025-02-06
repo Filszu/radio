@@ -30,31 +30,12 @@ type Props = {
 
 const NewSongDialog = async(props: Props) => {
   
-  // const [open, setOpen] = useState(false);
 
-  
-  
-  
- 
-
-  // async function handleSubmit(formData: FormData){
-  //   // 'use server'
-  //   console.log('============submitting form')
-  //   const submitingFormStatus:IActionMSG = await submitNewSongForm(formData)
-   
-  //   console.log(submitingFormStatus)
-
-
-  //   // alert(submitingFormStatus.message)
-   
-    
-  // }
 
   
   return (
     
     <Dialog 
-    // open={open} onOpenChange={setOpen}
     >
      
 

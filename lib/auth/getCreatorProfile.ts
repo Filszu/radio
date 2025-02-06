@@ -9,6 +9,7 @@ interface Iprops {
     ref?: Text;
     username?: string;
     promoCode?: string;
+    premiumUntil?: string;
 }
 export  async function getCreatorProfile(props: Iprops) {
     let { data: profiles, error } = await supabase
@@ -17,15 +18,22 @@ export  async function getCreatorProfile(props: Iprops) {
         .eq('id', props.sessionUserId)
         .single();
 
-        return profiles;
+        
 
     if (error) {
         console.log(error);
         return null;
     }
+
+    return profiles;
 }
 
-// Filters
+function premiumUntilDate(): string {
+    const today = new Date();
+    const futureDate = new Date(today);
+    futureDate.setDate(today.getDate() + 14);
+    return futureDate.toISOString().split('T')[0];
+}
 
 export async function postCreatorProfile(props: Iprops) {
     console.log('props', props);
@@ -33,7 +41,9 @@ export async function postCreatorProfile(props: Iprops) {
         .from('partyCreators')
         .insert({
             id: props.sessionUserId,
-            premiumStatus: Number(props.premiumStatus), // Change the value to a number
+            // premiumStatus: Number(props.premiumStatus), // Change the value to a number
+            premiumStatus: 2,
+            premiumUntil: premiumUntilDate(), 
             ref: props.ref?.toString(),
             username: props.username?.toString(),
         });

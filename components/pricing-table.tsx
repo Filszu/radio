@@ -50,17 +50,21 @@ export function PricingTable(props: Iprops) {
                             <ListItem>Music API access</ListItem>
                             <ListItem>Admin dashboard</ListItem>
                             <ListItem>Your Party Logo</ListItem>
-                            <ListItem included>TEST premium features - with Free Premium Trial for 30 days - included (with ads)</ListItem>
+                            <ListItem included>TEST premium features</ListItem>
+                            <ListItem included>
+                                with Free Premium Trial for 14 days <br />
+                                included (with ads)
+                            </ListItem>
                         </ul>
                     </CardContent>
                     <CardFooter>
-                        <SubmitButton 
+                        <SubmitButton
                             className="w-full"
                             onClick={() => props.plan1ButtonFunction}
                             btnText="Get Started"
                         >
                             Get Started
-                        </SubmitButton >
+                        </SubmitButton>
                     </CardFooter>
                 </Card>
 
@@ -91,7 +95,10 @@ export function PricingTable(props: Iprops) {
                     </CardContent>
                     <CardFooter>
                         <Button
-                            onClick={() => {console.log("hahaha"); props.plan2ButtonFunction}}
+                            onClick={() => {
+                                console.log('hahaha');
+                                props.plan2ButtonFunction;
+                            }}
                             className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
                         >
                             Subscribe Now
