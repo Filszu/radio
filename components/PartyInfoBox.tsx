@@ -1,17 +1,18 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Disc3 } from 'lucide-react';
+import { Disc3, Share2 } from 'lucide-react';
 import { Settings2 } from 'lucide-react';
 import { THost } from '@/types';
 import Link from 'next/link';
+import { Button } from './ui/button';
 
 interface IPartyInfoBox {
     admin?: boolean;
-    host : THost;
+    host: THost;
 }
 
-export function PartyInfoBox({admin, host}: IPartyInfoBox) {
+export function PartyInfoBox({ admin, host }: IPartyInfoBox) {
     const [imageUrl, setImageUrl] = useState('');
 
     useEffect(() => {
@@ -25,6 +26,7 @@ export function PartyInfoBox({admin, host}: IPartyInfoBox) {
         //   {JSON.stringify(host)}
 
         // </div>
+
         <Link href={`/party/${host.hostUrl}`}>
             <div
                 className="relative w-80 h-48 rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl group  cursor-pointer"
@@ -50,12 +52,33 @@ export function PartyInfoBox({admin, host}: IPartyInfoBox) {
                             </p>
                         </div>
                         {admin && (
-                                <Link href={`/party/${host.hostUrl}/admin`} className="flex items-center space-x-2 text-primary">
-                                    <Settings2 size={30} />
-                                    {/* <p>Settings</p> */}
-                                </Link>
-                            )}
-                        
+                            <>
+                                <Button
+                                    className="flex items-center text-primary"
+                                    variant={'ghost'}
+                                >
+                                    <Link
+                                        href={`/party/${host.hostUrl}/admin`}
+                                        className="flex items-center  text-primary"
+                                    >
+                                        <Settings2 size={30} />
+                                        {/* <p>Settings</p> */}
+                                    </Link>
+                                </Button>
+
+                                <Button
+                                    className="flex items-center  text-primary"
+                                    variant={'ghost'}
+                                >
+                                    <Link
+                                        href={`/party/${host.hostUrl}/share`}
+                                        className="flex items-center  text-primary"
+                                    >
+                                        <Share2 size={30} />
+                                    </Link>
+                                </Button>
+                            </>
+                        )}
                     </div>
                     <div className="text-sm opacity-75">
                         <p>/{host.hostUrl}</p>

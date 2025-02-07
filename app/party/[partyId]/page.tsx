@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Logo from '../public/imgs/logo-elektron.jpg';
 import { VotingList } from '@/components';
 import { Button } from '@/components/ui/button';
-import { Music } from 'lucide-react';
+import { Music, Share2 } from 'lucide-react';
 import MusicList from '@/components/MusicList';
 import NewSongDialog from '@/components/NewSongDialog';
 import { getPartySongs, getSongs, getSongsCustom } from '@/lib/getSongs';
@@ -88,9 +88,23 @@ export default async function Home({ params, searchParams }: Props) {
             {/* <Link href="/add-new-song">xxxxxxxxx</Link> */}
 
             <section className="">
-                <h2 className="text-3xl text-center">
-                    <b>{hostName ?? ''}</b> party
-                </h2>
+                <div className="flex gap-1 flwx-wrap">
+                   
+                    <h2 className="text-3xl text-center">
+                        <b>{hostName ?? ''}</b> party{' '}
+                    </h2>
+                    <Button
+                        className="flex items-center  text-primary"
+                        variant={'ghost'}
+                    >
+                        <Link
+                            href={`/party/${host.hostUrl}/share`}
+                            className="flex items-center  text-primary"
+                        >
+                            <Share2 size={30} />
+                        </Link>
+                    </Button>
+                </div>
 
                 <h3>{hostDescription ?? ''}</h3>
             </section>
@@ -137,7 +151,7 @@ export default async function Home({ params, searchParams }: Props) {
                     Vote for your FAV SONGS🎵
                 </h2>
 
-                <MusicList songs={songs} isAdmin={false}/>
+                <MusicList songs={songs} isAdmin={false} />
                 <div className="flex gap-1">
                     {songIndex >= 10 && (
                         <Link href={`?songIndex=${songIndex - 20}`}>
