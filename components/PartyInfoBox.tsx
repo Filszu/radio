@@ -38,7 +38,7 @@ export function PartyInfoBox({ admin, host }: IPartyInfoBox) {
             >
                 <div className="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-md group-hover:backdrop-blur-sm transition-all duration-300"></div>
                 <div className="relative z-10 h-full p-4 text-white flex flex-col justify-between">
-                    <div className="flex items-center space-x-4">
+                    <div className="flex space-x-4 flex-wrap items-center">
                         <div className="animate-spin">
                             <Disc3 size={40} />
                         </div>
@@ -53,30 +53,32 @@ export function PartyInfoBox({ admin, host }: IPartyInfoBox) {
                         </div>
                         {admin && (
                             <>
-                                <Button
-                                    className="flex items-center text-primary"
-                                    variant={'ghost'}
-                                >
-                                    <Link
-                                        href={`/party/${host.hostUrl}/admin`}
-                                        className="flex items-center  text-primary"
+                                <div className='flex'>
+                                    <Button
+                                        className="flex items-center text-primary"
+                                        variant={'ghost'}
                                     >
-                                        <Settings2 size={30} />
-                                        {/* <p>Settings</p> */}
-                                    </Link>
-                                </Button>
+                                        <Link
+                                            href={`/party/${host.hostUrl}/admin`}
+                                            className="flex items-center  text-primary"
+                                        >
+                                            <Settings2 size={30} />
+                                            {/* <p>Settings</p> */}
+                                        </Link>
+                                    </Button>
 
-                                <Button
-                                    className="flex items-center  text-primary"
-                                    variant={'ghost'}
-                                >
-                                    <Link
-                                        href={`/party/${host.hostUrl}/share`}
+                                    <Button
                                         className="flex items-center  text-primary"
+                                        variant={'ghost'}
                                     >
-                                        <Share2 size={30} />
-                                    </Link>
-                                </Button>
+                                        <Link
+                                            href={`/party/${host.hostUrl}/share`}
+                                            className="flex items-center  text-primary"
+                                        >
+                                            <Share2 size={30} />
+                                        </Link>
+                                    </Button>
+                                </div>
                             </>
                         )}
                     </div>

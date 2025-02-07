@@ -88,7 +88,7 @@ export default async function Home({ params, searchParams }: Props) {
             {/* <Link href="/add-new-song">xxxxxxxxx</Link> */}
 
             <section className="">
-                <div className="flex gap-1 flwx-wrap">
+                <div className="flex gap-1 flwx-wrap justify-center">
                    
                     <h2 className="text-3xl text-center">
                         <b>{hostName ?? ''}</b> party{' '}
