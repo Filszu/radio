@@ -44,9 +44,12 @@ export default async function putSongInfo({
                 accessToken,
             });
         }
+        return JSON.stringify(songInfo);
     }
 
     if (!songInfo || songInfo === null) {
+        // after tests set to null
+        
         return null;
         return Error('Invalid song URL or unable to fetch song info');
     }
