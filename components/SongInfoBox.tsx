@@ -34,7 +34,7 @@ const SongInfoBox = ({
     return (
         <div
             className={cn(
-                'border rounded-lg p-4 shadow-md w-full hover:border-primary group hover:ease-out duration-300 transform lg:hover:scale-105 transition-transform',
+                'border rounded-lg p-4 shadow-md w-full hover:border-primary group hover:ease-out duration-300 transform  transition-transform',
                 styles ?? '',
             )}
         >
