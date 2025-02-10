@@ -90,10 +90,7 @@ export async function submitNewSongForm(props: ISubmitNewSongForm) {
                 accessToken: accessToken!,
                 platform: 'ytmusic',
             });
-            await postNewPartySong({
-                songID: dbSong.songId,
-                partyID: partyId,
-            });
+            
 
             if (!res) {
                 returnMSG.message = 'Cannot get song data from yt music';
@@ -102,6 +99,11 @@ export async function submitNewSongForm(props: ISubmitNewSongForm) {
                 returnMSG.type = 'error';
                 return returnMSG;
             }
+
+            await postNewPartySong({
+                songID: dbSong.songId,
+                partyID: partyId,
+            });
         } else {
             returnMSG.message =
                 'Sth went wrong. Please input correct SPOTIFY / YT MUSIC URL';

@@ -74,14 +74,29 @@ export  async function getSongInfoFromYtMusic({ videoId, accessToken }: { videoI
             }
         });
 
+        if(!response){
+            return null;
+            
+        }
+
+        if(response.status !== 200){
+            // return null;
+            console.log("Invalid video ID")
+            throw new Error("Invalid video ID");
+        }
         if (!response.data.items.length) {
+            // return null;
+            console.log("No video found")
             throw new Error("No video found");
         }
+
+        console.log("res yt ---->",JSON.stringify(response.data.items[0]));
 
         const videoData = response.data.items[0];
         const trackName = videoData.snippet.title;
         const artistName = videoData.snippet.channelTitle;
         const imageUrl = videoData.snippet.thumbnails.high.url;
+        const imageThumbnail = videoData.snippet.thumbnails.default.url;
         const duration_in_s = secondsToMinutesAndSeconds(parseDuration(videoData.contentDetails.duration));
 
         console.log(`Track: ${trackName}`);
@@ -96,7 +111,9 @@ export  async function getSongInfoFromYtMusic({ videoId, accessToken }: { videoI
             duration: duration_in_s,
         };
     } catch (err) {
-        console.log(err);
+        console.log("error yt music <=> getting song info ")
+        // console.log(err);
+        
         return null;
     }
 }

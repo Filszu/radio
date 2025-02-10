@@ -1,13 +1,20 @@
-'use server'
+'use server';
 
-import {getSongInfoFromYtMusic, getSongInfoFromSpotify } from "./getSongInfo";
+import { getSongInfoFromYtMusic, getSongInfoFromSpotify } from './getSongInfo';
 
+import supabase from '@/config/supaBaseClient';
+import { genYtMusicUrl } from '@/utils/genYTMusicUrl';
+import { genSpotifyUrl } from '@/utils/genSpotifyUrl';
 
-import supabase from "@/config/supaBaseClient";
-import { genYtMusicUrl } from "@/utils/genYTMusicUrl";
-import { genSpotifyUrl } from "@/utils/genSpotifyUrl";
-
-export default async function putSongInfo({ songID, accessToken, platform }: { songID: string; accessToken: string; platform: "spotify" | "ytmusic" }) {
+export default async function putSongInfo({
+    songID,
+    accessToken,
+    platform,
+}: {
+    songID: string;
+    accessToken: string;
+    platform: 'spotify' | 'ytmusic';
+}) {
     // get song row basing on id
     const { data, error } = await supabase
         .from('uSongs')
@@ -21,20 +28,27 @@ export default async function putSongInfo({ songID, accessToken, platform }: { s
     }
 
     let songInfo: any = null;
-    if (platform === "spotify") {
+    if (platform === 'spotify') {
         const trackID = genSpotifyUrl(data[0].url);
         if (trackID) {
-            songInfo = await getSongInfoFromSpotify({ trackId: trackID, accessToken });
+            songInfo = await getSongInfoFromSpotify({
+                trackId: trackID,
+                accessToken,
+            });
         }
-    } else if (platform === "ytmusic") {
+    } else if (platform === 'ytmusic') {
         const videoID = genYtMusicUrl(data[0].url);
         if (videoID) {
-            songInfo = await getSongInfoFromYtMusic({ videoId: videoID, accessToken });
+            songInfo = await getSongInfoFromYtMusic({
+                videoId: videoID,
+                accessToken,
+            });
         }
     }
 
-    if (!songInfo) {
-        return Error("Invalid song URL or unable to fetch song info");
+    if (!songInfo || songInfo === null) {
+        return null;
+        return Error('Invalid song URL or unable to fetch song info');
     }
 
     const { error: updateError } = await supabase
@@ -49,5 +63,6 @@ export default async function putSongInfo({ songID, accessToken, platform }: { s
         .eq('id', songID)
         .select();
 
-    return "success";
+    if (updateError) return null;
+    return 'success';
 }
