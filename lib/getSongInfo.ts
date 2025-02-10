@@ -62,7 +62,7 @@ export  async function getSongInfoFromSpotify({trackId, accessToken}:{trackId:st
 
 
 export  async function getSongInfoFromYtMusic({ videoId, accessToken }: { videoId: string; accessToken: string }) {
-    console.log("getSongInfoFromYtMusic", videoId);
+    // console.log("getSongInfoFromYtMusic", videoId);
     
     try {
         // Make a GET request to the YouTube Music API endpoint for the track
@@ -112,9 +112,11 @@ export  async function getSongInfoFromYtMusic({ videoId, accessToken }: { videoI
         };
     } catch (err) {
         console.log("error yt music <=> getting song info ")
-        // console.log(err);
+
+        console.log(err);
+        // return err;
         
-        return null;
+        // return null;
     }
 }
 

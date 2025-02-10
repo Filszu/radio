@@ -13,12 +13,13 @@ import Image from 'next/image';
 import SongAdminOptions from './SongAdminOptions';
 import { IPartySong } from '@/types';
 import { cn } from '@/lib/utils';
+import { FaSpotify } from 'react-icons/fa';
+import { SiYoutubemusic } from 'react-icons/si';
 
 const SongInfoBox = ({
     song,
     isAdmin,
     styles,
-    
 }: {
     song: USong | IPartySong;
     isAdmin: boolean;
@@ -32,20 +33,32 @@ const SongInfoBox = ({
 
     return (
         <div
-        className={cn(
-            'border rounded-lg p-4 shadow-md w-full hover:border-primary group hover:ease-out duration-300 transform lg:hover:scale-105 transition-transform',
-            styles ?? '',
-        )}
+            className={cn(
+                'border rounded-lg p-4 shadow-md w-full hover:border-primary group hover:ease-out duration-300 transform lg:hover:scale-105 transition-transform',
+                styles ?? '',
+            )}
         >
             <div className="flex  items-center space-x-4 justify-center flex-wrap md:justify-between">
                 {song.thumbnail && (
-                    <Image
-                        src={song.thumbnail}
-                        alt="Song Thumbnail"
-                        className="w-16 h-16 rounded-lg"
-                        width={150}
-                        height={150}
-                    />
+                    <>
+                        <div className='relative'>
+                            <Image
+                                src={song.thumbnail}
+                                alt={`${song.title} - ${song.artist} duration: ${song.duration} - Song Thumbnail`}
+                                className="w-16 h-16 rounded-lg"
+                                width={150}
+                                height={150}
+                            />
+                            <div className="absolute bottom-0 right-0 p-1 ">
+                                {/* bg-white bg-opacity-50 rounded-full */}
+                                {song.url.includes('spotify') ? (
+                                    <FaSpotify className="text-green-500" />
+                                ) : (
+                                    <SiYoutubemusic className="text-red-500" />
+                                )}
+                            </div>
+                        </div>
+                    </>
                 )}
                 <div className="">
                     <Link href={song.url} target="blank">

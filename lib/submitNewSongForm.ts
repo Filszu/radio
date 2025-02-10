@@ -66,10 +66,7 @@ export async function submitNewSongForm(props: ISubmitNewSongForm) {
                 accessToken: accessToken,
                 platform: 'spotify',
             });
-            await postNewPartySong({
-                songID: dbSong.songId,
-                partyID: partyId,
-            });
+            
 
             if (!res) {
                 returnMSG.message = 'Cannot get song data from spotify';
@@ -78,16 +75,21 @@ export async function submitNewSongForm(props: ISubmitNewSongForm) {
                 returnMSG.type = 'error';
                 return returnMSG;
             }
+            
+            await postNewPartySong({
+                songID: dbSong.songId,
+                partyID: partyId,
+            });
         } 
 
         // ----------------- YOUTUBE MUSIC -----------------
 
         if (genYtMusicUrl(formData.get('songURL') as string)) {
             console.log('to yt music');
-            const accessToken = process.env.YT_API_KEY_SECRET;
+            const accessToken = process.env.YT_API_KEY_SECRET!;
             const res = await putSongInfo({
                 songID: dbSong.songId,
-                accessToken: accessToken!,
+                accessToken: accessToken,
                 platform: 'ytmusic',
             });
             
