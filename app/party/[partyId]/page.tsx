@@ -26,6 +26,7 @@ import CeneoAdsSection from '@/components/ads/ceneo/CeneoAdSection';
 import { getUser } from '@/lib/auth/getUser';
 import { Metadata } from 'next';
 import { getPlayList } from '@/lib/getPlayList';
+import LinksComponent from '@/components/ads/Links';
 // export const dynamic = "force-dynamic"
 
 export const revalidate = 30;
@@ -170,6 +171,8 @@ export default async function Home({ params, searchParams }: Props) {
 
                 {/* <CeneoAdsSection /> */}
             </section>
+
+            <LinksComponent />
         </>
     );
 }
