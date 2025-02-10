@@ -16,6 +16,7 @@ const MusicList = ({
     return (
         <section className="w-full flex flex-col gap-2 ">
             {songs.map((song, index) => (
+                
                 <>
                     <SongInfoBox
                         key={song.id}

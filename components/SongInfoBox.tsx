@@ -18,7 +18,6 @@ const SongInfoBox = ({
     song,
     isAdmin,
     styles,
-    
 }: {
     song: USong | IPartySong;
     isAdmin: boolean;
@@ -33,7 +32,7 @@ const SongInfoBox = ({
     return (
         <div
             className={cn(
-                'border rounded-lg p-4 shadow-md w-full hover:border-primary group hover:ease-out duration-300 ',
+                'border rounded-lg p-4 shadow-md w-full hover:border-primary group hover:ease-out duration-300 transform hover:scale-105 transition-transform',
                 styles ?? '',
             )}
         >
@@ -42,30 +41,24 @@ const SongInfoBox = ({
                     <Image
                         src={song.thumbnail}
                         alt="Song Thumbnail"
-                        className="w-16 h-16 rounded-lg"
+                        className="w-16 h-16 rounded-lg animate-fade-in"
                         width={150}
                         height={150}
                     />
                 )}
                 <div className="">
                     <Link href={song.url} target="blank">
-                        <h2 className="text-lg font-semibold duration-300 group-hover:text-primary flex content-center items-center">
+                        <h2 className="text-lg font-semibold duration-300 group-hover:text-primary flex content-center items-center hover:underline hover:underline-offset-4">
                             {
-                                // substrWord(song.title??song.url,80)
                                 song.title
                                     ? substrWord(song.title, 80)
                                     : substrWord(song.url, 40, 8)
                             }
-
                             {song.explicit && (
-                                <BsExplicitFill
-                                    className={'text-red-500 ml-2'}
-                                />
+                                <BsExplicitFill className={'text-red-500 ml-2 animate-pulse'} />
                             )}
                             {song.status && song.status == 'banned' && (
-                                <span className="text-red-500 ml-2">
-                                    Banned
-                                </span>
+                                <span className="text-red-500 ml-2">Banned</span>
                             )}
                         </h2>
                     </Link>
@@ -86,16 +79,21 @@ const SongInfoBox = ({
                         </div>
                         <div className="flex items-center">
                             <BiSolidUpvote />
-
                             <span className="md:mx-1"></span>
                             {song.votesPlus - song.votesMinus}
                             <span className="mx-1"></span>
                         </div>
                     </div>
-                    <SongVoteBtns songId={song.id} />
+                    <SongVoteBtns songId={song.id} 
+                    
+                     />
                 </div>
             </div>
-            {isAdmin && <SongAdminOptions songId={song.id} song={song} />}
+            {isAdmin && (
+                <div className="animate-slide-in-up">
+                    <SongAdminOptions songId={song.id} song={song} />
+                </div>
+            )}
         </div>
     );
 };

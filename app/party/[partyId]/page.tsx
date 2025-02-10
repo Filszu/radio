@@ -89,7 +89,6 @@ export default async function Home({ params, searchParams }: Props) {
 
             <section className="">
                 <div className="flex gap-1 flwx-wrap justify-center">
-                   
                     <h2 className="text-3xl text-center">
                         <b>{hostName ?? ''}</b> party{' '}
                     </h2>
@@ -137,6 +136,7 @@ export default async function Home({ params, searchParams }: Props) {
                     />
                 </span>
             </section>
+            <div className="h-10"></div>
 
             <section className="lg:w-8/12 md:w-10/12 w-full text-center flex flex-col items-center">
                 {songIndex <= 1 && <TopSongsList partyId={hostId} />}
