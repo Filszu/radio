@@ -84,7 +84,7 @@ export async function submitNewSongForm(props: ISubmitNewSongForm) {
 
         // ----------------- YOUTUBE MUSIC -----------------
 
-        if (genYtMusicUrl(formData.get('songURL') as string)) {
+        else if (genYtMusicUrl(formData.get('songURL') as string)) {
             console.log('to yt music');
             // const accessToken = process.env.YT_API_KEY!;
             const res = await putSongInfo({
