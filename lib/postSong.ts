@@ -11,14 +11,27 @@ export default async function postSong(formData: FormData) {
     if (!songUrl) return null;
 
     // Check if the song URL is a valid YouTube or Spotify URL
-    const youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\//;
+
+    const youtubeRegex = /^(https?:\/\/)?(music\.youtube\.com\/watch\?v=)\w+/;
+
     const spotifyRegex =
         /^(https?:\/\/)?(www\.)?(open\.spotify\.com|spotify\.com\/track)\//;
 
-    // if (!songUrl || (!youtubeRegex.test(songUrl) && !spotifyRegex.test(songUrl))) {
-    if (!songUrl || !spotifyRegex.test(songUrl)) {
+    if (!songUrl) {
         console.error('Invalid song URL');
         return null;
+    }
+    if (!youtubeRegex.test(songUrl) && !spotifyRegex.test(songUrl)) {
+        if (!youtubeRegex.test(songUrl)) {
+            console.log('Invalid youtube url');
+            return null;
+        }
+
+        
+        if (!spotifyRegex.test(songUrl)) {
+            console.log('Invalid spotify url');
+            return null;
+        }
     }
 
     console.log('Song URL is valid', songUrl);
@@ -34,11 +47,9 @@ export default async function postSong(formData: FormData) {
     if (uSongs && uSongs.length > 0) {
         console.log('Song already in DB');
         return {
-           songId: uSongs[0].id,
-           songStatus: "exists"
-
-        }
-        
+            songId: uSongs[0].id,
+            songStatus: 'exists',
+        };
     } else {
         const { data, error } = await supabase
             .from('uSongs')
@@ -55,8 +66,8 @@ export default async function postSong(formData: FormData) {
 
         return {
             songId: inseredRowId,
-            songStatus: "new"
-        }
+            songStatus: 'new',
+        };
     }
 
     // revalidatePath("/")

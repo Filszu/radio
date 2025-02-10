@@ -61,9 +61,15 @@ module.exports = {
         hostname: 'image.ceneostatic.pl/data/products/**',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'i.ytimg.com/',
+        port: '',
+        pathname: '/**',
       }
     ],
-    domains: ["www.ceneo.pl","image.ceneostatic.pl"],
+    domains: ["www.ceneo.pl","image.ceneostatic.pl", "i.ytimg.com"],
   },
     experimental: {
       serverActions: true,

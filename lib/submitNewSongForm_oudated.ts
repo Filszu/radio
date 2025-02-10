@@ -78,7 +78,14 @@ export async function submitNewSongForm(props: ISubmitNewSongForm) {
                 returnMSG.type = 'error';
                 return returnMSG;
             }
-        } 
+        } else {
+            returnMSG.message =
+                'Sth went wrong. Please input correct SPOTIFY URL';
+            returnMSG.title = 'Error';
+            returnMSG.status = 400;
+            returnMSG.type = 'error';
+            return returnMSG;
+        }
 
         // ----------------- YOUTUBE MUSIC -----------------
 
@@ -104,7 +111,7 @@ export async function submitNewSongForm(props: ISubmitNewSongForm) {
             }
         } else {
             returnMSG.message =
-                'Sth went wrong. Please input correct SPOTIFY / YT MUSIC URL';
+                'Sth went wrong. Please input correct YT MUSIC URL';
             returnMSG.title = 'Error';
             returnMSG.status = 400;
             returnMSG.type = 'error';
