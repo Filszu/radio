@@ -86,23 +86,13 @@ export async function submitNewSongForm(props: ISubmitNewSongForm) {
 
         if (genYtMusicUrl(formData.get('songURL') as string)) {
             console.log('to yt music');
-            const accessToken = process.env.YT_API_KEY_SECRET!;
-            
+            // const accessToken = process.env.YT_API_KEY!;
             const res = await putSongInfo({
                 songID: dbSong.songId,
-                // warning
-                accessToken: accessToken!,
+                accessToken: "accessToken",
                 platform: 'ytmusic',
             });
             
-            if(res){
-                console.log("res yt music",res)
-                returnMSG.message = "token:", accessToken, res.toString();
-                returnMSG.title = 'Error';
-                returnMSG.status = 400;
-                returnMSG.type = 'error';
-                return returnMSG;
-            }
 
             if (!res) {
                 returnMSG.message = 'Cannot get song data from yt music';

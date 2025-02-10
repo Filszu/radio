@@ -1,4 +1,4 @@
-// const axios = require('axios');
+"use server";
 import { secondsToMinutesAndSeconds } from '@/utils/convertTime';
 import axios from 'axios';
 
@@ -60,67 +60,18 @@ export  async function getSongInfoFromSpotify({trackId, accessToken}:{trackId:st
 
 }
 
-// export async function getSongInfoFromYtMusic({ videoId, accessToken }: { videoId: string; accessToken: string }) {
-//     try {
-//         // Construct the URL with query parameters
-//         const url = new URL('https://www.googleapis.com/youtube/v3/videos');
-//         url.searchParams.append('part', 'snippet,contentDetails');
-//         url.searchParams.append('id', videoId);
-//         url.searchParams.append('key', accessToken);
-
-//         // Make a GET request to the YouTube Music API endpoint for the track
-//         const response = await fetch(url.toString());
-
-//         if (!response.ok) {
-//             console.log("Invalid video ID or API error");
-//             throw new Error("Invalid video ID or API error");
-//         }
-
-//         const data = await response.json();
-
-//         if (!data.items || !data.items.length) {
-//             console.log("No video found");
-//             throw new Error("No video found");
-//         }
-
-//         console.log("res yt ---->", JSON.stringify(data.items[0]));
-
-//         const videoData = data.items[0];
-//         const trackName = videoData.snippet.title;
-//         const artistName = videoData.snippet.channelTitle;
-//         const imageUrl = videoData.snippet.thumbnails.high.url;
-//         const imageThumbnail = videoData.snippet.thumbnails.default.url;
-//         const duration_in_s = secondsToMinutesAndSeconds(parseDuration(videoData.contentDetails.duration));
-
-//         console.log(`Track: ${trackName}`);
-//         console.log(`Artist: ${artistName}`);
-//         console.log(`Image URL: ${imageUrl}`);
-
-//         return {
-//             title: trackName,
-//             thumbnail: imageUrl,
-//             artist: artistName,
-//             explicit: false,
-//             duration: duration_in_s,
-//         };
-//     } catch (err) {
-//         console.log("error yt music <=> getting song info ");
-//         console.log(err);
-//         return err;
-//     }
-// }
-
 
 export  async function getSongInfoFromYtMusic({ videoId, accessToken }: { videoId: string; accessToken: string }) {
     // console.log("getSongInfoFromYtMusic", videoId);
     
+    const accessTokenServer = process.env.YT_API_KEY!
     try {
         // Make a GET request to the YouTube Music API endpoint for the track
         const response = await axios.get(`https://www.googleapis.com/youtube/v3/videos`, {
             params: {
                 part: 'snippet,contentDetails',
                 id: videoId,
-                key: accessToken
+                key: accessTokenServer
             }
         });
 
@@ -162,8 +113,9 @@ export  async function getSongInfoFromYtMusic({ videoId, accessToken }: { videoI
         };
     } catch (err) {
         console.log("error yt music <=> getting song info ")
+
         console.log(err);
-        return err;
+        // return err;
         
         // return null;
     }
