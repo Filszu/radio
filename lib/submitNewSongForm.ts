@@ -91,13 +91,13 @@ export async function submitNewSongForm(props: ISubmitNewSongForm) {
             const res = await putSongInfo({
                 songID: dbSong.songId,
                 // warning
-                accessToken: accessToken,
+                accessToken: accessToken!,
                 platform: 'ytmusic',
             });
             
             if(res){
                 console.log("res yt music",res)
-                returnMSG.message = accessToken, res.toString();
+                returnMSG.message = "token:", accessToken, res.toString();
                 returnMSG.title = 'Error';
                 returnMSG.status = 400;
                 returnMSG.type = 'error';
