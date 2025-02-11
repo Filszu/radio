@@ -24,10 +24,44 @@ import AdBanner from '@/components/ads/google/AdBanner';
 import { CeneoBox } from '@/components/ads/ceneo/CeneoBox';
 import CeneoAdsSection from '@/components/ads/ceneo/CeneoAdSection';
 import { getUser } from '@/lib/auth/getUser';
-import { Metadata } from 'next';
+
 import { getPlayList } from '@/lib/getPlayList';
 import LinksComponent from '@/components/ads/Links';
-// export const dynamic = "force-dynamic"
+import { Metadata, ResolvingMetadata } from 'next';
+
+export async function generateMetadata(
+    { params, searchParams }: Props,
+    parent: ResolvingMetadata,
+): Promise<Metadata> {
+    const partyId = params.partyId;
+    const host = await getHost(partyId);
+
+    if (!host) {
+        return {
+            title: 'PARTY VOTE Party Not Found',
+            description: 'The requested party could not be found.',
+        };
+    }
+
+    const { hostName, hostDescription, hostUrl, keyWords, logoUrl } = host;
+    const previousImages = (await parent).openGraph?.images || [];
+    return {
+        title: `${hostName ?? 'Party'} - PartyVOTE`,
+        description: `Join the party at", ${hostDescription ?? 'partyVote'}`,
+        keywords: ['party', 'music', 'Radio Elektron', hostName],
+        openGraph: {
+            title: `${hostName ?? 'Party'} - PartyVOTE`,
+            description: `Join the party at ${
+                hostName ?? ''
+            } @ PartyVOTE. Vote for your favorite songs and see them played live. ${
+                hostDescription ?? ''
+            }`,
+
+            images: [logoUrl??"", ...previousImages],
+        },
+        
+    };
+}
 
 export const revalidate = 30;
 type Props = {
@@ -39,8 +73,6 @@ type Props = {
 //     title: '',
 
 //   }
-
-
 
 export default async function Home({ params, searchParams }: Props) {
     const partyId = params.partyId;
@@ -147,8 +179,7 @@ export default async function Home({ params, searchParams }: Props) {
                 {/* <AS_vBanner /> */}
                 {/* <AdBox /> */}
 
-                <div className='h-10'></div>
-
+                <div className="h-10"></div>
 
                 <Suspense fallback={<div></div>}>
                     <PageMsg partyId={hostId} />

@@ -9,11 +9,15 @@ interface IPostParty {
     partyUrl: string;
     partyDescription: string;
     userId: string;
+    keyWords?: string;    
+    logoUrl?: string;
+    supportedMusicServices: number[];
+    premiumStatus: number;
 }
 export default async function postParty(props: IPostParty) {
     console.log('Posting PARTY...');
 
-    const { partyName, userId, partyUrl, partyDescription } = props;
+    const { partyName, userId, partyUrl, partyDescription, keyWords, logoUrl, supportedMusicServices, premiumStatus } = props;
 
     // await fakeSetTimeOut(2000);
 
@@ -57,13 +61,14 @@ export default async function postParty(props: IPostParty) {
         returnMSG.type = 'error';
     }
 
-    // const { data, error } = await supabase
-    //     .from('hosts')
-    //     .insert([{
-    //         hostName: partyName,
-    //         hostUrl:
-    //     }])
-    //     .select();
+    if (!keyWords|| partyUrl.length < 3 || partyUrl.length > 120) {
+        returnMSG.message =
+            'Keywords must be between 3 and 120 characters long';
+        returnMSG.title = 'Invalid Keywords';
+        returnMSG.status = 400;
+        returnMSG.type = 'error';
+    }
+
 
     if(returnMSG.status !== 200) return returnMSG;
 
@@ -76,6 +81,11 @@ export default async function postParty(props: IPostParty) {
                     hostUrl: partyUrl,
                     hostDescription: partyDescription,
                     creatorId: userId,
+                    keyWords: keyWords,
+                    logoUrl: logoUrl,
+                    supportedMusicServices: supportedMusicServices,
+                    premiumStatus: premiumStatus
+
                 },
             ])
             .select();
