@@ -64,9 +64,9 @@ export default async function signUpPage({ searchParams }: Props) {
                         />
                         <Ref code={promocode.toString()} />
                     </section>
-                    {/* <Link href="/dashboard/faq" className="mt-4 underline">
-                        Learn more
-                    </Link> */}
+                    <Link href="https://policies.google.com/privacy" className="mt-4 underline" target='_blank'>
+                        Google privacy policy
+                    </Link>
                 </div>
             </section>
             <div className="h-36"></div>

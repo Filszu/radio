@@ -40,6 +40,8 @@ type Props = {
 
 //   }
 
+
+
 export default async function Home({ params, searchParams }: Props) {
     const partyId = params.partyId;
 
