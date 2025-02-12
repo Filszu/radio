@@ -1,7 +1,7 @@
 'use server';
 
 import supabase from '@/config/supaBaseClient';
-
+import { THost } from '@/types';
 
 
 export async function getHost(hostUrl: string) {
@@ -14,7 +14,7 @@ export async function getHost(hostUrl: string) {
 
     // console.log(hosts[0])
    
-    return hosts[0];
+    return hosts[0] as THost;
 
 
 

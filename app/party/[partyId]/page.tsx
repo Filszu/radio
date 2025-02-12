@@ -96,7 +96,7 @@ export default async function Home({ params, searchParams }: Props) {
     const host = await getHost(partyId);
     if (!host) notFound();
     const hostId = host.id;
-    const { hostUrl, hostDescription, hostName } = host;
+    const { hostUrl, hostDescription, hostName, votingFinishAt } = host;
     // const hostUrl = host;
 
     console.log('hostId', hostId);
@@ -173,7 +173,7 @@ export default async function Home({ params, searchParams }: Props) {
             <div className="h-10"></div>
 
             <section className="lg:w-8/12 md:w-10/12 w-full text-center flex flex-col items-center">
-                {songIndex <= 1 && <TopSongsList partyId={hostId} />}
+                {songIndex <= 1 && <TopSongsList partyId={hostId} votingFinishAt={votingFinishAt}/>}
 
                 {/* <AS_vBanner /> */}
                 {/* <AdBox /> */}

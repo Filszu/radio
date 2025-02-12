@@ -6,21 +6,28 @@ import SongInfoBox from './SongInfoBox';
 
 type Props = {
     partyId: number
+    votingFinishAt?: string | null;
   }
 export const revalidate = 30;
 const TopSongsList = async (props: Props) => {
 
     const todayDate = new Date().toISOString().split('T')[0];
+
+    const olderThan = props.votingFinishAt??todayDate;
+
+    console.log("older than",olderThan, "\ntoday",todayDate);
     
-    console.log(todayDate);
     const songs: IPartySong[] = await getPartySongs({
         limit: 3,
         order: 'votesPlus',
         status: 'active',
-        dateOlderThan: todayDate,
+        dateOlderThan: olderThan,
         partyId: props.partyId,
 
     });
+
+
+    console.log("songs",songs);
 
     if(!songs || songs.length<3) return <></>
     return (
