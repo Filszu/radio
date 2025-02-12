@@ -14,9 +14,7 @@ export async function POST(request: Request) {
     const apiKey = request.headers.get('apiKey');
 
     // Validate the API key
-    // console.log('apiKey:', apiKey);
-    // if (apiKey !== process.env.MUSIC_API_KEY) {
-    if (apiKey !== "myProMusicFil$hu") {
+    if (apiKey !== process.env.MUSIC_API_KEY) {
         return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
