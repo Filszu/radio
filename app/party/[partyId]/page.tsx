@@ -104,7 +104,7 @@ export default async function Home({ params, searchParams }: Props) {
     const songs: IPartySong[] = await getPartySongs({
         staringIndex: songIndex,
         limit: songIndex + 20,
-        order: 'created_at',
+        order: 'updated_at',
         status: 'active',
         partyId: Number(hostId),
         // partyId: 1,
