@@ -18,6 +18,7 @@ import { getHost } from '@/lib/getHostId';
 import { getUser } from '@/lib/auth/getUser';
 import CodeSnippet from '@/components/ui/custom/CodeSnippet';
 import { PiShootingStarBold } from 'react-icons/pi';
+import UpdateSettingForm from './UpdateSettingsForm';
 
 type Props = {
     params: { partyId: string };
@@ -112,6 +113,8 @@ const Page = async ({ params, searchParams }: Props) => {
                 <strong>PartyName:</strong> {hostName} <strong>PartyId:</strong>{' '}
                 {hostId}
             </p>
+
+            <UpdateSettingForm host={host} />
 
             <PartyMessageForm message={partyLastMsg} partyId={Number(hostId)} />
 
