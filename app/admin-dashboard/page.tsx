@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { getAdminCookie } from '@/lib/cookies/adminCookies';
 import MusicList from '@/components/MusicList';
 import { Music } from 'lucide-react';
-import { USong } from '@/database.types';
+import { USong } from '@/types';
 import { getPartySongs, getSongs, getSongsCustom } from '@/lib/getSongs';
 import { redirect } from 'next/navigation';
 import { headers } from 'next/headers';
@@ -16,77 +16,73 @@ import { IPartySong } from '@/types';
 import PartyMessageForm from './partyMessageForm';
 import { getPartyMessage } from '@/lib/getMessage';
 const Page = async (props: Props) => {
-  const isLogged = await getAdminCookie();
-  if (!isLogged) redirect('/admin-login');
+    const isLogged = await getAdminCookie();
+    if (!isLogged) redirect('/admin-login');
 
-  // const songs: USong[] = await getSongsCustom({
-  //   limit: 100,
-  //   order: 'created_at',
-  // });
+    // const songs: USong[] = await getSongsCustom({
+    //   limit: 100,
+    //   order: 'created_at',
+    // });
 
-  
-  
-  const songs: IPartySong[] = await getPartySongs({
-    staringIndex: 0,
-    limit: 100,
-    order: 'created_at',
-    status: ["active","banned"],
-   
-});
+    const songs: IPartySong[] = await getPartySongs({
+        staringIndex: 0,
+        limit: 100,
+        order: 'created_at',
+        status: ['active', 'banned'],
+    });
 
+    // page.tsx
 
-  // page.tsx
+    const header = headers();
+    const ip = (header.get('x-forwarded-for') ?? '127.0.0.1').split(',')[0];
+    console.log(ip);
 
-  const header = headers();
-  const ip = (header.get('x-forwarded-for') ?? '127.0.0.1').split(',')[0];
-  console.log(ip);
+    const realIp = header.get('x-real-ip');
 
-  const realIp = header.get('x-real-ip');
+    console.log(realIp);
 
-  console.log(realIp);
+    const ip3 = (header.get('cf-connecting-ip ') ?? '127.0.0.1').split(',')[0];
+    console.log(ip3);
 
-  const ip3 = (header.get('cf-connecting-ip ') ?? '127.0.0.1').split(',')[0];
-  console.log(ip3);
+    const ipApi = await getUserIP_api();
 
-  const ipApi = await getUserIP_api();
+    console.log(ipApi);
 
-  console.log(ipApi);
+    // ...
 
-  // ...
+    // paryt Message
 
-  // paryt Message 
+    const partyMessages = await getPartyMessage({
+        partyId: 1,
+        limit: 0,
+        startingIndex: 0,
+        asc: false,
+        order: 'created_at',
+    });
 
-  const partyMessages = await getPartyMessage({
-    partyId: 1,
-    limit: 0,
-    startingIndex: 0,
-    asc: false,
-    order: 'created_at',
-  });
+    // console.log(partyMessages);
 
-  // console.log(partyMessages);
+    const partyLastMsg = partyMessages ? partyMessages[0].message ?? '' : '';
 
-  const partyLastMsg = partyMessages?partyMessages[0].message??'':"";
+    return (
+        <section className="w-full">
+            <h1 className="text-center">Admin Dashboard</h1>
 
-  return (
-    <section className="w-full">
-      <h1 className="text-center">Admin Dashboard</h1>
+            <p className="text-center mt-2 mb-2">
+                You are logged in as Admin 🎯 from ip {ip}
+                <br />
+                {realIp}
+                ip3:
+                {ip3}
+                <br />
+                Api IP:
+                {ipApi}
+            </p>
 
-      <p className="text-center mt-2 mb-2">
-        You are logged in as Admin 🎯 from ip {ip}
-        <br />
-        {realIp}
-        ip3:
-        {ip3}
-        <br />
-        Api IP:
-        {ipApi}
-      </p>
-
-      {/* <PartyMessageForm message={partyLastMsg} /> */}
-      <MusicList songs={songs} isAdmin={true} />
-    </section>
-  );
+            {/* <PartyMessageForm message={partyLastMsg} /> */}
+            <MusicList songs={songs} isAdmin={true} />
+        </section>
+    );
 };
 
 export default Page;

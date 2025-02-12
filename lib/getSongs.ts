@@ -1,7 +1,7 @@
 'use server';
 
 import supabase from '@/config/supaBaseClient';
-import { USong } from '@/database.types';
+import { USong } from '@/types';
 import { GetSongsParams, IPartySong } from '@/types';
 
 export async function getSongs() {

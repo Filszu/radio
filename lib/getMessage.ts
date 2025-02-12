@@ -1,14 +1,15 @@
 'use server';
 
 import supabase from '@/config/supaBaseClient';
-import { USong } from '@/database.types';
-import { GetSongsParams, IPartySong, IpartyMessageRequest, PartyMessage } from '@/types';
+import { USong } from '@/types';
+import {
+    GetSongsParams,
+    IPartySong,
+    IpartyMessageRequest,
+    PartyMessage,
+} from '@/types';
 
-
-
-
-export async function getPartyMessage(props:IpartyMessageRequest) {
-
+export async function getPartyMessage(props: IpartyMessageRequest) {
     const { data, error } = await supabase
         .from('messages')
         .select('*')
@@ -18,8 +19,7 @@ export async function getPartyMessage(props:IpartyMessageRequest) {
 
     if (error) return null;
 
-    if(!data) return null;
-    if(!data[0]) return null;
+    if (!data) return null;
+    if (!data[0]) return null;
     return data as PartyMessage[];
- 
 }

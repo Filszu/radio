@@ -1,5 +1,27 @@
 import { StaticImageData } from 'next/image';
-import { Database, UPartySong, USong } from './database.types';
+import { Database} from './database.types';
+
+// It's convenient to have shorthands for your most-used types.
+export type Song = Database['public']['Tables']['songs']['Row'];
+export type Host = Database['public']['Tables']['hosts']['Row'];
+export type USong = Database['public']['Tables']['uSongs']['Row'];
+
+// ----
+export type SongInsert = Database['public']['Tables']['songs']['Insert'];
+export type HostInsert = Database['public']['Tables']['hosts']['Insert'];
+export type USongInsert = Database['public']['Tables']['uSongs']['Insert'];
+export type SongUpdate = Database['public']['Tables']['songs']['Update'];
+export type HostUpdate = Database['public']['Tables']['hosts']['Update'];
+export type USongUpdate = Database['public']['Tables']['uSongs']['Update'];
+export type SongRelationships =
+    Database['public']['Tables']['songs']['Relationships'];
+export type HostRelationships =
+    Database['public']['Tables']['hosts']['Relationships'];
+export type USongRelationships =
+    Database['public']['Tables']['uSongs']['Relationships'];
+
+export type UPartySong = Database['public']['Tables']['uPartySongs']['Row'];
+
 
 export interface ISong {
     title: string;

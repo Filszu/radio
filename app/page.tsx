@@ -6,7 +6,7 @@ import { Music } from 'lucide-react';
 import MusicList from '@/components/MusicList';
 import NewSongDialog from '@/components/NewSongDialog';
 import { getPartySongs, getSongs, getSongsCustom } from '@/lib/getSongs';
-import { USong } from '@/database.types';
+import { USong } from '@/types';
 
 import Link from 'next/link';
 import { IPartySong } from '@/types';
@@ -47,9 +47,6 @@ export default async function Home({ searchParams }: Props) {
             <section className="md:w-8/12">
                 <TopSongsList partyId={1} />
             </section>
-            
-
-           
         </>
     );
 }

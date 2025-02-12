@@ -6,7 +6,7 @@ import { RiSettings4Fill } from 'react-icons/ri';
 import { Label } from '@radix-ui/react-label';
 import { Input } from './ui/input';
 import putSongAdmin from '@/lib/putSongAdmin';
-import { USong } from '@/database.types';
+import { USong } from '@/types';
 import { IPartySong } from '@/types';
 import { PiShootingStarBold } from 'react-icons/pi';
 import { postPlayList } from '@/lib/postPlayList';
@@ -14,7 +14,6 @@ import { postPlayList } from '@/lib/postPlayList';
 const SongAdminOptions = ({
     songId,
     song,
-    
 }: {
     songId: string;
     song: USong | IPartySong;
@@ -35,43 +34,39 @@ const SongAdminOptions = ({
     async function addSongToPlaylist() {
         console.log('adding song to playlist');
         let partyId;
-        if ('partyId' in song) 
-            {
+        if ('partyId' in song) {
             partyId = (song as IPartySong).partyId;
             console.log((song as IPartySong).partyId);
-        }
-        else{
-            alert("partyId not found");
+        } else {
+            alert('partyId not found');
             return;
         }
-        
+
         let usongid;
         if ('USongId' in song) {
             usongid = (song as IPartySong).USongId;
         } else {
-            alert("USongId not found");
+            alert('USongId not found');
             return;
         }
-        
+
         const res = await postPlayList({
             hostId: partyId,
-            songId: usongid
+            songId: usongid,
         });
 
         if (res) {
             alert(res);
-        }
-        else{
-            alert("error")
+        } else {
+            alert('error');
         }
     }
-
 
     const [isOpen, setIsOpen] = useState(false);
 
     return (
         <div className="mt-2 w-full flex justify-center flex-col">
-          {/* {JSON.stringify(song)}
+            {/* {JSON.stringify(song)}
             
             song.id <br />{song.id}<br />
             u song id <br />{song.USongId} */}
@@ -86,9 +81,9 @@ const SongAdminOptions = ({
                     Edit
                 </Button>
                 <form action={addSongToPlaylist}>
-                <Button type="submit" className="w-14 bg-yellow-400">
-                    <PiShootingStarBold size={20} />
-                </Button>
+                    <Button type="submit" className="w-14 bg-yellow-400">
+                        <PiShootingStarBold size={20} />
+                    </Button>
                 </form>
             </div>
 

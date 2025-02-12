@@ -25,7 +25,7 @@ export const metadata: Metadata = {
             'Party Vote Radio Elektron by Filszu Host Your Party, Let Guests Pick the BeatsCreate unforgettable parties where everyone has a say in the playlist. Host, vote, and dance to the music you all love Radio Elektron by Filszu',
         url: 'https://partyvote.ciac.me',
         siteName: 'PartyVote',
-        images: ['/imgs/opengraph-image.png'],
+        images: [`${"https://partyvote.ciac.me"}/imgs/opengraph-image.png`],
         locale: 'en_US',
         type: 'website',
     },

@@ -1,31 +1,27 @@
-'use server'
+'use server';
 
-import supabase from "@/config/supaBaseClient"
-import { USong } from "@/database.types";
-import { revalidatePath } from "next/cache";
-import { createVotedSongCookie } from "./cookies/votingCookies";
-import { createUserActions, markSongAsVoted } from "./userActions";
+import supabase from '@/config/supaBaseClient';
+import { USong } from '@/types';
+import { revalidatePath } from 'next/cache';
+import { createVotedSongCookie } from './cookies/votingCookies';
+import { createUserActions, markSongAsVoted } from './userActions';
 
-
-
-async function getVotes(songID:string) {
-
+async function getVotes(songID: string) {
     const { data, error } = await supabase
-    .from('uPartySongs').select('votesPlus,votesMinus').eq('id', songID).limit(1)
-
+        .from('uPartySongs')
+        .select('votesPlus,votesMinus')
+        .eq('id', songID)
+        .limit(1);
 
     if (error) {
         throw error;
     }
 
-    return data[0]
-    
-
+    return data[0];
 }
 
-async function voteSong(songID:string,voteType: 'upvote' | 'downvote') {
-
-    console.log("voteSong",songID, voteType)
+async function voteSong(songID: string, voteType: 'upvote' | 'downvote') {
+    console.log('voteSong', songID, voteType);
     // const { data, error } = await supabase
     //     .from('uSongs')
     //     // .update({
@@ -37,34 +33,30 @@ async function voteSong(songID:string,voteType: 'upvote' | 'downvote') {
 
     // select current values of votesPlus and votesMinus dailyVotesPlus and dailyVotesMinus
 
-
-    const isSongCookie = await createVotedSongCookie({songID});
+    const isSongCookie = await createVotedSongCookie({ songID });
     // const isVotingAction
     const isSongInUserActionsDB = await markSongAsVoted(songID);
     // console.log("isSongCookie",isSongCookie);
 
     //temp dissable
-    if(isSongCookie) return "error"
+    if (isSongCookie) return 'error';
 
-    if(isSongInUserActionsDB) return "error"
+    if (isSongInUserActionsDB) return 'error';
 
-    
+    const votes = await getVotes(songID);
 
-
-    const votes = await getVotes(songID)
-
-    if(!votes) return null
+    if (!votes) return null;
 
     //new votes value
 
-    if(voteType === 'upvote') {
-        votes.votesPlus += 1
+    if (voteType === 'upvote') {
+        votes.votesPlus += 1;
         // votes.dailyVotesPlus += 1
     } else {
-        votes.votesMinus += 1
+        votes.votesMinus += 1;
         // votes.dailyVotesMinus += 1
     }
-    
+
     const { data, error } = await supabase
         .from('uPartySongs')
         .update({
@@ -72,26 +64,12 @@ async function voteSong(songID:string,voteType: 'upvote' | 'downvote') {
             votesPlus: votes.votesPlus,
             // dailyVotesMinus : votes.dailyVotesMinus,
             // dailyVotesPlus : votes.dailyVotesPlus,
-        }).eq('id', songID)
+        })
+        .eq('id', songID);
 
-
-
-    
-
-
-
-    
-
-
-
-
-
- 
-
-    revalidatePath("/")
+    revalidatePath('/');
 
     // return data;
 }
 
 export default voteSong;
-

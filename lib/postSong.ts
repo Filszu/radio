@@ -1,7 +1,7 @@
 'use server';
 
 import supabase from '@/config/supaBaseClient';
-import { USong } from '@/database.types';
+import { USong } from '@/types';
 import { revalidatePath } from 'next/cache';
 
 export default async function postSong(formData: FormData) {
@@ -27,7 +27,6 @@ export default async function postSong(formData: FormData) {
             return null;
         }
 
-        
         if (!spotifyRegex.test(songUrl)) {
             console.log('Invalid spotify url');
             return null;

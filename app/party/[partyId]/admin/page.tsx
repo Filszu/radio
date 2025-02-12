@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { getAdminCookie } from '@/lib/cookies/adminCookies';
 import MusicList from '@/components/MusicList';
 import { Music } from 'lucide-react';
-import { USong } from '@/database.types';
+import { USong } from '@/types';
 import { getPartySongs, getSongs, getSongsCustom } from '@/lib/getSongs';
 import { notFound, redirect } from 'next/navigation';
 import { headers } from 'next/headers';
@@ -117,10 +117,14 @@ const Page = async ({ params, searchParams }: Props) => {
 
             <article className="text-center my-4">
                 <h2>Create the spotify playlist</h2>
-                <p className='flex text-center justify-center'>
+                <p className="flex text-center justify-center">
                     You can create the playlist for the party by clicking
-                    <PiShootingStarBold size={20} className="text-yellow-400" /> the button below. The
-                    playlist will be created for the current day.
+                    <PiShootingStarBold
+                        size={20}
+                        className="text-yellow-400"
+                    />{' '}
+                    the button below. The playlist will be created for the
+                    current day.
                 </p>
                 <h2>For Developers</h2>
                 <h3>API</h3>

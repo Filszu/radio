@@ -1,6 +1,6 @@
 // 'use client';
 import React from 'react';
-import { USong } from '@/database.types';
+import { USong } from '@/types';
 import voteSong from '@/lib/voteSong';
 import { Button } from './ui/button';
 import { revalidatePath } from 'next/cache';
@@ -41,7 +41,7 @@ const SongInfoBox = ({
             <div className="flex  items-center space-x-4 justify-center flex-wrap md:justify-between">
                 {song.thumbnail && (
                     <>
-                        <div className='relative'>
+                        <div className="relative">
                             <Image
                                 src={song.thumbnail}
                                 alt={`${song.title} - ${song.artist} duration: ${song.duration} - Song Thumbnail`}

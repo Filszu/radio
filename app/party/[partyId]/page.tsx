@@ -6,7 +6,7 @@ import { Music, Share2 } from 'lucide-react';
 import MusicList from '@/components/MusicList';
 import NewSongDialog from '@/components/NewSongDialog';
 import { getPartySongs, getSongs, getSongsCustom } from '@/lib/getSongs';
-import { USong } from '@/database.types';
+import { USong } from '@/types';
 
 import Link from 'next/link';
 import { IPartySong } from '@/types';
@@ -57,9 +57,8 @@ export async function generateMetadata(
                 hostDescription ?? ''
             }`,
 
-            images: [logoUrl??"", ...previousImages],
+            images: [logoUrl ?? '', ...previousImages],
         },
-        
     };
 }
 
