@@ -30,6 +30,7 @@ import { useToast } from "./ui/use-toast"
 import { IActionMSG } from "@/types"
 type Props = {
   partyId: number
+  votingFinishAt: string;
 }
 
 const NewSongDialogForm = async(props: Props) => {
@@ -41,7 +42,8 @@ const NewSongDialogForm = async(props: Props) => {
     const submitingFormStatus:IActionMSG | undefined= await submitNewSongForm(
       {
         formData: formData,
-        partyId: props.partyId
+        partyId: props.partyId,
+        votingFinishAt: props.votingFinishAt
       }
     )
    

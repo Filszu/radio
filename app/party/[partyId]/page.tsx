@@ -143,7 +143,7 @@ export default async function Home({ params, searchParams }: Props) {
             </section>
             <div className="h-10"></div>
             <Suspense fallback={<div>...</div>}>
-                <NewSongDialog partyId={hostId} />
+                <NewSongDialog partyId={hostId} votingFinishAt={votingFinishAt!}/>
             </Suspense>
 
             {/* spacer */}

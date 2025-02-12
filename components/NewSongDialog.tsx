@@ -25,6 +25,7 @@ import NewSongDialogForm from "./NewSongDialogForm"
 
 type Props = {
   partyId: number
+  votingFinishAt: string;
 }
 
 
@@ -49,6 +50,7 @@ const NewSongDialog = async(props: Props) => {
     <DialogContent className="sm:max-w-[425px]">
       <NewSongDialogForm
       partyId={props.partyId}
+      votingFinishAt={props.votingFinishAt}
       />
     </DialogContent>
   </Dialog>

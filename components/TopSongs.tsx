@@ -27,7 +27,7 @@ const TopSongsList = async (props: Props) => {
     });
 
 
-    console.log("songs",songs);
+    // console.log("songs",songs);
 
     if(!songs || songs.length<3) return <></>
     return (

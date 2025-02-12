@@ -74,6 +74,8 @@ export interface GetSongsParams {
     staringIndex?: number;
     dateOlderThan?: string;
     partyId?: number;
+    id?: string;
+    USongId?: string;
 }
 
 

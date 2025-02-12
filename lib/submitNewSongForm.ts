@@ -9,10 +9,13 @@ import { genYoutubeUrl } from '@/utils/genYTUrl';
 import postNewPartySong from './submitNewPartySong';
 import { IActionMSG } from '@/types';
 import { genYtMusicUrl } from '@/utils/genYTMusicUrl';
+import { getUPartySong } from './getUPartySong';
+import putUPartySong from './putUPartySong';
 
 interface ISubmitNewSongForm {
     formData: FormData;
     partyId: number;
+    votingFinishAt: string;
 }
 
 export async function submitNewSongForm(props: ISubmitNewSongForm) {
@@ -52,21 +55,37 @@ export async function submitNewSongForm(props: ISubmitNewSongForm) {
 
     if (dbSong && dbSong.songId && dbSong.songStatus === 'exists') {
         // update ADDED TIMES
-        await postNewPartySong({
-            songID: dbSong.songId,
-            partyID: partyId,
+        // if song is added today (created_at is today)
+        // update update time, and added times+1 instead of posting song
+        const hasSongBeenAddedToday = await getUPartySong({
+            USongId: dbSong.songId,
+            partyId: partyId,
+            dateOlderThan: props.votingFinishAt,
         });
-    } 
-    else if (dbSong && dbSong.songId && dbSong.songStatus === 'new') {
-        
-        if (genSpotifyUrl(formData.get('songURL') as string) && !genYoutubeUrl(formData.get('songURL') as string)) {
+
+        if (hasSongBeenAddedToday && hasSongBeenAddedToday.length > 0) {
+            putUPartySong({
+                id: hasSongBeenAddedToday[0].id,
+                votesPlus: hasSongBeenAddedToday[0].votesPlus,
+            });
+        } else {
+            // if song is not added today
+            await postNewPartySong({
+                songID: dbSong.songId,
+                partyID: partyId,
+            });
+        }
+    } else if (dbSong && dbSong.songId && dbSong.songStatus === 'new') {
+        if (
+            genSpotifyUrl(formData.get('songURL') as string) &&
+            !genYoutubeUrl(formData.get('songURL') as string)
+        ) {
             const accessToken = await getSpotifyToken();
             const res = await putSongInfo({
                 songID: dbSong.songId,
                 accessToken: accessToken,
                 platform: 'spotify',
             });
-            
 
             if (!res) {
                 returnMSG.message = 'Cannot get song data from spotify';
@@ -75,24 +94,22 @@ export async function submitNewSongForm(props: ISubmitNewSongForm) {
                 returnMSG.type = 'error';
                 return returnMSG;
             }
-            
+
             await postNewPartySong({
                 songID: dbSong.songId,
                 partyID: partyId,
             });
-        } 
+        }
 
         // ----------------- YOUTUBE MUSIC -----------------
-
         else if (genYtMusicUrl(formData.get('songURL') as string)) {
             console.log('to yt music');
             // const accessToken = process.env.YT_API_KEY!;
             const res = await putSongInfo({
                 songID: dbSong.songId,
-                accessToken: "accessToken",
+                accessToken: 'accessToken',
                 platform: 'ytmusic',
             });
-            
 
             if (!res) {
                 returnMSG.message = 'Cannot get song data from yt music';
