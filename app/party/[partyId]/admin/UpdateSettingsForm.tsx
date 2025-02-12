@@ -13,37 +13,55 @@ import {
 } from '@/components/ui/select'; // Shadcn Select components
 import { FaSpotify, FaYoutube } from 'react-icons/fa'; // React Icons for Spotify and YouTube Music
 import { Host } from '@/types';
+import { useToast } from '@/components/ui/use-toast'; // Import useToast hook
+import putPartyAdmin from '@/lib/putHostAdmin';
+import SubmitButton from '@/components/ui/custom/SubmitButton';
+
 
 interface UpdateSettingFormProps {
     host: Host;
 }
 
-async function SubmitForm(formData: FormData) {
-    // Handle form submission on the server
-    const supportedMusicServices = [];
-    if (formData.get('spotify') === 'on') supportedMusicServices.push(1);
-    if (formData.get('yt-music') === 'on') supportedMusicServices.push(2);
-
-    const updatedData = {
-        hostName: formData.get('hostName') as string,
-        hostUrl: formData.get('hostUrl') as string,
-        hostDescription: formData.get('hostDescription') as string,
-        supportedMusicServices,
-        keyWords: formData.get('keyWords') as string,
-        logoUrl: formData.get('logoUrl') as string,
-        votingFinishAt: formData.get('votingFinishAt') as string,
-        repeat: formData.get('repeat') as string,
-    };
-
-    console.log('Updated Data:', updatedData);
-    // Perform your server-side update here (e.g., API call or database update)
-}
-
 const UpdateSettingForm: React.FC<UpdateSettingFormProps> = ({ host }) => {
+    const { toast } = useToast(); // Initialize the toast hook
+
+    async function handleSubmit(formData: FormData) {
+        // Handle form submission on the server
+        const supportedMusicServices = [];
+        if (formData.get('spotify') === 'on') supportedMusicServices.push(1);
+        if (formData.get('yt-music') === 'on') supportedMusicServices.push(2);
+
+        const updatedData = {
+            hostName: formData.get('hostName') as string,
+            hostUrl: formData.get('hostUrl') as string,
+            hostDescription: formData.get('hostDescription') as string,
+            supportedMusicServices,
+            keyWords: formData.get('keyWords') as string,
+            logoUrl: formData.get('logoUrl') as string,
+            votingFinishAt: formData.get('votingFinishAt') as string,
+            repeat: formData.get('repeat') as string,
+        };
+
+        console.log('Updated Data:', updatedData);
+
+        // Call the server action to update party settings
+        const result = await putPartyAdmin({
+            partyId: host.id,
+            ...updatedData,
+        });
+
+        // Display toast notification based on the result
+        toast({
+            title: result.title,
+            description: result.message,
+            variant: result.status === 200 ? 'success' : 'destructive',
+        });
+    }
+
     return (
         <div className="space-y-4">
             <form
-                action={SubmitForm}
+                action={handleSubmit}
                 className="space-y-4 p-4 border rounded-lg"
             >
                 {/* Host Name */}
@@ -142,7 +160,7 @@ const UpdateSettingForm: React.FC<UpdateSettingFormProps> = ({ host }) => {
                     <Input
                         id="logoUrl"
                         name="logoUrl"
-                        defaultValue={host.logoUrl?? ''}
+                        defaultValue={host.logoUrl ?? ''}
                         disabled
                         placeholder="default"
                     />
@@ -154,8 +172,8 @@ const UpdateSettingForm: React.FC<UpdateSettingFormProps> = ({ host }) => {
                     <Input
                         id="votingFinishAt"
                         name="votingFinishAt"
-                        type="datetime-local"
-                        defaultValue={host.votingFinishAt?? ''}
+                        // type="datetime-local"
+                        defaultValue={host.votingFinishAt ?? ''}
                     />
                 </div>
 
@@ -164,7 +182,7 @@ const UpdateSettingForm: React.FC<UpdateSettingFormProps> = ({ host }) => {
                     <Label htmlFor="repeat">
                         Repeat &nbsp;
                         <span className="text-primary">
-                             FREE PREMIUM feature
+                            FREE PREMIUM feature
                         </span>
                     </Label>
                     <Select name="repeat" defaultValue={host.repeat}>
@@ -174,13 +192,13 @@ const UpdateSettingForm: React.FC<UpdateSettingFormProps> = ({ host }) => {
                         <SelectContent>
                             <SelectItem value="no">No</SelectItem>
                             <SelectItem value="daily">Daily</SelectItem>
-                            <SelectItem value="every 3 days">
+                            <SelectItem value="every3days">
                                 Every 3 Days
                             </SelectItem>
-                            <SelectItem value="every week">
+                            <SelectItem value="every_week">
                                 Every Week
                             </SelectItem>
-                            <SelectItem value="every month">
+                            <SelectItem value="every_month">
                                 Every Month
                             </SelectItem>
                         </SelectContent>
@@ -188,7 +206,12 @@ const UpdateSettingForm: React.FC<UpdateSettingFormProps> = ({ host }) => {
                 </div>
 
                 {/* Submit Button */}
-                <Button type="submit">Update Settings</Button>
+                <SubmitButton
+                    btnText="Update Settings"
+                    submitingText="Updating..."
+                >
+                    Update Settings
+                </SubmitButton>
             </form>
         </div>
     );
