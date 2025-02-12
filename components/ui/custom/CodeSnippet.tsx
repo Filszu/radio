@@ -8,7 +8,7 @@ interface CodeSnippetProps {
 
 const CodeSnippet: React.FC<CodeSnippetProps> = ({ commandPrefix, commandText, commandPackage }) => {
     return (
-        <code className="text-sm sm:text-base inline-flex text-left items-center space-x-4 bg-gray-800 text-white rounded-lg p-4 pl-6">
+        <code className="text-sm sm:text-base inline-flex text-left items-center space-x-4 bg-gray-900 text-white rounded-lg p-4 pl-6">
             <span className="flex gap-4">
                 <span className="shrink-0 text-gray-500">{commandPrefix}</span>
                 <span className="flex-1">

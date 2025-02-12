@@ -168,7 +168,7 @@ const UpdateSettingForm: React.FC<UpdateSettingFormProps> = ({ host }) => {
 
                 {/* Voting Finish At */}
                 <div>
-                    <Label htmlFor="votingFinishAt">Voting Finish At</Label>
+                    <Label htmlFor="votingFinishAt">Voting Started At [Set it 1 day earlier before actual date]</Label>
                     <Input
                         id="votingFinishAt"
                         name="votingFinishAt"
