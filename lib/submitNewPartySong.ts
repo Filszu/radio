@@ -19,5 +19,5 @@ export default async function postNewPartySong(props: INewPartySong) {
         console.log(error);
         return null;
     }
-    return 'success';
+    return `success Song ${songID} added to party ${partyID}`;
 }
