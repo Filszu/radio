@@ -24,9 +24,10 @@ import {
 
 interface EmbeddedCheckoutButtonProps {
   priceId: string;  
+  userId: string;
 }
 
-export default function EmbeddedCheckoutButton({ priceId }: EmbeddedCheckoutButtonProps) {
+export default function EmbeddedCheckoutButton({ priceId, userId }: EmbeddedCheckoutButtonProps) {
   const stripePromise = loadStripe(
     process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
   );
@@ -39,7 +40,7 @@ export default function EmbeddedCheckoutButton({ priceId }: EmbeddedCheckoutButt
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ priceId: priceId }),
+      body: JSON.stringify({ priceId: priceId, userId: userId }),
     })
       .then((res) => res.json())
       .then((data) => data.client_secret);
