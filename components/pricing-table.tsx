@@ -24,7 +24,7 @@ export function PricingTable(props: Iprops) {
                 Choose Your Plan and Host Your{' '}
                 <span className="text-primary uppercase">first party</span>
             </h2>
-            <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+            <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                 {/* Free Plan */}
                 <Card className="w-full">
                     <CardHeader>
@@ -52,7 +52,7 @@ export function PricingTable(props: Iprops) {
                             <ListItem>Your Party Logo</ListItem>
                             <ListItem included>TEST premium features</ListItem>
                             <ListItem included>
-                                with Free Premium Trial for 14 days <br />
+                                with Free Premium PRO Trial for 14 days <br />
                                 included (with ads)
                             </ListItem>
                         </ul>
@@ -77,14 +77,14 @@ export function PricingTable(props: Iprops) {
                     <CardContent className="space-y-4">
                         <div className="text-4xl font-bold">
                             <span className="line-through text-xl">7$ </span>$1
-                            <span className="text-xl font-normal">/month</span>
+                            <span className="text-xl font-normal">/month<sup>*</sup></span>
                         </div>
                         <ul className="space-y-2">
                             <ListItem included>
-                                Unlimited music parties
+                                max 2 music parties
                             </ListItem>
                             <ListItem included>Music API access</ListItem>
-                            <ListItem included>Ad-free listening</ListItem>
+                            <ListItem included>Ad-free listening for 2 parties</ListItem>
                             <ListItem included>
                                 Create and share playlists
                             </ListItem>
@@ -105,6 +105,50 @@ export function PricingTable(props: Iprops) {
                         </Button>
                     </CardFooter>
                 </Card>
+                {/* $ULTIMATE Plan */}
+                <Card className="w-full ">
+                    <CardHeader>
+                        <CardTitle className="text-2xl ">
+                            <span className="text-yellow-500">PRO </span>
+                            ULTIMATE Plan</CardTitle>
+                        <CardDescription>Unlock all features</CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                        <div className="text-4xl font-bold">
+                            <span className="line-through text-xl">10$ </span>$1 
+                            <span className="text-xl font-normal">/month<sup>*</sup></span>
+                        </div>
+                        <ul className="space-y-2">
+                            <ListItem included>
+                                Unlimited music parties
+                            </ListItem>
+                            <ListItem included>Music API access</ListItem>
+                            <ListItem included>Ad-free listening</ListItem>
+                            <ListItem included>
+                                Create and share playlists
+                            </ListItem>
+                            <ListItem included>Exclusive content</ListItem>
+                            <ListItem included>Advanced Admin dashboard</ListItem>
+                            <ListItem included>Your Party Logo</ListItem>
+                        </ul>
+                    </CardContent>
+                    <CardFooter>
+                        <Button
+                            onClick={() => {
+                                console.log('hahaha');
+                                props.plan2ButtonFunction;
+                            }}
+                            className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
+                        >
+                            Subscribe Now
+                        </Button>
+                    </CardFooter>
+                </Card>
+                
+
+            </div>
+            <div className="text-center mt-8 text-sm text-gray-500">
+                <sup>*</sup> - first 30 days at $1, then monthly subscription
             </div>
         </div>
     );

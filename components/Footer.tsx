@@ -11,7 +11,7 @@ const Footer = () => {
                 >
                     Filszu
                 </Link>{' '}
-                2023 - 2024
+                2023 - 2025
             </h3>
             <h3 className="mt-2">
                 Give a ⭐ on{' '}
