@@ -9,6 +9,7 @@ import Link from 'next/link';
 import Script from 'next/script';
 import { Header } from '@/components/Header';
 import AdSense from '@/components/ads/AdSense';
+import Footer from '@/components/Footer';
 // import { FiGithub } from 'react-icons/fi'
 
 const inter = Inter({ subsets: ['latin'] });
@@ -28,16 +29,8 @@ export const metadata: Metadata = {
         images: [`${"https://partyvote.ciac.me"}/imgs/opengraph-image.png`],
         locale: 'en_US',
         type: 'website',
+        
     },
-
-    // <AdSense pId="ca-pub-6202644433627847" />
-    // Open Graph
-    // 'og:type': 'website',
-    // 'og:site_name': 'Radio Elektron',
-    // 'og:url': 'https://radio-elektron.vercel.app/',
-    // 'og:title': 'Radio Elektron',
-    // 'og:description': 'Radio Elektron by Filszu',
-    // 'og:image': 'https://radio-elektron.vercel.app/imgs/logo-elektron.jpg',
 };
 
 export default function RootLayout({
@@ -80,30 +73,8 @@ export default function RootLayout({
                 </main>
 
                 <Toaster />
-
-                <footer className="text-center w-full my-10  ">
-                    <h3>
-                        Created with ❣️ by{' '}
-                        <Link
-                            href={'https://lessons.ciac.me/'}
-                            className="link-underline text-primary"
-                        >
-                            Filszu
-                        </Link>{' '}
-                        2023 - 2024
-                    </h3>
-                    <h3 className="">
-                        Give a ⭐ on{' '}
-                        <Link
-                            href={'https://github.com/Filszu/radio'}
-                            className="link-underline text-primary"
-                        >
-                            {/* <FiGithub size={10} />  */}
-                            Github repo
-                        </Link>
-                    </h3>
-                </footer>
-
+                <Footer />
+                
                 <Script
                     // strategy='lazyOnload'
                     strategy="afterInteractive"

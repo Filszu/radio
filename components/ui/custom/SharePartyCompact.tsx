@@ -38,7 +38,7 @@ export function SharePartyCompact({ partyUrlShort = "radio-elektron" }) {
     try {
       if (navigator.share) {
         await navigator.share({
-          title: "Join my party!",
+          title: `${partyUrl}, Join my party! `,
           url: partyUrl,
         });
       } else {

@@ -56,6 +56,8 @@ export async function generateMetadata(
             } @ PartyVOTE. Vote for your favorite songs and see them played live. ${
                 hostDescription ?? ''
             }`,
+            type: 'website',
+            url: `https://partyvote.ciac.me/party/${hostUrl}`,
 
             images: [logoUrl ?? '', ...previousImages],
         },
@@ -143,7 +145,10 @@ export default async function Home({ params, searchParams }: Props) {
             </section>
             <div className="h-10"></div>
             <Suspense fallback={<div>...</div>}>
-                <NewSongDialog partyId={hostId} votingFinishAt={votingFinishAt!}/>
+                <NewSongDialog
+                    partyId={hostId}
+                    votingFinishAt={votingFinishAt!}
+                />
             </Suspense>
 
             {/* spacer */}
@@ -173,7 +178,12 @@ export default async function Home({ params, searchParams }: Props) {
             <div className="h-10"></div>
 
             <section className="lg:w-8/12 md:w-10/12 w-full text-center flex flex-col items-center">
-                {songIndex <= 1 && <TopSongsList partyId={hostId} votingFinishAt={votingFinishAt}/>}
+                {songIndex <= 1 && (
+                    <TopSongsList
+                        partyId={hostId}
+                        votingFinishAt={votingFinishAt}
+                    />
+                )}
 
                 {/* <AS_vBanner /> */}
                 {/* <AdBox /> */}
