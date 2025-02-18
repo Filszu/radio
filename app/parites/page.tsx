@@ -29,24 +29,19 @@ type Props = {
     searchParams: { [key: string]: string | string[] | undefined };
 };
 
-export default async function Home({ searchParams }: Props) {
+export default async function PartiesPage({ searchParams }: Props) {
     return (
         <>
-            <HeroSection />
+           
             <section className="mt-10">
                 <h1 className="text-3xl font-bold text-center mb-12 flex items-center justify-center">
                     Recent and most popular PARTIES
                 </h1>
                 <Suspense fallback={<div>...</div>}>
-                    <PartyInfoBoxContainer collapsed={true} />
+                    <PartyInfoBoxContainer />
                 </Suspense>
             </section>
 
-            <FeaturesSectionsAnimated />
-
-            <section className="md:w-8/12">
-                <TopSongsList partyId={1} />
-            </section>
         </>
     );
 }
