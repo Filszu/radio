@@ -8,6 +8,7 @@ export async function POST(request: NextRequest) {
     const paymentIntent = await stripe.paymentIntents.create({
       amount: amount,
       currency: "usd",
+      // mode: "subscription",
       automatic_payment_methods: { enabled: true },
     });
 

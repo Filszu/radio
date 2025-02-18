@@ -16,7 +16,7 @@ const CheckoutPage = ({ amount }: { amount: number }) => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    fetch("/api/create-payment-intent", {
+    fetch("/api/stripe/create-payment-intent", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -47,7 +47,8 @@ const CheckoutPage = ({ amount }: { amount: number }) => {
       elements,
       clientSecret,
       confirmParams: {
-        return_url: `http://www.localhost:3000/payment-success?amount=${amount}`,
+        // return_url: `http://www.localhost:3000/payment-success?amount=${amount}`,
+        return_url: `http://www.localhost:3000/profile`,
       },
     });
 

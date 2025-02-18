@@ -11,6 +11,7 @@ export async function POST(request: Request) {
             line_items: [
                 {
                     price: priceId,
+                    quantity: 1,
                 },
             ],
             mode: 'subscription',

@@ -15,7 +15,7 @@ export default function EmbeddedCheckoutButton() {
 
   const fetchClientSecret = useCallback(() => {
     // Create a Checkout Session
-    return fetch("/api/embedded-checkout", {
+    return fetch("api/payments/embedded-checkout", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
