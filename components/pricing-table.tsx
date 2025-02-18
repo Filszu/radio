@@ -88,6 +88,7 @@ export function PricingTable(props: Iprops) {
                             <ListItem included>
                                 Create and share playlists
                             </ListItem>
+                            <ListItem included>100 daily users per party limit</ListItem>
                             <ListItem included>Exclusive content</ListItem>
                             <ListItem included>Admin dashboard</ListItem>
                             <ListItem included>Your Party Logo</ListItem>
@@ -127,6 +128,7 @@ export function PricingTable(props: Iprops) {
                             <ListItem included>
                                 Create and share playlists
                             </ListItem>
+                            <ListItem included>Unlimited party users</ListItem>
                             <ListItem included>Exclusive content</ListItem>
                             <ListItem included>Advanced Admin dashboard</ListItem>
                             <ListItem included>Your Party Logo</ListItem>
@@ -149,6 +151,8 @@ export function PricingTable(props: Iprops) {
             </div>
             <div className="text-center mt-8 text-sm text-gray-500">
                 <sup>*</sup> - first 30 days at $1, then monthly subscription
+                <br />
+                <sup>**</sup>Party monetization features coming soon for the Ultimate plan 
             </div>
         </div>
     );

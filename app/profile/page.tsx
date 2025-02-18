@@ -59,9 +59,16 @@ export default async function UserProfile() {
                     </Avatar>
                     <div className="text-center sm:text-left">
                         <CardTitle className="text-2xl flex gap-1 flex-wrap justify-center md:justify-start">
-                          
                             {userProfile.name}{' '}
-                            <div >
+                            <div>
+                                {
+                                    // userProfile.name === 'Filip' ?
+                                    creatorProfile.premiumStatus === 3 && (
+                                        <span className="text-green-500">
+                                            PRO
+                                        </span>
+                                    )
+                                }
                                 {
                                     // userProfile.name === 'Filip' ?
                                     creatorProfile.premiumStatus === 1 && (
@@ -89,6 +96,7 @@ export default async function UserProfile() {
                                 )}
 
                                 {(creatorProfile.premiumStatus === 1 ||
+                                    creatorProfile.premiumStatus === 3 ||
                                     creatorProfile.premiumStatus === 2 ||
                                     creatorProfile.premiumStatus === 9) && (
                                     <div className="text-green-500 text-xs text-center -translate-y-1">
@@ -97,6 +105,14 @@ export default async function UserProfile() {
                                     </div>
                                 )}
                             </div>
+                            <Link href="/pricing">
+                            <Button>
+                                {creatorProfile.premiumStatus === 0 || creatorProfile.premiumStatus === 2
+                                    ? 'Upgrade'
+                                    : 'Manage'}{' '}
+                                Plan
+                            </Button>
+                            </Link>
                         </CardTitle>
                         <CardDescription>
                             {userProfile.username}
@@ -128,6 +144,7 @@ export default async function UserProfile() {
                         <PartyInfoBoxContainer userId={user.id} admin={true} />
                     </Suspense>
 
+                    <div className="h-10"></div>
                     <Link href="/new-party">
                         <Button>Create Party</Button>
                     </Link>
