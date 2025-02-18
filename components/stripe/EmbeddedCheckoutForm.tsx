@@ -4,14 +4,33 @@ import {
   EmbeddedCheckoutProvider,
   EmbeddedCheckout,
 } from "@stripe/react-stripe-js";
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useState } from "react";
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from "@/components/ui/dialog";
 
-export default function EmbeddedCheckoutButton() {
+// 7$ per month
+// price_1QtxYZDnH12kMFjFzgfjhv9S
+
+// 10$ per month
+// price_1QtyUpDnH12kMFjFCyhoilYF
+// trial
+// price_1QtyWBDnH12kMFjFwuiFRdoo
+
+interface EmbeddedCheckoutButtonProps {
+  priceId: string;  
+}
+
+export default function EmbeddedCheckoutButton({ priceId }: EmbeddedCheckoutButtonProps) {
   const stripePromise = loadStripe(
     process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
   );
   const [showCheckout, setShowCheckout] = useState(false);
-  const modalRef = useRef<HTMLDialogElement>(null);
 
   const fetchClientSecret = useCallback(() => {
     // Create a Checkout Session
@@ -20,7 +39,7 @@ export default function EmbeddedCheckoutButton() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ priceId: "price_1QtxYZDnH12kMFjFzgfjhv9S" }),
+      body: JSON.stringify({ priceId: priceId }),
     })
       .then((res) => res.json())
       .then((data) => data.client_secret);
@@ -30,22 +49,23 @@ export default function EmbeddedCheckoutButton() {
 
   const handleCheckoutClick = () => {
     setShowCheckout(true);
-    modalRef.current?.showModal();
   };
 
   const handleCloseModal = () => {
     setShowCheckout(false);
-    modalRef.current?.close();
   };
 
   return (
     <div id="checkout" className="my-4">
-      <button className="btn" onClick={handleCheckoutClick}>
-        Open Modal with Embedded Checkout
-      </button>
-      <dialog ref={modalRef} className="modal">
-        <div className="modal-box w-100 max-w-screen-2xl">
-          <h3 className="font-bold text-lg">Embedded Checkout</h3>
+      <Button onClick={handleCheckoutClick}>
+        Pay Now
+      </Button>
+
+      <Dialog open={showCheckout} onOpenChange={handleCloseModal}>
+        <DialogContent className="sm:max-w-screen-2xl">
+          <DialogHeader>
+            <DialogTitle>Embedded Checkout</DialogTitle>
+          </DialogHeader>
           <div className="py-4">
             {showCheckout && (
               <EmbeddedCheckoutProvider stripe={stripePromise} options={options}>
@@ -53,15 +73,11 @@ export default function EmbeddedCheckoutButton() {
               </EmbeddedCheckoutProvider>
             )}
           </div>
-          <div className="modal-action">
-            <form method="dialog">
-              <button className="btn" onClick={handleCloseModal}>
-                Close
-              </button>
-            </form>
-          </div>
-        </div>
-      </dialog>
+          <DialogFooter>
+            <Button onClick={handleCloseModal}>Close</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

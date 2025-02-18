@@ -15,6 +15,9 @@ import SubmitButton from './ui/custom/SubmitButton';
 interface Iprops {
     plan1ButtonFunction?: () => void;
     plan2ButtonFunction?: () => void;
+    plan3ButtonFunction?: () => void;
+
+    
 }
 
 export function PricingTable(props: Iprops) {
@@ -60,7 +63,7 @@ export function PricingTable(props: Iprops) {
                     <CardFooter>
                         <SubmitButton
                             className="w-full"
-                            onClick={() => props.plan1ButtonFunction}
+                            onClick={() => props.plan1ButtonFunction && props.plan1ButtonFunction()}
                             btnText="Get Started"
                         >
                             Get Started
@@ -98,7 +101,7 @@ export function PricingTable(props: Iprops) {
                         <Button
                             onClick={() => {
                                 console.log('hahaha');
-                                props.plan2ButtonFunction;
+                                props.plan2ButtonFunction && props.plan2ButtonFunction();
                             }}
                             className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
                         >
@@ -136,10 +139,7 @@ export function PricingTable(props: Iprops) {
                     </CardContent>
                     <CardFooter>
                         <Button
-                            onClick={() => {
-                                console.log('hahaha');
-                                props.plan2ButtonFunction;
-                            }}
+                            onClick={() => props.plan3ButtonFunction && props.plan3ButtonFunction()}
                             className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
                         >
                             Subscribe Now
