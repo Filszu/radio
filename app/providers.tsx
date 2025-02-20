@@ -14,7 +14,7 @@ if (typeof window !== 'undefined') {
 export function CSPostHogProvider({ children }: { children: ReactNode }) {
     return (
         <PostHogProvider client={posthog}>
-            <PostHogPageView />
+            {/* <PostHogPageView /> */}
             {children}
         </PostHogProvider>
     );
