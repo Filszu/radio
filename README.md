@@ -1,6 +1,6 @@
 # PartyVote - Radio Elektron
 
-![PartyVote Logo](https://partyvote.ciac.me/imgs/logo.png)
+![PartyVote Main Page](https://partyvote.ciac.me/imgs/screenshots/ss1.png)
 
 ## Vote for Your Favorite Songs
 
@@ -17,6 +17,14 @@ PartyVote is an interactive web application that allows users to vote for their 
 
 ## Tech Stack
 
+Here are the technologies used in this project:
+
+![Next.js](https://img.shields.io/badge/Next.js-000000?logo=next.js&logoColor=white)
+![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?logo=supabase&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
+![Google Cloud Platform](https://img.shields.io/badge/Google_Cloud-4285F4?logo=google-cloud&logoColor=white)
+![Stripe](https://img.shields.io/badge/Stripe-008CDD?logo=stripe&logoColor=white)
+
 - **Frontend**: Next.js, React
 - **Backend**: Node.js, Supabase
 - **Database**: PostgreSQL (via Supabase)
@@ -26,18 +34,32 @@ PartyVote is an interactive web application that allows users to vote for their 
 - **Analytics**: Google Analytics
 - **Deployment**: Vercel
 
-## Screenshots
+## FEATURES - Screenshots
 
-| Feature | Screenshot |
-|---------|-----------|
-| Home Page | ![Home Page](https://partyvote.ciac.me/imgs/screenshots/s4b.png) |
-| Voting Page | ![Voting Page](https://partyvote.ciac.me/imgs/screenshots/ss1.png) |
-| Playlist View | ![Playlist View](https://partyvote.ciac.me/imgs/screenshots/ss2.png) |
-| Track Details | ![Track Details](https://partyvote.ciac.me/imgs/screenshots/ss3.png) |
-| Admin Panel | ![Admin Panel](https://partyvote.ciac.me/imgs/screenshots/ss5.png) |
-| Login Page | ![Login Page](https://partyvote.ciac.me/imgs/screenshots/ss6.png) |
-| User Dashboard | ![User Dashboard](https://partyvote.ciac.me/imgs/screenshots/ss7.png) |
-| Payment Integration | ![Payment Integration](https://partyvote.ciac.me/imgs/screenshots/ss8.png) |
+### Music Voting Page
+![Music Voting Page](https://partyvote.ciac.me/imgs/screenshots/ss3.png)
+
+### Intro Page
+![Intro Page](https://partyvote.ciac.me/imgs/screenshots/ss2.png)
+
+### Add Song From Spotify or YT Music
+![Add Song Page](https://partyvote.ciac.me/imgs/screenshots/s4b.png)
+
+### Share party on Social Media feture
+![Share Party](https://partyvote.ciac.me/imgs/screenshots/ss8.png)
+
+
+### Admin Panel - Manage Songs
+![Admin Panel](https://partyvote.ciac.me/imgs/screenshots/ss5.png)
+
+### Admin Panel - Manage Party Settings
+![Admin Panel](https://partyvote.ciac.me/imgs/screenshots/ss6.png)
+
+### Admin Panel - Developer Tools
+![Admin Panel](https://partyvote.ciac.me/imgs/screenshots/ss7.png)
+
+### Stripe Payment Integration
+![Stripe Payment](https://partyvote.ciac.me/imgs/screenshots/ss9.png)
 
 ## Environment Variables
 
@@ -67,3 +89,4 @@ STRIPE_SECRET_KEY=your_stripe_secret_key
 
 Check out the live version: [PartyVote](https://partyvote.ciac.me/)
 
+![PartyVote Logo](https://partyvote.ciac.me/imgs/logo.png)
