@@ -21,6 +21,7 @@ import { FeaturesSectionsAnimated } from '@/components/features-sections-animate
 import { Vortex } from '@/components/ui/vortex';
 import { Header } from '@/components/Header';
 import AdBanner from '@/components/ads/google/AdBanner';
+import { StatsSection } from '@/components/StatsSection';
 
 // export const dynamic = "force-dynamic"
 
@@ -47,6 +48,8 @@ export default async function Home({ searchParams }: Props) {
             <section className="md:w-8/12">
                 <TopSongsList partyId={1} />
             </section>
+
+            <StatsSection />
         </>
     );
 }
