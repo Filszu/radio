@@ -10,6 +10,7 @@ import Script from 'next/script';
 import { Header } from '@/components/Header';
 import AdSense from '@/components/ads/AdSense';
 import Footer from '@/components/Footer';
+import { CSPostHogProvider } from './providers';
 // import { FiGithub } from 'react-icons/fi'
 
 const inter = Inter({ subsets: ['latin'] });
@@ -26,10 +27,9 @@ export const metadata: Metadata = {
             'Party Vote Radio Elektron by Filszu Host Your Party, Let Guests Pick the BeatsCreate unforgettable parties where everyone has a say in the playlist. Host, vote, and dance to the music you all love Radio Elektron by Filszu',
         url: 'https://partyvote.ciac.me',
         siteName: 'PartyVote',
-        images: [`${"https://partyvote.ciac.me"}/imgs/opengraph-image.png`],
+        images: [`${'https://partyvote.ciac.me'}/imgs/opengraph-image.png`],
         locale: 'en_US',
         type: 'website',
-        
     },
 };
 
@@ -45,9 +45,10 @@ export default function RootLayout({
                 <AdSense pId="ca-pub-6202644433627847" />
             </head> */}
             <body className={inter.className}>
-                {/* {newSongModal} */}
-                <main className="flex min-h-screen flex-col items-center md:pt-1 w-full">
-                    {/* <header className="z-10 max-w-5xl w-full items-center justify-center font-mono text-sm md:flex md:justify-between">
+                <CSPostHogProvider>
+                    {/* {newSongModal} */}
+                    <main className="flex min-h-screen flex-col items-center md:pt-1 w-full">
+                        {/* <header className="z-10 max-w-5xl w-full items-center justify-center font-mono text-sm md:flex md:justify-between">
                         
                         <div className="flex items-center justify-center w-full md:flex md:w-auto">
                             <Image
@@ -65,37 +66,38 @@ export default function RootLayout({
                             <h2 className="">Głosuj na ulubione utwory</h2>
                         </div>
                     </header> */}
-                    <Header />
+                        <Header />
 
-                    <div className="h-10"></div>
+                        <div className="h-10"></div>
 
-                    {children}
-                </main>
+                        {children}
+                    </main>
 
-                <Toaster />
-                <Footer />
-                
-                <Script
-                    // strategy='lazyOnload'
-                    strategy="afterInteractive"
-                    src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_ANALYTICS_ID}`}
-                />
-                <Script id="google-analytics" strategy="afterInteractive">
-                    {`
+                    <Toaster />
+                    <Footer />
+
+                    <Script
+                        // strategy='lazyOnload'
+                        strategy="afterInteractive"
+                        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_ANALYTICS_ID}`}
+                    />
+                    <Script id="google-analytics" strategy="afterInteractive">
+                        {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
           
             gtag('config', '${process.env.GOOGLE_ANALYTICS_ID}');
           `}
-                </Script>
+                    </Script>
 
-                <Script
-                    async
-                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6202644433627847"
-                    crossOrigin="anonymous"
-                    strategy="afterInteractive"
-                ></Script>
+                    <Script
+                        async
+                        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6202644433627847"
+                        crossOrigin="anonymous"
+                        strategy="afterInteractive"
+                    ></Script>
+                </CSPostHogProvider>
             </body>
         </html>
     );
