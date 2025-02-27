@@ -25,13 +25,13 @@ const SongVoteBtns = ({ songId }: { songId: USong['id'] }) => {
                         const res = await voteSong(songId, 'upvote');
                         if (res === 'error') {
                             toast({
-                                title: 'Nie możesz głosować na ten utwór!',
-                                description: 'Zaglosowałeś już na ten utwór!',
+                                title: 'You can\'t vote for this song!',
+                                description: 'You have already voted for this song!',
                                 variant: 'destructive',
                             });
                         } else {
                             toast({
-                                title: 'Twój głos został oddany!',
+                                title: 'Your vote has been delivered!',
                                 description: '+1',
                                 variant: 'success',
                             });
@@ -50,13 +50,13 @@ const SongVoteBtns = ({ songId }: { songId: USong['id'] }) => {
 
                         if (res === 'error') {
                             toast({
-                                title: 'Nie możesz głosować na ten utwór!',
-                                description: 'Zaglosowałeś już na ten utwór!',
+                                title: 'You can\'t vote for this song!',
+                                description: 'You have already voted for this song!',
                                 variant: 'destructive',
                             });
                         } else {
                             toast({
-                                title: 'Twój głos został oddany!',
+                                title: 'Your vote has been delivered!',
                                 description: '-1',
                                 variant: 'success',
                             });
