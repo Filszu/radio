@@ -26,7 +26,7 @@ import StatsSection from '@/components/StatsSection';
 
 // export const dynamic = "force-dynamic"
 
-export const revalidate = 30;
+export const revalidate = 120;
 type Props = {
     searchParams: { [key: string]: string | string[] | undefined };
 };

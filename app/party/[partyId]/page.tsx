@@ -105,7 +105,7 @@ export default async function Home({ params, searchParams }: Props) {
 
     const songs: IPartySong[] = await getPartySongs({
         staringIndex: songIndex,
-        limit: songIndex + 20,
+        limit: songIndex + 30,
         order: 'updated_at',
         status: 'active',
         partyId: Number(hostId),
@@ -201,12 +201,12 @@ export default async function Home({ params, searchParams }: Props) {
                 <MusicList songs={songs} isAdmin={false} />
                 <div className="flex gap-1">
                     {songIndex >= 10 && (
-                        <Link href={`?songIndex=${songIndex - 20}`}>
+                        <Link href={`?songIndex=${songIndex - 30}`}>
                             <Button className="mt-4">Prev page</Button>
                         </Link>
                     )}
 
-                    <Link href={`?songIndex=${songIndex + 20}`}>
+                    <Link href={`?songIndex=${songIndex + 30}`}>
                         <Button className="mt-4">Next page</Button>
                     </Link>
                 </div>
