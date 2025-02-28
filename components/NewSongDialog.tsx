@@ -47,7 +47,7 @@ const NewSongDialog = async(props: Props) => {
         <Music2/>
         </Button>
     </DialogTrigger>
-    <DialogContent className="sm:max-w-[425px]">
+    <DialogContent className="sm:max-w-[505px] p-10 md:max-w-[805px] md:p-20">
       <NewSongDialogForm
       partyId={props.partyId}
       votingFinishAt={props.votingFinishAt}

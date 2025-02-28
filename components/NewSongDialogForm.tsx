@@ -74,7 +74,8 @@ const NewSongDialogForm = async(props: Props) => {
         <DialogDescription>
         Here you can add a new song suggestion to the list
         <br />
-        <div className="flex justify-center items-baseline">
+        
+        <div className="flex justify-center items-baseline py-5">
             <AiOutlineYoutube size={40}/>
             <span className="mx-5"></span>
             <BsSpotify size={40}/>
