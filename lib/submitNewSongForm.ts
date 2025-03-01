@@ -42,8 +42,8 @@ export async function submitNewSongForm(props: ISubmitNewSongForm) {
 
     if (genYoutubeUrl(formData.get('songURL') as string)) {
         returnMSG.message =
-            'Obenie korzystamy tylko z Spotify. Przepraszamy za utrudnienia.';
-        returnMSG.title = 'Co nie masz spotify, biedaku?';
+            "We're currently using only Spotify and YouTube Music. Sorry for the inconvenience.";
+        returnMSG.title = 'Unsupported platform';
         returnMSG.status = 400;
         returnMSG.type = 'error';
         return returnMSG;

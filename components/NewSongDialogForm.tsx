@@ -95,7 +95,8 @@ const NewSongDialogForm = async(props: Props) => {
             id="songURL"
             name="songURL"
             // defaultValue="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-            defaultValue={"https://open.spotify.com/track/05EG9LwFCVjkoYEWzsrHHO?si=b821993f06934e52"}
+            defaultValue={""}
+            placeholder="https://open.spotify.com/track/05EG9LwFCVjkoYEWzsrHHO?si=b821993f06934e52"
             className="col-span-3"
           />
         </div>

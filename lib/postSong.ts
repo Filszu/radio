@@ -11,7 +11,7 @@ export default async function postSong(formData: FormData) {
     if (!songUrl) return null;
 
     // Check if the song URL is a valid YouTube or Spotify URL
-    const youtubeRegex = /^(https?:\/\/)?(music\.youtube\.com\/watch\?v=)\w+/;
+    const youtubeRegex = /^(https?:\/\/)?(music\.youtube\.com\/watch\?v=)([\w-]+)(?:&.*)?$/;
     const spotifyTrackRegex = /^(https?:\/\/)?(www\.)?(open\.spotify\.com\/track\/)([\w]+)(\?.*)?$/;
 
     if (!songUrl) {
@@ -21,9 +21,13 @@ export default async function postSong(formData: FormData) {
 
     let trimmedSongUrl = songUrl;
     const spotifyMatch = songUrl.match(spotifyTrackRegex);
+    const youtubeMatch = songUrl.match(youtubeRegex);
+
     if (spotifyMatch) {
         trimmedSongUrl = `https://open.spotify.com/track/${spotifyMatch[4]}`;
-    } else if (!youtubeRegex.test(songUrl)) {
+    } else if (youtubeMatch) {
+        trimmedSongUrl = `https://music.youtube.com/watch?v=${youtubeMatch[3]}`;
+    } else {
         console.log('Invalid song URL');
         return null;
     }
@@ -56,10 +60,10 @@ export default async function postSong(formData: FormData) {
             return null;
         }
 
-        const inseredRowId = data[0].id;
+        const insertedRowId = data[0].id;
 
         return {
-            songId: inseredRowId,
+            songId: insertedRowId,
             songStatus: 'new',
         };
     }
