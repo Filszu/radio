@@ -4,20 +4,21 @@ import { createBrowserClient } from '@supabase/ssr';
 import React from 'react';
 import { FaGoogle } from 'react-icons/fa';
 
-// interface Props {
-//     signIn: () => void;
-//     signUp?: () => void;
-// }
-
 interface Props {
     btnClassName?: string;
     btnText?: string;
-    btnVariant?: "outline" | "default" | "destructive" | "secondary" | "ghost" | "link";
+    btnVariant?:
+        | 'outline'
+        | 'default'
+        | 'destructive'
+        | 'secondary'
+        | 'ghost'
+        | 'link';
 }
 
 const OAuthForm = async (props: Props) =>
     // props: Props
-    
+
     {
         const btnClassName = props.btnClassName || '';
         const btnText = props.btnText || 'Login with google';
@@ -32,11 +33,10 @@ const OAuthForm = async (props: Props) =>
             const { data, error } = await supabase.auth.signInWithOAuth({
                 provider: 'google',
                 options: {
-                    // redirectTo: "/auth/callback",
-                    redirectTo: `${location.origin}/profile/create`,
-                    // redirectTo: `/profile/create`,
-                    // redirectTo: `${location.origin}/auth/callback`,
-                    
+                    // redirectTo: `${location.origin}/profile/create`,
+                    redirectTo: `${location.origin}/auth/callback`,
+                    // redirectTo: `${window.location.origin}?next=/profile/create`,
+                    // redirectTo: `${window.location.origin}/profile/create`,
                 },
             });
 
@@ -47,7 +47,7 @@ const OAuthForm = async (props: Props) =>
         }
         return (
             <>
-                <Button 
+                <Button
                     className={`w-full p-6 ${btnClassName}`}
                     variant={btnVariant}
                     onClick={googleLogin}
@@ -57,19 +57,6 @@ const OAuthForm = async (props: Props) =>
                         {btnText}
                     </span>
                 </Button>
-
-                {/* <form action={props.signIn}>
-                <Button
-                    className="w-full p-6"
-                    variant={'outline'}
-                    type="submit"
-                >
-                    <span className="flex items-center justify-center gap-1 text-lg text-white">
-                        <FaGoogle />
-                        Login with google
-                    </span>
-                </Button>
-            </form> */}
             </>
         );
     };

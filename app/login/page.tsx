@@ -10,13 +10,23 @@ import createCookie, { getCookie } from '@/utils/appCookies';
 import { Cookie } from '@/types';
 import { cookies } from 'next/headers';
 import Ref from './ref';
+import { getUser } from '@/lib/auth/getUser';
+import { redirect } from 'next/navigation';
 
 type Props = {
     searchParams: { [key: string]: string | string[] | undefined };
 };
 
 export default async function signUpPage({ searchParams }: Props) {
+    // const user = await getUser();
+
+    // console.log('user', user);
+    // if (user) {
+        // redirect('/profile/create');
+    // }
+
     const promocode = searchParams?.promocode ?? '';
+    const code = searchParams?.code;
 
     if (promocode && promocode !== '') {
         // await createCookie({ name: 'promocode', value: promocode } as Cookie);
@@ -25,6 +35,12 @@ export default async function signUpPage({ searchParams }: Props) {
     const cookiePromoCode = await getCookie('promocode');
 
     console.log('cookiePromoCode🍪', cookiePromoCode);
+
+
+    if(code) {
+        redirect('/profile');
+    }
+    
 
     return (
         <section className="w-full">
@@ -50,21 +66,28 @@ export default async function signUpPage({ searchParams }: Props) {
                             btnClassName="text-gray-950"
                             btnVariant="default"
                         />
-                        <Label className="text-center " htmlFor="promocode">
-                            <p className="mt-3 text-center">promo code:</p>
-                        </Label>
+                        {promocode && (
+                            <Label className="text-center " htmlFor="promocode">
+                                <p className="mt-3 text-center">promo code:</p>
+                            </Label>
+                        )}
                         <Input
-                            className="my-2 rounded-md border bg-inherit px-4 py-6 text-center uppercase"
+                            className={`my-2 rounded-md border bg-inherit px-4 py-6 text-center uppercase`}
                             name="promocode"
                             placeholder="promo code"
                             // value={promocode ?? ''}
                             // defaultValue={promocode ?? ''}
                             defaultValue={promocode ?? ''}
                             disabled={!!promocode}
+                            type={promocode ? 'text' : 'hidden'}
                         />
                         <Ref code={promocode.toString()} />
                     </section>
-                    <Link href="https://policies.google.com/privacy" className="mt-4 underline" target='_blank'>
+                    <Link
+                        href="https://policies.google.com/privacy"
+                        className="mt-4 underline"
+                        target="_blank"
+                    >
                         Google privacy policy
                     </Link>
                 </div>

@@ -13,6 +13,5 @@ export async function getUser() {
 
     // console.log(data);
 
-   
     return data.user;
 }

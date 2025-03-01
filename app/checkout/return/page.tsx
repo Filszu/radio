@@ -16,7 +16,7 @@ export default async function CheckoutReturn({ searchParams }: { searchParams: S
   const session = await getSession(sessionId);
 
   const renderCard = (title: string, description: string, customerId?: string) => (
-    <div className="flex items-center justify-center min-h-screen">
+    <div className="flex items-center justify-center">
       <Card className="w-full max-w-md">
         <CardHeader>
           <CardTitle>{title}</CardTitle>
