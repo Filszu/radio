@@ -7,12 +7,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 1,
+      
     },
     {
       url: 'https://partyvote.ciac.me/profile',
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.8,
+      
     },
     {
       url: 'https://partyvote.ciac.me/party/radio-elektron',

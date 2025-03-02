@@ -10,7 +10,9 @@ interface IPartyInfoBoxContainer {
 }
 
 export async function PartyInfoBoxContainer(props: IPartyInfoBoxContainer) {
+
     console.log('props', props);
+    
 
     let q = supabase
         .from('hosts')
@@ -39,30 +41,13 @@ export async function PartyInfoBoxContainer(props: IPartyInfoBoxContainer) {
         <section>
             <div className="relative">
                 <div className="flex justify-center items-center cursor-pointer gap-5 flex-wrap">
-                    {hosts.map((host: THost, index) => (
-                        <div
-                            className={`${
-                                index > 2 && props.collapsed
-                                    ? 'hidden'
-                                    : 'block'
-                            }
-                        ${
-                            index > 5 && props.collapsed
-                                ? 'md:hidden'
-                                : 'md:block'
-                        }
-                        
-                        lg:block
-                            `}
-                        >
-                            {/* index: {index} */}
-                            <PartyInfoBox
-                                key={host.id}
-                                host={host}
-                                {...host}
-                                admin={props.admin ?? false}
-                            />
-                        </div>
+                    {hosts.map((host: THost) => (
+                        <PartyInfoBox
+                            key={host.id}
+                            host={host}
+                            {...host}
+                            admin={props.admin ?? false}
+                        />
                     ))}
                 </div>
 
@@ -70,6 +55,8 @@ export async function PartyInfoBoxContainer(props: IPartyInfoBoxContainer) {
                 {props.collapsed && (
                     <div className="absolute inset-x-0 bottom-0 h-96 bg-gradient-to-t from-background to-transparent"></div>
                 )}
+
+                
             </div>
             {props.collapsed && (
                 <div className="text-center mt-6">

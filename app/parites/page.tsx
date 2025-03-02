@@ -21,6 +21,7 @@ import { FeaturesSectionsAnimated } from '@/components/features-sections-animate
 import { Vortex } from '@/components/ui/vortex';
 import { Header } from '@/components/Header';
 import AdBanner from '@/components/ads/google/AdBanner';
+import StatsSection from '@/components/StatsSection';
 
 // export const dynamic = "force-dynamic"
 
@@ -32,7 +33,8 @@ type Props = {
 export default async function PartiesPage({ searchParams }: Props) {
     return (
         <>
-           
+            <StatsSection />
+
             <section className="mt-10">
                 <h1 className="text-3xl font-bold text-center mb-12 flex items-center justify-center">
                     Recent and most popular PARTIES
@@ -41,7 +43,6 @@ export default async function PartiesPage({ searchParams }: Props) {
                     <PartyInfoBoxContainer />
                 </Suspense>
             </section>
-
         </>
     );
 }
