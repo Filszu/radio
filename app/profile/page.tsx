@@ -38,6 +38,7 @@ export default async function UserProfile() {
     const creatorProfile = await getCreatorProfile({ sessionUserId: user.id });
 
     if (!creatorProfile) {
+        redirect('/profile/create');
         return <h1>Error - no creator profile</h1>;
     }
 
@@ -106,12 +107,13 @@ export default async function UserProfile() {
                                 )}
                             </div>
                             <Link href="/pricing">
-                            <Button>
-                                {creatorProfile.premiumStatus === 0 || creatorProfile.premiumStatus === 2
-                                    ? 'Upgrade'
-                                    : 'Manage'}{' '}
-                                Plan
-                            </Button>
+                                <Button>
+                                    {creatorProfile.premiumStatus === 0 ||
+                                    creatorProfile.premiumStatus === 2
+                                        ? 'Upgrade'
+                                        : 'Manage'}{' '}
+                                    Plan
+                                </Button>
                             </Link>
                         </CardTitle>
                         <CardDescription>
