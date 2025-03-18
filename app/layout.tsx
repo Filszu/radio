@@ -1,15 +1,10 @@
-import { Toaster } from '@/components/ui/toaster';
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import React from 'react';
-import Image from 'next/image';
-import Logo from '../public/imgs/logo-elektron.jpg';
-import Link from 'next/link';
 import Script from 'next/script';
-import { Header } from '@/components/Header';
-import AdSense from '@/components/ads/AdSense';
-import Footer from '@/components/Footer';
+
+
 import { CSPostHogProvider } from './providers';
 // import { FiGithub } from 'react-icons/fi'
 
@@ -37,7 +32,6 @@ export default function RootLayout({
     children,
 }: {
     children: React.ReactNode;
-    newSongModal: React.ReactNode;
 }) {
     return (
         <html lang="en" className="dark">
