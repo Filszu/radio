@@ -47,34 +47,7 @@ export default function RootLayout({
             <CSPostHogProvider>
                 <body className={inter.className}>
                     {/* {newSongModal} */}
-                    <main className="flex min-h-screen flex-col items-center md:pt-1 w-full">
-                        {/* <header className="z-10 max-w-5xl w-full items-center justify-center font-mono text-sm md:flex md:justify-between">
-                        
-                        <div className="flex items-center justify-center w-full md:flex md:w-auto">
-                            <Image
-                                src={Logo}
-                                width={50}
-                                height={50}
-                                alt="logo elktrona"
-                                className="m-5"
-                            />
-                            <Link href="/">
-                                <h1>Radio Elektron</h1>
-                            </Link>
-                        </div>
-                        <div className="flex items-center justify-center">
-                            <h2 className="">Głosuj na ulubione utwory</h2>
-                        </div>
-                    </header> */}
-                        <Header />
-
-                        <div className="h-10"></div>
-
-                        {children}
-                    </main>
-
-                    <Toaster />
-                    <Footer />
+                    {children}
 
                     <Script
                         // strategy='lazyOnload'
