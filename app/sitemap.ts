@@ -28,5 +28,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.5,
     },
+    {
+      url: 'https://partyvote.ciac.me/party/premiumDemo',
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.5,
+    },
+    {
+      url: 'https://partyvote.ciac.me/party/sanah',
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.5,
+    },
+    {
+      url: 'https://partyvote.ciac.me/tools/yt-downloader',
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.5,
+    },
+    {
+      url: 'https://partyvote.ciac.me/pricing',
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.5,
+    },
   ]
 }
