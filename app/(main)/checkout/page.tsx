@@ -29,11 +29,18 @@ export default async function PartiesPage({ searchParams }: Props) {
 
     let toPay = 0;
     let priceId = 'price_1QtyWBDnH12kMFjFwuiFRdoo';
+    // production
+        priceId = 'price_1QtzznDnH12kMFjFsJYesXT4';
     if (planId === 'premium') {
         priceId = 'price_1QtxYZDnH12kMFjFzgfjhv9S';
+        // production
+        priceId = 'price_1QtzzrDnH12kMFjFgLBiUo6n';
         toPay = 7;
     } else if (planId === 'pro') {
         priceId = 'price_1QtyUpDnH12kMFjFCyhoilYF';
+        // production
+        priceId = 'price_1QtzzpDnH12kMFjFoME0atP6';
+        
         toPay = 10;
     }
 
