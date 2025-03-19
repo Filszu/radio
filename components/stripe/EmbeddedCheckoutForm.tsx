@@ -67,10 +67,10 @@ export default function EmbeddedCheckoutButton({ priceId, userId }: EmbeddedChec
           <DialogHeader>
             <DialogTitle>Embedded Checkout</DialogTitle>
           </DialogHeader>
-          <div className="py-4">
+          <div className="py-4 ">
             {showCheckout && (
               <EmbeddedCheckoutProvider stripe={stripePromise} options={options}>
-                <EmbeddedCheckout />
+                <EmbeddedCheckout className="overflow-y-scroll max-h-[500px] lg:max-h-[600px] xl:max-h-[700px] 4xl:max-h-[1000px]" />
               </EmbeddedCheckoutProvider>
             )}
           </div>

@@ -25,7 +25,7 @@ export default function DownloadLoadingClient({ url, itag }: DownloadLoadingClie
 
   useEffect(() => {
     // Create the download URL
-    const fullDownloadUrl = `/api/download?url=${encodeURIComponent(url)}&itag=${itag}`
+    const fullDownloadUrl = `/api/track/download?url=${encodeURIComponent(url)}&itag=${itag}`
     setDownloadUrl(fullDownloadUrl)
 
     // Start progress animation

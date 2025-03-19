@@ -47,7 +47,7 @@ export default async function PartiesPage({ searchParams }: Props) {
 
     return (
         <>
-            <section className="mt-10 text-center">
+            <section className="mt-10 text-center min-h-screen ">
                 <h2 className="text-3xl font-bold  mb-12 flex items-center justify-center">
                     Checkout
                 </h2>

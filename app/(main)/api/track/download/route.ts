@@ -24,6 +24,7 @@ export async function GET(request: NextRequest) {
         const videoInfo = await ytdl.getInfo(url)
         const videoTitle = videoInfo.videoDetails.title
         const sanitizedTitle = videoTitle.replace(/[^\w\s]/gi, "") || "youtube_download"
+   
 
         // Find the format
         const format = videoInfo.formats.find((f) => f.itag === Number.parseInt(itag))
@@ -76,7 +77,7 @@ export async function GET(request: NextRequest) {
       author: info.videoDetails.author.name,
       lengthSeconds: info.videoDetails.lengthSeconds,
       thumbnailUrl: info.videoDetails.thumbnails[0]?.url,
-    
+      videoDetails: info.videoDetails,
     }
 
     // Extract available formats
