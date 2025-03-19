@@ -2,6 +2,8 @@ import { stripe } from "@/utils/stripe/stripe";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import putPremiumStatus from "@/lib/putPremiumStatus";
+import { getUser } from "@/lib/auth/getUser";
 
 async function getSession(sessionId: string) {
   return await stripe.checkout.sessions.retrieve(sessionId);
@@ -14,6 +16,19 @@ interface SearchParams {
 export default async function CheckoutReturn({ searchParams }: { searchParams: SearchParams }) {
   const sessionId = searchParams.session_id;
   const session = await getSession(sessionId);
+
+
+   const user = await getUser();
+      
+  
+      if (!user) {
+          return <>Error</>
+      }
+      
+  if(session.status === 'complete') {
+    // Update the user's premium status in the database
+    await putPremiumStatus(user.id , 1);
+  }
 
   const renderCard = (title: string, description: string, customerId?: string) => (
     <div className="flex items-center justify-center">

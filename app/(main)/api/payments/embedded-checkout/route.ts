@@ -18,6 +18,8 @@ export async function POST(request: Request) {
             return_url: `${request.headers.get('origin')}/checkout/return?session_id={CHECKOUT_SESSION_ID}`,
         });
 
+        
+
         return NextResponse.json({ id: session.id, client_secret: session.client_secret });
     } catch (error: any) {
       console.error(error);
