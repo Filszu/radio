@@ -14,8 +14,8 @@ import {
     Star,
     Zap,
     PartyPopper,
- 
 } from 'lucide-react';
+import TrustBox from './ui/custom/TrustpilotBtn';
 
 export function FeaturesSectionsAnimated() {
     const animatedElementsRef = useRef<HTMLElement[]>([]);
@@ -211,6 +211,9 @@ export function FeaturesSectionsAnimated() {
                         ))}
                     </div>
                 </div>
+                <section className="mt-12">
+                    <TrustBox />
+                </section>
             </section>
 
             {/* Call to Action Section */}
@@ -224,9 +227,9 @@ export function FeaturesSectionsAnimated() {
                         experiences with crowd-sourced playlists.
                     </p>
                     <Link href="/profile">
-                    <Button size="lg" className="text-lg px-8 py-3">
-                        Get Started for Free
-                    </Button>
+                        <Button size="lg" className="text-lg px-8 py-3">
+                            Get Started for Free
+                        </Button>
                     </Link>
                 </div>
             </section>
