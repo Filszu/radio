@@ -17,9 +17,11 @@ const SongInfoBox = ({
     song,
     isAdmin,
     styles,
+    isSandbox,
 }: {
     song: USong | IPartySong;
     isAdmin: boolean;
+    isSandbox?: boolean;
     styles?: string;
 }) => {
     function substrWord(str: string, maxLen: number, startingPos: number = 0) {
@@ -86,7 +88,7 @@ const SongInfoBox = ({
                             <span className="mx-1"></span>
                         </div>
                     </div>
-                    <SongVoteBtns songId={song.id} />
+                    <SongVoteBtns songId={song.id} isAdmin={isAdmin} isSandbox={isSandbox} />
                 </div>
             </div>
             {isAdmin && <SongAdminOptions songId={song.id} song={song} />}

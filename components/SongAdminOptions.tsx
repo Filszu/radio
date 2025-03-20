@@ -10,6 +10,7 @@ import { USong } from '@/types';
 import { IPartySong } from '@/types';
 import { PiShootingStarBold } from 'react-icons/pi';
 import { postPlayList } from '@/lib/postPlayList';
+import { useToast } from './ui/use-toast';
 
 const SongAdminOptions = ({
     songId,
@@ -27,10 +28,15 @@ const SongAdminOptions = ({
         });
 
         if (res) {
-            alert(res);
+            toast({
+                title: 'Success',
+                description: JSON.stringify(res)+'Song has been updated',
+                variant: 'default',
+            });
         }
     }
 
+    const { toast } = useToast();
     async function addSongToPlaylist() {
         console.log('adding song to playlist');
         let partyId;
@@ -38,7 +44,11 @@ const SongAdminOptions = ({
             partyId = (song as IPartySong).partyId;
             console.log((song as IPartySong).partyId);
         } else {
-            alert('partyId not found');
+            toast({
+                title: 'Error',
+                description: 'partyId not found',
+                variant: 'destructive',
+            });
             return;
         }
 
@@ -46,7 +56,11 @@ const SongAdminOptions = ({
         if ('USongId' in song) {
             usongid = (song as IPartySong).USongId;
         } else {
-            alert('USongId not found');
+            toast({
+                title: 'Error',
+                description: 'USongId not found',
+                variant: 'destructive',
+            });
             return;
         }
 
@@ -56,9 +70,18 @@ const SongAdminOptions = ({
         });
 
         if (res) {
-            alert(res);
+            toast({
+                title: 'Success',
+                description:  'Song has been added to playlist',
+                variant: 'success',
+            });
         } else {
-            alert('error');
+            toast({
+                title: 'Error',
+                description:
+                    'An error occurred while adding the song to the playlist.',
+                variant: 'destructive',
+            });
         }
     }
 

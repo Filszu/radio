@@ -20,7 +20,11 @@ async function getVotes(songID: string) {
     return data[0];
 }
 
-async function voteSong(songID: string, voteType: 'upvote' | 'downvote') {
+async function voteSong(
+    songID: string,
+    voteType: 'upvote' | 'downvote',
+    limitedVotes: boolean,
+) {
     console.log('voteSong', songID, voteType);
     // const { data, error } = await supabase
     //     .from('uSongs')
@@ -38,10 +42,15 @@ async function voteSong(songID: string, voteType: 'upvote' | 'downvote') {
     const isSongInUserActionsDB = await markSongAsVoted(songID);
     // console.log("isSongCookie",isSongCookie);
 
-    //temp dissable
-    if (isSongCookie) return 'error';
+    // ALOWS user to vote multiple times
+    if (limitedVotes) {
+        console.log('limitedVotes', limitedVotes);
+       
 
-    if (isSongInUserActionsDB) return 'error';
+        if (isSongCookie) return 'error';
+
+        if (isSongInUserActionsDB) return 'error';
+    }
 
     const votes = await getVotes(songID);
 
