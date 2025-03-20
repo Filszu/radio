@@ -11,6 +11,13 @@ import { IPartySong } from '@/types';
 import { PiShootingStarBold } from 'react-icons/pi';
 import { postPlayList } from '@/lib/postPlayList';
 import { useToast } from './ui/use-toast';
+import {
+    Select,
+    SelectTrigger,
+    SelectValue,
+    SelectContent,
+    SelectItem,
+} from './ui/select';
 
 const SongAdminOptions = ({
     songId,
@@ -30,7 +37,7 @@ const SongAdminOptions = ({
         if (res) {
             toast({
                 title: 'Success',
-                description: JSON.stringify(res)+'Song has been updated',
+                description: JSON.stringify(res) + 'Song has been updated',
                 variant: 'default',
             });
         }
@@ -72,7 +79,7 @@ const SongAdminOptions = ({
         if (res) {
             toast({
                 title: 'Success',
-                description:  'Song has been added to playlist',
+                description: 'Song has been added to playlist',
                 variant: 'success',
             });
         } else {
@@ -154,13 +161,19 @@ const SongAdminOptions = ({
                         />
 
                         <Label htmlFor="status">Status</Label>
-                        <Input
+                        <Select
                             name="status"
-                            id="status"
-                            type="text"
-                            placeholder="status"
                             defaultValue={song.status ?? 'active'}
-                        />
+                            onValueChange={(value) => console.log(value)} // Replace with your desired handler
+                        >
+                            <SelectTrigger id="status">
+                                <SelectValue placeholder="Select status" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectItem value="active">Active</SelectItem>
+                                <SelectItem value="banned">Banned</SelectItem>
+                            </SelectContent>
+                        </Select>
 
                         <Button type="submit" className="mt-4">
                             Submit
