@@ -11,12 +11,13 @@ import TopSongsList from '@/components/TopSongs';
 import { Suspense } from 'react';
 import PageMsg from '@/components/PageMsg';
 import { getHost } from '@/lib/getHostId';
-import { notFound, redirect } from 'next/navigation';
+import { notFound, redirect, } from 'next/navigation';
 
 import AdBanner from '@/components/ads/google/AdBanner';
 
 import LinksComponent from '@/components/ads/Links';
 import { Metadata, ResolvingMetadata } from 'next';
+import { getUser } from '@/lib/auth/getUser';
 
 export async function generateMetadata(
     { params, searchParams }: Props,
@@ -65,6 +66,12 @@ type Props = {
 //   }
 
 export default async function SandBoxPage({ params, searchParams }: Props) {
+    const user = await getUser();
+
+    if (!user) {
+        redirect('@/login');
+    }
+
     const partyId = params.partyId;
 
     // console.log("%%%%%params", params);
@@ -143,8 +150,6 @@ export default async function SandBoxPage({ params, searchParams }: Props) {
             {/* spacer */}
             <div className="h-10"></div>
 
-         
-
             <section className="lg:w-8/12 md:w-10/12 w-full text-center flex flex-col items-center">
                 {songIndex <= 1 && (
                     <TopSongsList
@@ -166,7 +171,7 @@ export default async function SandBoxPage({ params, searchParams }: Props) {
                     Vote for your FAV SONGS🎵
                 </h2>
 
-                <MusicList songs={songs} isAdmin={false} isSandbox={true}/>
+                <MusicList songs={songs} isAdmin={false} isSandbox={true} />
                 <div className="flex gap-1">
                     {songIndex >= 10 && (
                         <Link href={`?songIndex=${songIndex - 30}`}>
