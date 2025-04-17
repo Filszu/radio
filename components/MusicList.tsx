@@ -7,12 +7,14 @@ import AdBanner from './ads/google/AdBanner';
 const MusicList = ({
     songs,
     isAdmin,
-    isSandbox,  
+    isSandbox,
 }: {
     songs: USong[] | IPartySong[];
     isAdmin: boolean;
     isSandbox?: boolean;
 }) => {
+    const songsAdsRatio = Math.floor(Math.random() * (6 - 4 + 1)) + 4; //radnom from 4 to 6 songs per ad
+
     return (
         <section className="w-full flex flex-col gap-2 ">
             {songs.map((song, index) => (
@@ -22,13 +24,13 @@ const MusicList = ({
                         // songId={song.id}
                         song={song}
                         isAdmin={isAdmin}
-                        isSandbox={isSandbox??false}
+                        isSandbox={isSandbox ?? false}
                     />
-                    {(index + 1) % 4 === 0 && (
+                    {(index + 1) % songsAdsRatio === 0 && (
                         <section className="w-full flex justify-center items-center flex-col h-auto overflow-clip">
                             {/* <p className="text-sm text-center"></p> */}
-
                             {/* <div className="w-12 bg-slate-300 h-32"></div> */}
+                            {/* AD */}
                             <AdBanner
                                 dataAdFormat="auto"
                                 dataFullWidthResponsive={true}
