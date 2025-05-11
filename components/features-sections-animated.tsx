@@ -16,6 +16,7 @@ import {
     PartyPopper,
 } from 'lucide-react';
 import TrustBox from './ui/custom/TrustpilotBtn';
+import Image from 'next/image';
 
 export function FeaturesSectionsAnimated() {
     const animatedElementsRef = useRef<HTMLElement[]>([]);
@@ -97,8 +98,27 @@ export function FeaturesSectionsAnimated() {
             </section>
 
             {/* Key Features Section */}
-            <section className="py-16 px-4 sm:px-6 lg:px-8 bg-muted md:rounded-md">
-                <div className="max-w-7xl mx-auto">
+            {/* imgs/ilustrations/PNG/music file2-02.png */}
+            <section
+                className="relative group py-16 px-4 sm:px-6 lg:px-8 bg-muted md:rounded-md overflow-hidden"
+                style={{
+                    backgroundImage:
+                        "url('imgs/ilustrations/SVG/music file2-02.svg ')",
+                    // backgroundImage: "url('imgs/ilustrations/SVG/music file2-03.svg ')",
+                    // backgroundImage: "url('imgs/ilustrations/SVG/music file2-04.svg ')",
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                }}
+            >
+                {/* Spotify green overlay with transition and hover blur */}
+                <div
+                    className="absolute inset-0 backdrop-blur-sm md:backdrop-blur-none group-hover:backdrop-blur-sm
+  md:group-hover:bg-[#1DB954]/20 transition-all duration-500 z-0"
+                    aria-hidden="true"
+                />
+
+                {/* Content */}
+                <div className="relative z-10 max-w-7xl mx-auto">
                     <h2
                         className="text-3xl font-bold text-center mb-12 flex items-center justify-center"
                         ref={addToRefs}
@@ -217,8 +237,38 @@ export function FeaturesSectionsAnimated() {
             </section>
 
             {/* Call to Action Section */}
-            <section className="py-16 px-4 sm:px-6 lg:px-8 bg-muted md:rounded-md">
-                <div className="max-w-3xl mx-auto text-center" ref={addToRefs}>
+            <div className='relative flex items-center justify-center w-full h-64'> 
+                <Image
+                    src="/imgs/ilustrations/SVG/music file2-09.svg"
+                    alt="Background"
+                    className=" md:hidden inset-0 z-2 pointer-events-none translate-y-16 md:translate-x-14"
+                    width={400}
+                    height={400}
+                    />
+            </div>
+            <section className="relative py-16 px-4 sm:px-6 lg:px-8 bg-muted md:rounded-md overflow-hidden">
+                {/* Scaled background image on the right */}
+                <div
+                    className="absolute inset-0 z-0 pointer-events-none"
+                    aria-hidden="true"
+                >
+                    
+
+                    <div
+                        className="absolute right-[-100px] top-0 h-full w-2/5 origin-right scale-70 bg-cover bg-no-repeat md:block hidden"
+                        style={{
+                            backgroundImage:
+                                "url('/imgs/ilustrations/SVG/music file2-09.svg')",
+                            backgroundPosition: 'right center',
+                        }}
+                    />
+                </div>
+
+                {/* Foreground content */}
+                <div
+                    className="relative z-10 max-w-3xl mx-auto text-center"
+                    ref={addToRefs}
+                >
                     <h2 className="text-3xl font-bold mb-4">
                         Ready to Host Your Ultimate Party?
                     </h2>

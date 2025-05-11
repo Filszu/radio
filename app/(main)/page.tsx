@@ -36,7 +36,7 @@ export default async function Home({ searchParams }: Props) {
         <>
             <HeroSection />
             <section className="mt-10">
-                <h1 className="text-3xl font-bold text-center mb-12 flex items-center justify-center">
+                <h1 className="text-3xl font-bold text-center mb-12 flex items-center justify-center ">
                     Recent and most popular PARTIES
                 </h1>
                 <Suspense fallback={<div>...</div>}>
