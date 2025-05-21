@@ -18,6 +18,7 @@ import {
 import TrustBox from './ui/custom/TrustpilotBtn';
 import Image from 'next/image';
 
+
 export function FeaturesSectionsAnimated() {
     const animatedElementsRef = useRef<HTMLElement[]>([]);
 
@@ -234,6 +235,7 @@ export function FeaturesSectionsAnimated() {
                 <section className="mt-12">
                     <TrustBox />
                 </section>
+                
             </section>
 
             {/* Call to Action Section */}

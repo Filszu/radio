@@ -22,6 +22,7 @@ import { Vortex } from '@/components/ui/vortex';
 import { Header } from '@/components/Header';
 import AdBanner from '@/components/ads/google/AdBanner';
 import StatsSection from '@/components/StatsSection';
+import ProductHuntBadge from '@/components/ui/ProductHuntBadge';
 
 
 // export const dynamic = "force-dynamic"
@@ -45,6 +46,11 @@ export default async function Home({ searchParams }: Props) {
             </section>
 
             <FeaturesSectionsAnimated />
+
+
+            <section className='flex flex-col items-center justify-center mt-10'>
+                <ProductHuntBadge />
+            </section>
 
             <section className="md:w-8/12">
                 <TopSongsList partyId={1} />
